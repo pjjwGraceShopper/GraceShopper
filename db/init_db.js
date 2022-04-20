@@ -7,7 +7,7 @@ const {
 //----------------------------------------------------------------
 async function buildTables() {
   try {
-    client.connect();
+    
 
     // drop tables in correct order
     client.query(`
@@ -80,7 +80,12 @@ async function populateInitialData() {
   }
 }
 
-buildTables()
+
+async function rebuildDB() {
+
+    client.connect();
+    buildTables()
   .then(populateInitialData)
   .catch(console.error)
-  .finally(() => client.end());
+  .finally(() => client.end())}
+  rebuildDB()
