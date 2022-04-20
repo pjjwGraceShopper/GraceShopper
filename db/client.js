@@ -4,7 +4,7 @@ require("dotenv").config();
 const LOGIN = process.env.REACT_APP_DB_login;
 const DB_NAME = 'blueBox';
 let client
-const DB_URL = process.env.DATABASE_URL || `postgres://postgres:postgres@localhost:5432/blueBox`;
+const DB_URL = process.env.DATABASE_URL || `postgres://${LOGIN}@localhost:5432/${DB_NAME}`;
 
 // github actions client config
 if (process.env.CI) {
@@ -17,10 +17,9 @@ if (process.env.CI) {
   });
 } else {
   // local / heroku client config
-  client = new Client({conectionString: DB_URL});
+  client = new Client(DB_URL);
 }
 // client = new Client({connectionString: process.env.DATABASE_URL || `postgres://${LOGIN}@localhost:5432/${DB_NAME}`,
 // ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : undefined});
 
-console.log(client)
 module.exports = client;

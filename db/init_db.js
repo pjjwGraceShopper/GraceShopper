@@ -13,10 +13,10 @@ async function buildTables() {
 
     // drop tables in correct order
     await client.query(`
-    DROP TABLE cart
-    DROP TABLE movies
-    DROP TABLE IDXlib
-    DROP TABLE users
+    DROP TABLE IF EXISTS cart;
+    DROP TABLE IF EXISTS movies;
+    DROP TABLE IF EXISTS idxlib;
+    DROP TABLE IF EXISTS users;
     `) 
     // build tables in correct order
 
