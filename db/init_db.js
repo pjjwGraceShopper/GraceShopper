@@ -1,8 +1,10 @@
-const {
-  client, User
-  // declare your model imports here
-  // for example, User
-} = require('./');
+// const {
+//   client
+//   // declare your model imports here
+//   // for example, User
+// } = require('./');
+const client = require ('./client')
+
 
 //----------------------------------------------------------------
 async function buildTables() {
@@ -10,15 +12,15 @@ async function buildTables() {
     
 
     // drop tables in correct order
-    client.query(`
+    await client.query(`
     DROP TABLE cart
     DROP TABLE movies
     DROP TABLE IDXlib
     DROP TABLE users
-    `)
+    `) 
     // build tables in correct order
 
-    client.query(`
+    await client.query(`
    
     CREATE TABLE users
     (
@@ -83,9 +85,9 @@ async function populateInitialData() {
 
 async function rebuildDB() {
 
-    client.connect();
-    buildTables()
-  .then(populateInitialData)
+  client.connect();
+  await buildTables()
+  // .then(populateInitialData)
   .catch(console.error)
   .finally(() => client.end())}
   rebuildDB()
