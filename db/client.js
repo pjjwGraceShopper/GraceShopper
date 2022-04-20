@@ -4,7 +4,7 @@ require("dotenv").config();
 const LOGIN = process.env.REACT_APP_DB_login;
 //----------------------------------------------------------------
 let DB_NAME
-if (!LOGIN.length){
+if (!LOGIN){
   DB_NAME = `postgres://localhost:5432/blueBox`;
 } else {
   DB_NAME = `postgres://${LOGIN}@localhost:5432/blueBox`;
