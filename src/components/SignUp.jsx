@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { registerUser } from "../api";
+// import { registerUser } from "../api";
 
 const SignUp = ({ setToken }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [signUpMessage, setSignUpMessage] = {};
+  const [signUpMessage, setSignUpMessage] = useState({});
 
   const onSignUp = async (e) => {
     e.preventDefault();
