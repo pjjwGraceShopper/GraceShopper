@@ -29,8 +29,9 @@ const App = () => {
   }, []);
 
   return (
-    <div className='app-container'>
+    <div className='sidebar-container'>
       <Sidebar />
+    <div className='app-container'>
       <div className='main_title'>Hello, World!</div>
       <p>API Status: {APIHealth}</p>
       <Routes>
@@ -40,6 +41,7 @@ const App = () => {
         {/* sign-up route currently not working */}
       </Routes>
       <Footer />
+    </div>
     </div>
   );
 };
