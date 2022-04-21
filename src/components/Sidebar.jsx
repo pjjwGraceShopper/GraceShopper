@@ -3,8 +3,12 @@ import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
-    <div id='Sidebar'>
-      <Link to='/'> Home </Link>
+
+    <div id="Sidebar">
+      <div id="sidebar-container">
+        <div id="sidebar-column">
+      <Link to="/"> Home </Link>
+
       {/* <Link to="../Search"> Search </Link> */}
       {/* <Link to="./profile"> Profile </Link> */}
       <Link to='/my-library'>My Library</Link>
@@ -16,6 +20,8 @@ const Sidebar = () => {
       ) : (
         <Link to='./login'> Logout </Link>
       )}
+      </div>
+      </div>
     </div>
   );
 };

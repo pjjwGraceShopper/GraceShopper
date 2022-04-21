@@ -30,8 +30,9 @@ const App = () => {
   }, []);
 
   return (
-    <div className='app-container'>
+    <div className='sidebar-container'>
       <Sidebar />
+    <div className='app-container'>
       <div className='main_title'>Hello, World!</div>
       <p>API Status: {APIHealth}</p>
       <Routes>
@@ -42,6 +43,7 @@ const App = () => {
         <Route path='/my-library' element={<MyLibrary />} />
       </Routes>
       <Footer />
+    </div>
     </div>
   );
 };
