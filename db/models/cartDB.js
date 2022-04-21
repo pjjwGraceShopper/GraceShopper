@@ -15,14 +15,14 @@ async function createUserCart_DB (userid, JSONB) {
 }
 //----------------------------------------------------------------
 async function getUserCart_DB (userid) {
-
+try{
     const {rows}  = await client.query(`
         SELECT items 
-        FROM
+        FROM cart
         WHERE user_cart = ( $1 ) 
-    
         `, [userid])
     return rows
+} catch(err){ throw err}
 }
 //----------------------------------------------------------------
 // Json format for input into postgres server   '{"item": 1, "item2": 2}'

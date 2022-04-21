@@ -34,12 +34,11 @@ const App = () => {
       <Sidebar />
       <div className='main_title'>Hello, World!</div>
       <p>API Status: {APIHealth}</p>
-      <Cart />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
         <Route path='/sign-up' element={<SignUp />} />
-        {/* <Route path='/cart' element={<Cart />} /> */}
+        <Route path='/cart' element={<Cart />} />
         {/* sign-up route currently not working */}
       </Routes>
       <Footer />

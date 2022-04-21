@@ -4,13 +4,13 @@ import {getUserCart} from "../axios-services/Cart_ajax"
 const Cart = (props, context) => {
     
     
-console.log("got to cart layer")
+
  const userCart = getUserCart(1)
 
 
     return (
         <div className="cart-container">
-            user cart Contains: {`${userCart.items}`}
+            user cart Contains: {`${userCart}`}
 
             <div className="cart-left-container">
                 im on the left
