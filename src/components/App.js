@@ -11,6 +11,8 @@ import "../style/App.css";
 import { Route, Routes } from "react-router-dom";
 import Footer from "./Footer";
 import Cart from "./Cart"
+import MyLibrary from "./MyLibrary";
+
 
 const App = () => {
   const [APIHealth, setAPIHealth] = useState("");
@@ -30,8 +32,9 @@ const App = () => {
   }, []);
 
   return (
-    <div className='app-container'>
+    <div className='sidebar-container'>
       <Sidebar />
+    <div className='app-container'>
       <div className='main_title'>Hello, World!</div>
       <p>API Status: {APIHealth}</p>
       <Routes>
@@ -40,8 +43,10 @@ const App = () => {
         <Route path='/sign-up' element={<SignUp />} />
         <Route path='/cart' element={<Cart />} />
         {/* sign-up route currently not working */}
+        <Route path='/my-library' element={<MyLibrary />} />
       </Routes>
       <Footer />
+    </div>
     </div>
   );
 };
