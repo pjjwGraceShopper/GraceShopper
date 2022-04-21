@@ -10,6 +10,7 @@ import Sidebar from "./Sidebar";
 import "../style/App.css";
 import { Route, Routes } from "react-router-dom";
 import Footer from "./Footer";
+import MyLibrary from "./MyLibrary";
 
 const App = () => {
   const [APIHealth, setAPIHealth] = useState("");
@@ -38,6 +39,7 @@ const App = () => {
         <Route path='/login' element={<Login />} />
         <Route path='/sign-up' element={<SignUp />} />
         {/* sign-up route currently not working */}
+        <Route path='/my-library' element={<MyLibrary />} />
       </Routes>
       <Footer />
     </div>
