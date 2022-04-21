@@ -11,3 +11,36 @@
   color: var(--green);
   padding: 1rem;
 }
+
+.footer {
+  background-color: #282828;
+  color: white;
+}
+
+.footer-columns {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.footer-columns ul {
+  list-style: none;
+  padding-right: 5rem;
+}
+
+.footer-heads {
+  margin-bottom: 1rem;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  width: 95%;
+  background: #484848;
+}
+
+.footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

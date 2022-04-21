@@ -6,9 +6,10 @@ import { getAPIHealth } from "../axios-services";
 import Login from "./Login";
 import SignUp from "./SignUp";
 import Home from "./Home";
-import Sidebar from "./Sidebar"
+import Sidebar from "./Sidebar";
 import "../style/App.css";
 import { Route, Routes } from "react-router-dom";
+import Footer from "./Footer";
 
 const App = () => {
   const [APIHealth, setAPIHealth] = useState("");
@@ -28,16 +29,17 @@ const App = () => {
   }, []);
 
   return (
-    <div className="app-container">
+    <div className='app-container'>
       <Sidebar />
-      <div className="main_title">Hello, World!</div>
+      <div className='main_title'>Hello, World!</div>
       <p>API Status: {APIHealth}</p>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/sign-up" element={<SignUp />} />
+        <Route path='/' element={<Home />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/sign-up' element={<SignUp />} />
         {/* sign-up route currently not working */}
       </Routes>
+      <Footer />
     </div>
   );
 };
