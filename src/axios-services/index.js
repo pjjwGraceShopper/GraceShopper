@@ -1,4 +1,5 @@
 import axios from 'axios';
+// import {getUserCart} from './Cart_ajax'
 
 // this file holds your frontend network request adapters
 // think about each function as a service that provides data
@@ -27,3 +28,6 @@ export async function getAPIHealth() {
     return { healthy: false };
   }
 }
+
+
+// export {getUserCart};

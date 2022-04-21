@@ -1,6 +1,7 @@
 // This is the Web Server
 const express = require('express');
 const server = express();
+const apiRouter = require('./api')
 
 // enable cross-origin resource sharing to proxy api requests
 // from localhost:3000 to localhost:4000 in local dev env
@@ -19,7 +20,7 @@ const path = require('path');
 server.use(express.static(path.join(__dirname, 'build')));
 
 // here's our API
-server.use('/api', require('./api'));
+server.use('/api', apiRouter);
 
 // by default serve up the react app if we don't recognize the route
 server.use((req, res, next) => {
