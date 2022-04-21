@@ -1,0 +1,17 @@
+﻿id,name,type,year,genre,length,price,img,
+1,red,movie,2000,action,132,32.99,https://th.bing.com/th/id/R.4e266c85a8f60203d0ecf6f907f58aba?rik=uSlBAK7KhjNfsg&pid=ImgRaw&r=0
+2,blue,movie,2001,romance,120,29.99,https://th.bing.com/th/id/OIP.-GTee3XzYftPH-52ZY7HPQHaLH?pid=ImgDet&rs=1
+3,Shaun the Sheep,Show,2007,comedy,5 ,2.99,https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQvQn5iyqbTd4SCkrBSdHIzpn4OfkXFjq29oi8V1Fzo8lGh1pqp
+4,Arrival,movie,2016,sci-fi,156,3.99,https://m.media-amazon.com/images/I/91UusfCtQaL._SL1500_.jpg
+5,The Man From Nowwher,movie,2010,Action,159,3.99,https://m.media-amazon.com/images/M/MV5BMTgzMTkxNjAxNV5BMl5BanBnXkFtZTgwMDU3MDE0MjE@._V1_.jpg
+6,Our Flag Means Death,Show,2002,Comedy,1 ,5.99,https://flxt.tmsimg.com/assets/p21456593_b_v13_aa.jpg
+7,Hidden Figures,movie,2016,Drama,207,3.99,https://m.media-amazon.com/images/M/MV5BMzg2Mzg4YmUtNDdkNy00NWY1LWE3NmEtZWMwNGNlMzE5YzU3XkEyXkFqcGdeQXVyMjA5MTIzMjQ@._V1_FMjpg_UX1000_.jpg
+8,Shang-Chi and the Legend of the Ten Rings,movie,2021,Fantasy / Action,212,3.99,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4q-3DRHJ_mIeRpY8itjj58cYh6RdkMNYZeqWO6WbKsEaxwVEKgiJyGdbyiKGDETwFJzk&usqp=CAU
+9,X,movie,2022,Horror,140,19.99,https://d135u4jtzauizi.cloudfront.net/_thumbnail/X_KeyArtVRT27x40-MIA_RGB-FINsml.jpg
+10,Knives Out,movie,2019,Mystery,210,3.99,https://dci832c741skk.cloudfront.net/assets/files/13775/drydenwire_49.800x600.jpg
+11,The Hating Game,movie,2021,Romance,142,3.99,https://upload.wikimedia.org/wikipedia/en/d/d9/The_Hating_Game_film_poster.png
+12,Run,movie ,2020,Thriller,130,4.99,https://fr.web.img2.acsta.net/pictures/21/06/25/17/30/1095745.jpg
+13,Redeeming Love,movie ,2022,Western/Romance,214,5.99,https://m.media-amazon.com/images/M/MV5BMTMxMmRmMWUtNGNhZS00MWYxLTkwNzUtM2QwNzI4MGU1ZTI2XkEyXkFqcGdeQXVyNTQ3MjE4NTU@._V1_.jpg
+14,Moonfall,movie ,2022,action,200,19.99,https://lionsgate.brightspotcdn.com/99/bb/7a9190fb4a88887c221a242af617/moonfall-bg-own.jpg
+15,Cyrano,movie ,2021,Romance,203,5.99,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSod_b_CNpKDrlfF2F0cpjZwcWvpE59hzKcziP0K4TkjfiM8zLQGD1uxU19PzYhrEQZyfA&usqp=CAU
+16,Booksmart,movie,2019,comedy,142,3.99,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRP_B-ueFKsjQpcFt7444uR5Mn6l3RcLdfIAou0LRmADO_Uzg7YgpWLelpr&s

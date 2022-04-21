@@ -3,6 +3,7 @@ const { client } = require('../db');
 const supertest = require('supertest');
 const request = supertest(server);
 
+
 describe('/api/health endpoint', () => {
   // close db connection and supertest server tcp connection
   afterAll(async () => {
@@ -16,3 +17,5 @@ describe('/api/health endpoint', () => {
     expect(response.body.healthy).toBe(true);
   });
 });
+
+
