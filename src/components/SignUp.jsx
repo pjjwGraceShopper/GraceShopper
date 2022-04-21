@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import { registerUser } from "../api";
+import { registerUser } from "../axios-services/users"
 
 const SignUp = ({ setToken }) => {
   const [username, setUsername] = useState("");
@@ -12,10 +12,10 @@ const SignUp = ({ setToken }) => {
     if (result.error) {
       setSignUpMessage(result);
     }
-    localStorage.setItem("token", result.token);
-    localStorage.setItem("username", username);
-    const myToken = result.token;
-    setToken(myToken);
+    // localStorage.setItem("token", result.token);
+    // localStorage.setItem("username", username);
+    // const myToken = result.token;
+    // setToken(myToken);
   };
 
   return (
