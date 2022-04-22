@@ -131,7 +131,7 @@ hr {
 
 a:link {
   text-decoration: none;
-  font-size:18px;
+  font-size:14px;
   font: weight 200px;;
   text-align:center;
   position:relative;
@@ -146,4 +146,8 @@ a:link {
 
 a{
   color: white;
+}
+
+.uk-iconnav{
+  
 }

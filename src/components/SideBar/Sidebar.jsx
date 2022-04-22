@@ -1,26 +1,26 @@
 import React from "react";
+
 import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
-
     <div id="Sidebar">
-      <div id="sidebar-container" >
+      <div id="sidebar-container">
         <div id="sidebar-column">
-      <Link to="/" > Home </Link>
+          <Link to="/"> Home </Link>
 
-      {/* <Link to="../Search"> Search </Link> */}
-      {/* <Link to="./profile"> Profile </Link> */}
-      <Link to='/my-library'>My Library</Link>
-      {!localStorage.getItem("token") ? (
-        <>
-          <Link to='./login'> Login </Link>
-          <Link to='./sign-up'> Sign-Up </Link>
-        </>
-      ) : (
-        <Link to='./login'> Logout </Link>
-      )}
-      </div>
+          {/* <Link to="../Search"> Search </Link> */}
+          {/* <Link to="./profile"> Profile </Link> */}
+          <Link to="/my-library">My Library</Link>
+          {!localStorage.getItem("token") ? (
+            <>
+              <Link to="./Login"> Login </Link>
+              <Link to="./sign-up"> Sign-Up </Link>
+            </>
+          ) : (
+            <Link to="./login"> Logout </Link>
+          )}
+        </div>
       </div>
     </div>
   );
