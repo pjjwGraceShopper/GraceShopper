@@ -1,16 +1,21 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import {getUserCart} from "../../axios-services/index"
 
-const Cart = (props, context) => {
+const UCart = (props, context) => {
+const [cart, setCart] = useState(null)  
     
-    
-
-
-// const cart = getUserCart(1)
+useEffect(() => {
+async function cartFetch (){
+const ucart = await getUserCart(1)
+console.log(ucart, "ucart**")
+setCart(ucart)
+}
+cartFetch()
+}, [])
 
     return (
         <div className="cart-container">
-            {/* user cart Contains: {cart} */}
+            {/* user cart Contains: {`${cart}`} */}
 
             <div className="cart-left-container">
                 im on the left
@@ -39,4 +44,4 @@ const Cart = (props, context) => {
     )
 }
 
-export default Cart
+export default UCart

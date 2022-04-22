@@ -6,7 +6,7 @@ import { getAPIHealth } from "../axios-services";
 import "../style/index.css"
 import "../style/App.css";
 import { Route, Routes } from "react-router-dom";
-import {Footer, Sidebar, Login, MyLibrary, SignUp, Home, Cart} from "./index";
+import {Footer, Sidebar, Login, MyLibrary, SignUp, Home, UCart} from "./index";
 
 
 
@@ -31,13 +31,13 @@ const App = () => {
     <div className='sidebar-container'>
       <Sidebar />
     <div className='app-container'>
+    <UCart />
       <div className='main_title'>Hello, World!</div>
       <p>API Status: {APIHealth}</p>
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
         <Route path='/sign-up' element={<SignUp />} />
-        <Route path='/cart' element={<Cart />} />
         {/* sign-up route currently not working */}
         <Route path='/my-library' element={<MyLibrary />} />
       </Routes>

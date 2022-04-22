@@ -1,4 +1,5 @@
 // This is the Web Server
+require('dotenv').config();
 const express = require('express');
 const server = express();
 const apiRouter = require('./api')
@@ -14,6 +15,14 @@ server.use(morgan('dev'));
 
 // handle application/json requests
 server.use(express.json());
+server.use((req, res, next) => {
+  console.log('Exp logger START');
+  console.log("Params:", req.params);
+  console.log("Body:", req.body);
+  console.log('Exp logger END');
+  next();
+});
+
 
 // here's our static files
 const path = require('path');

@@ -53,6 +53,7 @@ apiRouter.use("/users", usersRouter)
 //----------------------------------------------------------------
 //.. Error Handler
 apiRouter.use((error, req, res, next) => {
+  console.log("express error")
   res.send({
     name: error.name,
     message: error.message

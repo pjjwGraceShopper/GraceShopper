@@ -3,7 +3,7 @@ const usersRouter = express.Router();
 const { usersDB } = require("../db/models");
 const { requireUser } = require("./utils")
 const jwt = require("jsonwebtoken");
-// const { requireUser } = require("./utils")
+
 
 usersRouter.post("/register", async (req, res, next) => {
   const { username, password } = req.body;
@@ -19,7 +19,7 @@ usersRouter.post("/register", async (req, res, next) => {
           },
           process.env.JWT_SECRET
         );
-        res.send({ message: "Successfully created a new user", token, user });
+        res.status(200).send({ message: "Successfully created a new user", token, user });
       } else {
         next({ name: "UsernameTaken", message: "Username already exists" });
       }
