@@ -24,3 +24,7 @@ export const registerUser = async (username, password) => {
     console.error("error", err);
   }
 };
+
+export const userLogin = async (username, password) => { 
+  console.log('in progress')
+}

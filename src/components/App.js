@@ -3,13 +3,12 @@ import React, { useState, useEffect } from "react";
 // you can think of that directory as a collection of api adapters
 // where each adapter fetches specific info from our express server's /api route
 import { getAPIHealth } from "../axios-services";
+import "../style/index.css"
 import "../style/App.css";
 import { Route, Routes } from "react-router-dom";
-import Footer from "./Footer";
-import Cart from "./Cart"
-import MyLibrary from "./MyLibrary";
-import Home from "./Home"
-import Sidebar from "./Sidebar"
+import {Footer, Sidebar, Login, MyLibrary, SignUp, Home, Cart} from "./index";
+
+
 
 const App = () => {
   const [APIHealth, setAPIHealth] = useState("");

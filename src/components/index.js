@@ -1,8 +1,9 @@
 export { default as App } from "./App";
-export { default as Login } from "./Login";
-export { default as SignUp } from "./SignUp";
-export { default as Sidebar } from "./Sidebar";
-export { default as Footer } from "./Footer";
-export { default as Cart} from "./Cart";
-export { default as MyLibrary } from "./MyLibrary";
+export { default as Login } from "./Main/Login";
+export { default as SignUp } from "./Main/SignUp";
+export { default as Sidebar } from "./SideBar/Sidebar";
+export { default as Footer } from "./Footer/Footer";
+export { default as Cart} from "./Main/Cart";
+export { default as MyLibrary } from "./Main/MyLibrary";
+export {default as Home } from "./Main/Home";
 

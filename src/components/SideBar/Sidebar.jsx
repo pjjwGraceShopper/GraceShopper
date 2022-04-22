@@ -5,9 +5,9 @@ const Sidebar = () => {
   return (
 
     <div id="Sidebar">
-      <div id="sidebar-container">
+      <div id="sidebar-container" >
         <div id="sidebar-column">
-      <Link to="/"> Home </Link>
+      <Link to="/" > Home </Link>
 
       {/* <Link to="../Search"> Search </Link> */}
       {/* <Link to="./profile"> Profile </Link> */}

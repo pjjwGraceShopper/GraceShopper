@@ -1,6 +1,6 @@
 const express = require("express");
 const usersRouter = express.Router();
-const { createUser, getUserByUsername, getUser } = require("../db");
+const { usersDB } = require("../db/models");
 const { requireUser } = require("./utils")
 const jwt = require("jsonwebtoken");
 // const { requireUser } = require("./utils")
@@ -9,9 +9,9 @@ usersRouter.post("/register", async (req, res, next) => {
   const { username, password } = req.body;
   try {
     if (password.length >= 8) {
-      let _user = await getUserByUsername(username);
+      let _user = await usersDB.getUserByUsername(username);
       if (!_user) {
-        const user = await createUser({ username, password });
+        const user = await usersDB.createUser({ username, password });
         const token = jwt.sign(
           {
             id: user.id,
@@ -34,7 +34,7 @@ usersRouter.post("/register", async (req, res, next) => {
 usersRouter.post("/login", async (req, res, next) => {
   const { username, password } = req.body;
   try {
-    const user = await getUser({ username, password });
+    const user = await usersDB.getUser({ username, password });
     const token = jwt.sign(
       {
         id: user.id,
@@ -54,7 +54,7 @@ usersRouter.post("/login", async (req, res, next) => {
 
 usersRouter.get("/me", requireUser, async (req, res, next) => {
   try {
-    const user = await getUserById(req.user.id);
+    const user = await usersDB.getUserById(req.user.id);
     res.send(user);
   } catch (error) {
     next(error);
