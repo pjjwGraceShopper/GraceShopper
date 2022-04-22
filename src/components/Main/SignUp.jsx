@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { registerUser } from "../axios-services/users"
+import { registerUser } from "../../axios-services/users_ajax"
 
 const SignUp = ({ setToken }) => {
   const [username, setUsername] = useState("");

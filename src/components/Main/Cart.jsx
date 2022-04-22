@@ -1,16 +1,16 @@
 import React from "react";
-import {getUserCart} from "../axios-services/Cart_ajax"
+import {getUserCart} from "../../axios-services/index"
 
 const Cart = (props, context) => {
     
     
 
- const userCart = getUserCart(1)
 
+// const cart = getUserCart(1)
 
     return (
         <div className="cart-container">
-            user cart Contains: {`${userCart}`}
+            {/* user cart Contains: {cart} */}
 
             <div className="cart-left-container">
                 im on the left
