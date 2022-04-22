@@ -32,13 +32,6 @@ apiRouter.use(async (req, res, next) => {
   }
 })
 
-apiRouter.get('/', (req, res, next) => {
-  res.send({
-    message: 'API is under construction!',
-  });
-  next()
-});
-
 apiRouter.get('/health', (req, res, next) => {
   res.send({
     healthy: true,

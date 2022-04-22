@@ -1,7 +1,6 @@
 const express = require("express");
 const cartRouter = express.Router();
 const {cartDB} = require('../db/index')
-// const { getUserCart_DB } = require('../db/models/cartDB')
 
 //----------------------------------------------------------------
 

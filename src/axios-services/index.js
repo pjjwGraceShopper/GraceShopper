@@ -30,5 +30,5 @@ export async function getAPIHealth() {
   }
 }
 
+export {getUserCart, registerUser, userLogin}
 
-export {getUserCart, getUsers, registerUser, userLogin};

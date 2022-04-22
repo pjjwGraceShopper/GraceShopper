@@ -1,6 +1,6 @@
-const cartDB = require('./cartDB')
 const usersDB = require('./usersDB')
-module.exports = { cartDB, usersDB
+const cartDB = require('./cartDB')
+module.exports = {cartDB, usersDB
 
 };
   // add each model to your exports object here
