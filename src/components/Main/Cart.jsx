@@ -2,7 +2,8 @@ import React, {useState, useEffect} from "react";
 import {getUserCart} from "../../axios-services/Cart_ajax"
 
 const UCart = (props, context) => {
-const [cart, setCart] = useState(null)  
+const [cart, setCart] = useState(null)
+
     
 useEffect(() => {
 async function cartFetch (){
@@ -12,6 +13,7 @@ setCart(uCart)
 }
 cartFetch()
 }, [])
+
 
 
     return (

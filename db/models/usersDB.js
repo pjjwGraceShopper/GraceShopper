@@ -3,21 +3,22 @@ const client = require("../client")
 const bcrypt = require("bcrypt");
 
 async function createUser({ username, password }) {
+  console.log("creating user: " + username)
   try {
     const SALT_COUNT = 10;
     const hashedPassword = await bcrypt.hash(password, SALT_COUNT);
 
     const {
-      rows: [user],
+      rows: user
     } = await client.query(
       `
-    INSERT INTO users (username, password)
-    VALUES ($1, $2)
-    RETURNING *;
-    `,
-      [username, hashedPassword]
-    );
+      INSERT INTO users(username, password)
+      VALUES( $1 , $2 )
+      RETURNING *;
+    `, [username, hashedPassword] );
+
     delete user.password;
+    return user
   } catch (error) {
     console.error("Problem creating user...", error);
   }
