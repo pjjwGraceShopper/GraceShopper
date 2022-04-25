@@ -1,3 +1,4 @@
+const { json } = require('express');
 const client = require('../client');
 
 
@@ -35,31 +36,31 @@ async function updateCart_DB (userid, JSONB) {
         UPDATE cart 
         SET items = ( $2 )
         WHERE user_cart = ( $1 )
+        RETURNING *;
             `, [userid, JSONB])
     
     return rows
 }
 //----------------------------------------------------------------
 async function deleteCartItem_DB (userid, key) {
-
-    const {rows : data} = await client.query(`
+    const {rows : [{newcartlist}]} = await client.query(`
     Select items - ( $2 )
+    AS newcartlist
     FROM cart
-    where user_cart = ( $1 )
+    WHERE user_cart = ( $1 )
     `, [userid, key])
-    
-    const result  = await updateCart_DB(userid, data)
+    console.log(newcartlist, "delete data")
+    const result  = await updateCart_DB(userid, newcartlist)
 
     return result
 }
 //----------------------------------------------------------------
 // Json format for input into postgres server   '{"item": 1, "item2": 2}'
 async function addToCart_DB (userid, JSONB) {
-
     const {rows} = await client.query(`
     UPDATE cart
-    where user_cart = ( $1 )
     SET items = items || ( $2 )
+    where user_cart = ( $1 )
     `, [userid, JSONB])
     return rows
 }
