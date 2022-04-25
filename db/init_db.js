@@ -3,7 +3,9 @@
 //   // declare your model imports here
 //   // for example, User
 // } = require('./');
+
 const client = require ('./client')
+const {usersDB} = require ('./index')
 
 
 //----------------------------------------------------------------
@@ -24,15 +26,14 @@ async function buildTables() {
    
     CREATE TABLE users
     (
-    id INTEGER PRIMARY KEY,
-    name text,
-    username varchar(30) NOT NULL,
-    password varchar(50) NOT NULL
+    id SERIAL PRIMARY KEY,
+    username varchar(255) NOT NULL,
+    password varchar(350) NOT NULL
     );
          
     CREATE TABLE idxlib
     (
-    id INT primary key,
+    id SERIAL primary key,
     name varchar(50) NOT NULL,
     type varchar(20) NOT NULL,
     year int NOT NULL,
@@ -43,13 +44,13 @@ async function buildTables() {
     );
     CREATE TABLE Movies 
     (
-      id INTEGER PRIMARY KEY,
+      id SERIAL PRIMARY KEY,
       "idx_id" INTEGER REFERENCES idxlib(id) NOT NULL,
       link TEXT NOT NULL
     );
     CREATE TABLE cart 
     (
-      id INTEGER PRIMARY KEY,
+      id SERIAL PRIMARY KEY,
       "user_cart" INTEGER REFERENCES users(id) NOT NULL,
       items JSONB
     );
@@ -61,20 +62,21 @@ async function buildTables() {
 }
 //----------------------------------------------------------------
 async function populateInitialData() {
+  console.log("populateInitialData")
+  const path = require ('path')
+  const pathToCSV = path.join(__dirname, 'internal/MoviesDBCSV.csv')
+
   try {
-    // create useful starting data by leveraging your
-    // Model.method() adapters to seed your db, for example:
-    // const user1 = await User.createUser({ ...user info goes here... })
-
-
-    // const user1 = await User.createUser({name:`Sam`, username:`Samantha1234`, password:`fuzzybunnies`})
-    // const user2 = await User.createUser({name:`Fin`, username:`FinTastically`, password: `bigpurpledinosaur`})
-  //   const popIdx = await client.query 
-  //   (`
-  // COPY IDXlib FROM  Q:\\0.CodeProjects-Windows\\FScoursework\\capstone\\GraceShopper\\starterCSVdata\\moviesDBCSV.csv
-  // WITH DELIMITER ',' 
-  // CSV HEADER;
-  // `)
+  
+    const user1 = await usersDB.createUser({username:`Samantha1234`, password:`fuzzybunnies`})
+    const user2 = await usersDB.createUser({username:`FinTastically`, password: `bigpurpledinosaur`})
+    const user3 = await usersDB.createUser({username:`Ernie`, password: `orange`})
+    const popIdx = await client.query 
+    (`
+  COPY IDXlib FROM '${pathToCSV}' 
+  WITH DELIMITER ',' 
+  CSV HEADER;
+  `)
   } catch (error) {
     throw error;
   }
@@ -85,7 +87,8 @@ async function rebuildDB() {
 
   client.connect();
   await buildTables()
-  // .then(populateInitialData)
+  await populateInitialData()
+  .then(console.log("successfully rebuilt"))
   .catch(console.error)
   .finally(() => client.end())}
   rebuildDB()

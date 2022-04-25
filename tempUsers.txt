@@ -1,8 +1,6 @@
- INSERT INTO users(id, name, username, password) 
-      VALUES(1, 'Sam', 'Samantha1234', 'fuzzybunnies')
+ INSERT INTO users(username, password) 
+      VALUES('Samantha1234', 'fuzzybunnies')
     
-
-
 
  INSERT INTO users(id, name, username, password) 
       VALUES(2, 'Fin', 'FinTastically', 'bigpurpledinosaur')

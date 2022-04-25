@@ -16,9 +16,10 @@ server.use(morgan('dev'));
 // handle application/json requests
 server.use(express.json());
 server.use((req, res, next) => {
-  console.log('Exp logger START');
-  console.log("Body:", req.body);
-  console.log('Exp logger END');
+    console.log('*** NEW express request ***');
+  // console.log('Exp logger START');
+  // console.log("Body:", req.body);
+  // console.log('Exp logger END');
   next();
 });
 
