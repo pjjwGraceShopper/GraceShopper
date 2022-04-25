@@ -29,3 +29,13 @@ export async function deleteItemFromCart (userid, item) {
     return err
   }
 }
+//----------------------------------------------------------------
+export async function clearCart (userid) {
+  try{ 
+    const data = await axios.post(`/api/cart/${userid}/clear`,)
+  }catch (err) {
+    console.error(err, "axios error");
+    return err
+  }
+}
+//----------------------------------------------------------------

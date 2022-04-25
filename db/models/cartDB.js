@@ -49,7 +49,6 @@ async function deleteCartItem_DB (userid, key) {
     FROM cart
     WHERE user_cart = ( $1 )
     `, [userid, key])
-    console.log(newcartlist, "delete data")
     const result  = await updateCart_DB(userid, newcartlist)
 
     return result

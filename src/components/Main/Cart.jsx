@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from "react";
-import {getUserCart, addItemToCart, deleteItemFromCart} from "../../axios-services"
+import {getUserCart, addItemToCart, deleteItemFromCart, clearCart } from "../../axios-services"
 
 const UCart = (props, context) => {
 const [cart, setCart] = useState([])
 
-    
+// clearCart(2)
+
 useEffect(() => {
 async function cartFetch (){
 const uCart = await getUserCart(1)
