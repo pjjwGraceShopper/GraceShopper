@@ -31,13 +31,13 @@ const App = () => {
     <div className='sidebar-container'>
       <Sidebar />
     <div className='app-container'>
-    <UCart />
+    <UCart me={me} />
       <div className='main_title'>Hello, World!</div>
       <p>API Status: {APIHealth}</p>
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/sign-up' element={<SignUp />} />
+        <Route path='/login' element={<Login setMe={setMe} />} />
+        <Route path='/sign-up' element={<SignUp setMe={setMe} />} />
         {/* sign-up route currently not working */}
         <Route path='/my-library' element={<MyLibrary />} />
       </Routes>

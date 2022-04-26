@@ -1,21 +1,23 @@
 import React, {useState, useEffect} from "react";
 import {getUserCart, addItemToCart, deleteItemFromCart, clearCart } from "../../axios-services"
 
-const UCart = (props, context) => {
+const UCart = ({me}) => {
 const [cart, setCart] = useState([])
 
 // clearCart(2)
 
 useEffect(() => {
-async function cartFetch (){
-const uCart = await getUserCart(1)
-console.log(uCart, "ucart**")
-setCart([uCart])
-await addItemToCart(2, {'item1337': `leetItem`, 'item69': `deleteItemFromCart` })
-await deleteItemFromCart(2,'item69')
+    if (me.id){
+        console.log("is me:", me )
+        async function cartFetch (){
+        const uCart = await getUserCart(me.id)
+        console.log(uCart, "ucart**")
+        setCart([uCart])
+        await addItemToCart(me.id, {'item1337': `leetItem`, 'item69': `deleteItemFromCart` })
+        await deleteItemFromCart(me.id,'item69')
 }
 cartFetch()
-
+    }
 }, [])
 
 

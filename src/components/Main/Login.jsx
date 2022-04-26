@@ -15,14 +15,13 @@ const Login = ({ setMe }) => {
     if (result.error) {
       setLoginMessage(result);
     } else {
-      
-      localStorage.setItem("token", result.token);
-      localStorage.setItem("username", username);
       setLoginStatus(true);
       setMe({
         token: result.token,
         id: result.id,
       });
+      localStorage.setItem("token", result.token);
+      localStorage.setItem("username", result.username);
       navigate("/");
     }
   };
