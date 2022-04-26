@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { registerUser } from "../../axios-services/users_ajax"
 
-const SignUp = ({  }) => {
+const SignUp = ({ setMe }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loginStatus, setLoginStatus] = useState(false);
   const [signUpMessage, setSignUpMessage] = useState({});
+  
+  //userOBj: token, userId, 
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -15,9 +17,12 @@ const SignUp = ({  }) => {
     }
     localStorage.setItem("token", result.token);
     localStorage.setItem("username", username);
-    const myToken = result.token;
+    setMe({
+      token: result.token, 
+      id : result.id
+    })
     console.log(result)
-    // setToken(myToken);
+    // setToken(result.token);
   };
 
   // useEffect(() => {

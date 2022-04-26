@@ -87,6 +87,8 @@ async function getUserByUsername(username) {
   }
 }
 
+
+
 async function getAllUsers() {
   /* this adapter should fetch a list of users from your db */
 }

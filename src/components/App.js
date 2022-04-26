@@ -9,9 +9,9 @@ import { Route, Routes } from "react-router-dom";
 import {Footer, Sidebar, Login, MyLibrary, SignUp, Home, UCart} from "./index";
 
 
-
 const App = () => {
   const [APIHealth, setAPIHealth] = useState("");
+  const [me, setMe] = useState({})
 
   useEffect(() => {
     // follow this pattern inside your useEffect calls:

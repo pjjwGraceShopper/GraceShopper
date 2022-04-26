@@ -1,23 +1,29 @@
 import React, { useState, useEffect } from "react";
-import {useNavigate} from 'react-router-dom'
-import { userLogin } from "../../axios-services/users_ajax"
-const Login = () => {
+import { useNavigate } from "react-router-dom";
+import { userLogin } from "../../axios-services/users_ajax";
+const Login = ({ setMe }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loginStatus, setLoginStatus] = useState(false);
   const [loginMessage, setLoginMessage] = useState({});
-  const navigate = useNavigate()
+
+  const navigate = useNavigate();
 
   const onLogin = async (e) => {
     e.preventDefault();
-    const result = await userLogin(username, password)
+    const result = await userLogin(username, password);
     if (result.error) {
       setLoginMessage(result);
     } else {
+      
       localStorage.setItem("token", result.token);
       localStorage.setItem("username", username);
       setLoginStatus(true);
-      navigate('/')
+      setMe({
+        token: result.token,
+        id: result.id,
+      });
+      navigate("/");
     }
   };
 
@@ -25,7 +31,7 @@ const Login = () => {
     e.preventDefault();
     localStorage.removeItem("token");
     localStorage.removeItem("username");
-    console.log("Username and token removed from localStorage!")
+    console.log("Username and token removed from localStorage!");
     setLoginStatus(false);
   };
 
@@ -63,12 +69,11 @@ const Login = () => {
               }}
             />
             <button type="submit">Login</button>
-
           </form>
           {loginMessage.error ? (
-              <>
-                <h3>{loginMessage.name}</h3>
-              </>
+            <>
+              <h3>{loginMessage.name}</h3>
+            </>
           ) : null}
         </>
       )}
@@ -76,4 +81,4 @@ const Login = () => {
   );
 };
 
-export default Login
+export default Login;
