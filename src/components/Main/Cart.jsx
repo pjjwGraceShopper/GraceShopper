@@ -6,9 +6,9 @@ import {
   clearCart,
 } from "../../axios-services";
 
-const Cart = ({ me }) => {
+const Cart = ({ me, cartChange, setCartChange}) => {
   const [cart, setCart] = useState([]);
-  const [cartChange, setCartChange] = useState(false);
+
   // clearCart(me.id)
 console.log(me)
   useEffect(() => {

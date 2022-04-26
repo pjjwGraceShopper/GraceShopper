@@ -12,6 +12,7 @@ import {Footer, Sidebar, Login, MyLibrary, SignUp, Home, Cart} from "./index";
 const App = () => {
   const [APIHealth, setAPIHealth] = useState("");
   const [me, setMe] = useState({})
+  const [cartChange, setCartChange] = useState(false);
 
 
 
@@ -43,7 +44,7 @@ const App = () => {
     <div className='sidebar-container'>
       <Sidebar />
     <div className='app-container'>
-    <Cart me={me} />
+    <Cart me={me} cartChange={cartChange} setCartChange={setCartChange}/>
       <div className='main_title'>Hello, World!</div>
       <p>API Status: {APIHealth}</p>
       <Routes>
