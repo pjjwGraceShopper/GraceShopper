@@ -1,13 +1,11 @@
-const usersDB = require('./usersDB')
-const cartDB = require('./cartDB')
-module.exports = {cartDB, usersDB
-
-};
-  // add each model to your exports object here
-  // so that you can use them in your express server api routers
-  // for example, create a users.js file for a User model
-  // and User: require('./user') here
-
+const usersDB = require("./usersDB");
+const library = require("./library");
+const cartDB = require("./cartDB");
+module.exports = { cartDB, usersDB, library };
+// add each model to your exports object here
+// so that you can use them in your express server api routers
+// for example, create a users.js file for a User model
+// and User: require('./user') here
 
 // then, in your API, you'll require the appropriate model
 // and use its database connectors

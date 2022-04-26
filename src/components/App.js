@@ -42,7 +42,6 @@ const App = () => {
     <div className="sidebar-container">
       <Sidebar loginStatus={loginStatus} />
       <div className="app-container">
-        <Cart  />
         <div className="main_title">Hello, World!</div>
         <p>API Status: {APIHealth}</p>
         <Routes>
