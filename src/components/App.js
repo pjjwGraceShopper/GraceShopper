@@ -31,7 +31,7 @@ const App = () => {
     <div className='sidebar-container'>
       <Sidebar />
     <div className='app-container'>
-    <UCart />
+    {/* <UCart /> */}
       <div className='main_title'>Hello, World!</div>
       <p>API Status: {APIHealth}</p>
       <Routes>
@@ -40,6 +40,7 @@ const App = () => {
         <Route path='/sign-up' element={<SignUp />} />
         {/* sign-up route currently not working */}
         <Route path='/my-library' element={<MyLibrary />} />
+        <Route path='/cart' element={<UCart />} />
       </Routes>
       <Footer />
     </div>

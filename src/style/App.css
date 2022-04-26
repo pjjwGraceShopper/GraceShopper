@@ -109,9 +109,11 @@ hr {
 
 #Sidebar {
   position: fixed;
-  width: 10%;
+  width: 15%;
   height: 59vh;
   background: #282828 ;
+  margin-left: 20px;
+  margin-top: 80px;
 }
 
 #sidebar-column {
@@ -129,7 +131,7 @@ hr {
 
 a:link {
   text-decoration: none;
-  font-size:18px;
+  font-size:16px;
   font: weight 200px;;
   text-align:center;
   position:relative;
