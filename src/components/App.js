@@ -38,10 +38,11 @@ const App = () => {
   }, []);
 
   return (
+
     <div className="sidebar-container">
       <Sidebar loginStatus={loginStatus} />
       <div className="app-container">
-        <Cart me={me} cartChange={cartChange} setCartChange={setCartChange} />
+        <Cart  />
         <div className="main_title">Hello, World!</div>
         <p>API Status: {APIHealth}</p>
         <Routes>
@@ -69,6 +70,7 @@ const App = () => {
           />
           {/* sign-up route currently not working */}
           <Route path="/my-library" element={<MyLibrary />} />
+           <Route path='/cart' element={<Cart me={me} cartChange={cartChange} setCartChange={setCartChange}/>} />
         </Routes>
         <Footer />
       </div>

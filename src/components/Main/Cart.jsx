@@ -6,6 +6,7 @@ import {
   clearCart,
 } from "../../axios-services";
 
+
 const Cart = ({ me, cartChange, setCartChange}) => {
   const [cart, setCart] = useState([]);
 
@@ -59,5 +60,6 @@ console.log(me)
     </div>
   );
 };
+
 
 export default Cart;
