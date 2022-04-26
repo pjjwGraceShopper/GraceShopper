@@ -68,9 +68,11 @@ async function populateInitialData() {
 
   try {
   
-    const user1 = await usersDB.createUser({username:`Samantha1234`, password:`fuzzybunnies`})
-    const user2 = await usersDB.createUser({username:`FinTastically`, password: `bigpurpledinosaur`})
-    const user3 = await usersDB.createUser({username:`Ernie`, password: `orange`})
+    const user1 = await usersDB.createUser({username:`WyattAdmin`, password:`WyattAdmin`})
+    const user2 = await usersDB.createUser({username:`JoshAdmin`, password: `JoshAdmin`})
+    const user3 = await usersDB.createUser({username:`JacobAdmin`, password: `JacobAdmin`})
+    const user4 = await usersDB.createUser({username:`PamAdmin`, password: `PamAdmin`})
+    const user5 = await usersDB.createUser({username:`Guest`, password: `Guest`})
     const popIdx = await client.query 
     (`
   COPY IDXlib FROM '${pathToCSV}' 
