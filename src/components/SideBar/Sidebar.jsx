@@ -18,7 +18,7 @@ useEffect
         <>
           <Link to='./login'> Login </Link>
           <Link to='./sign-up'> Sign-Up </Link>
-          <Link to='./cart'> Cart </Link>
+          <Link to='./cart'> My Cart </Link>
         </>
       ) : (
         <Link to='./login'> Logout </Link>
