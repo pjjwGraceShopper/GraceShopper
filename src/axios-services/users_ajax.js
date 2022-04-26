@@ -9,21 +9,36 @@ export async function getUsers() {
   }
 }
 
-export const registerUser = async (username, password) => {
+export const registerUser = async (
+  username,
+  password,
+  email,
+  firstName,
+  lastName
+) => {
   try {
-    const { data } = await axios.post("api/users/register", {username, password});
-    console.log("Data", data)
-    return data
+    const { data } = await axios.post("api/users/register", {
+      username,
+      password,
+      email,
+      firstName,
+      lastName,
+    });
+    console.log("Data", data);
+    return data;
   } catch (err) {
     console.error("error", err);
   }
 };
 
-export const userLogin = async (username, password) => { 
+export const userLogin = async (username, password) => {
   try {
-    const { data } = await axios.post("api/users/login", {username, password});
-    console.log("Data", data)
-    return data
+    const { data } = await axios.post("api/users/login", {
+      username,
+      password,
+    });
+    console.log("Data", data);
+    return data;
   } catch (err) {
     console.error("error", err);
   }

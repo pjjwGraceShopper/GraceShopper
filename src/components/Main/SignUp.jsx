@@ -5,13 +5,22 @@ import { registerUser, createUserCart } from "../../axios-services";
 const SignUp = ({ setMe, loginStatus, setLoginStatus }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
   const [signUpMessage, setSignUpMessage] = useState({});
-  
+
   const navigate = useNavigate();
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    const result = await registerUser(username, password);
+    const result = await registerUser(
+      username,
+      password,
+      email,
+      firstName,
+      lastName
+    );
     if (result.error) {
       setSignUpMessage(result);
     } else {
@@ -26,7 +35,7 @@ const SignUp = ({ setMe, loginStatus, setLoginStatus }) => {
       });
       await createUserCart(result.user.id);
       console.log(result);
-      navigate('/')
+      navigate("/");
     }
   };
 
@@ -45,6 +54,30 @@ const SignUp = ({ setMe, loginStatus, setLoginStatus }) => {
           placeholder="Username"
           onChange={(e) => {
             setUsername(e.target.value);
+          }}
+        />
+        <input
+          value={firstName}
+          type="text"
+          placeholder="First Name"
+          onChange={(e) => {
+            setFirstName(e.target.value);
+          }}
+        />
+        <input
+          value={lastName}
+          type="text"
+          placeholder="Last Name"
+          onChange={(e) => {
+            setLastName(e.target.value);
+          }}
+        />
+        <input
+          value={email}
+          type="text"
+          placeholder="Email"
+          onChange={(e) => {
+            setEmail(e.target.value);
           }}
         />
         <input
