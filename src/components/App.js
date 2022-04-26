@@ -36,7 +36,7 @@ const App = () => {
       <p>API Status: {APIHealth}</p>
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/login' element={<Login setMe={setMe} />} />
+        <Route path='/login' element={<Login setMe={setMe} me={me} />} />
         <Route path='/sign-up' element={<SignUp setMe={setMe} />} />
         {/* sign-up route currently not working */}
         <Route path='/my-library' element={<MyLibrary />} />

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { userLogin } from "../../axios-services/users_ajax";
-const Login = ({ setMe }) => {
+const Login = ({ me, setMe }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loginStatus, setLoginStatus] = useState(false);
@@ -18,14 +18,15 @@ const Login = ({ setMe }) => {
       setLoginStatus(true);
       setMe({
         token: result.token,
-        id: result.id,
+        id: result.user.id,
       });
       localStorage.setItem("token", result.token);
-      localStorage.setItem("username", result.username);
+      localStorage.setItem("username", result.user.username);
       navigate("/");
+      console.log('is result from login: ', me.id)
     }
   };
-
+  
   const onLogOut = async (e) => {
     e.preventDefault();
     localStorage.removeItem("token");

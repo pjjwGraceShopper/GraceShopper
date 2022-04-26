@@ -6,8 +6,6 @@ const SignUp = ({ setMe }) => {
   const [password, setPassword] = useState("");
   const [loginStatus, setLoginStatus] = useState(false);
   const [signUpMessage, setSignUpMessage] = useState({});
-  
-  //userOBj: token, userId, 
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -22,14 +20,13 @@ const SignUp = ({ setMe }) => {
       id : result.id
     })
     console.log(result)
-    // setToken(result.token);
   };
 
-  // useEffect(() => {
-  //   if (localStorage.getItem("token")) {
-  //     setLoginStatus(true);
-  //   }
-  // }, [loginStatus]);
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      setLoginStatus(true);
+    }
+  }, [loginStatus]);
 
   return (
     <div>
