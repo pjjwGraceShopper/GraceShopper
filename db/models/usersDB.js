@@ -69,7 +69,7 @@ async function getUserById(id) {
   }
 }
 
-async function getUserByUsername() {
+async function getUserByUsername(username) {
   try {
     const {
       rows: [user],

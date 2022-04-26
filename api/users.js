@@ -7,6 +7,7 @@ const jwt = require("jsonwebtoken");
 
 usersRouter.post("/register", async (req, res, next) => {
   const { username, password } = req.body;
+  console.log("Username, password", username, password)
   try {
     if (password.length >= 8) {
       let _user = await usersDB.getUserByUsername(username);
@@ -28,6 +29,8 @@ usersRouter.post("/register", async (req, res, next) => {
     }
   } catch (error) {
     next(error);
+  } finally {
+    next()
   }
 });
 

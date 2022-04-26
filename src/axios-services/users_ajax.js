@@ -11,20 +11,20 @@ export async function getUsers() {
 
 export const registerUser = async (username, password) => {
   try {
-    const { data } = await axios.post({
-      method: "post",
-      url: "api/users",
-      data: {
-        username,
-        password,
-      },
-    });
-    return data;
+    const { data } = await axios.post("api/users/register", {username, password});
+    console.log("Data", data)
+    return data
   } catch (err) {
     console.error("error", err);
   }
 };
 
 export const userLogin = async (username, password) => { 
-  console.log('in progress')
-}
+  try {
+    const { data } = await axios.post("api/users/login", {username, password});
+    console.log("Data", data)
+    return data
+  } catch (err) {
+    console.error("error", err);
+  }
+};
