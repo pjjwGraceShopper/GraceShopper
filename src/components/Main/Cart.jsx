@@ -34,12 +34,25 @@ console.log(me)
 
   return (
     <div className="cart-container">
+
+<div className="header">
+                <h3 className="heading">Shopping Cart</h3>
+                <h5 className="action">Remove all</h5>
+            </div>
+
+
+
       user cart Contains:
       {/* {cart.length
         ? cart.map((e, i) => {
             return <div key={i + e}>{e}</div>;
           })
         : null} */}
+
+
+
+
+        
       <div className="cart-left-container">
         im on the left
         <div className="cart-item-container">im an item</div>
