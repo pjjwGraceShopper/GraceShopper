@@ -34,6 +34,7 @@ const UCart = (props, context) => {
             </div>
                     user cart Contains:
                     <div className="cart-left-container">
+                        <div className=""></div>
                         im on the left
                          <div className="cart-item-container">im an item</div>
                     </div>

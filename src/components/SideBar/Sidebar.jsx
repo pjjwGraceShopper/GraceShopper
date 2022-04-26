@@ -14,11 +14,11 @@ useEffect
       {/* <Link to="../Search"> Search </Link> */}
       {/* <Link to="./profile"> Profile </Link> */}
       <Link to='/my-library'>My Library</Link>
+      <Link to='./cart'> MyCart </Link>
       {!localStorage.getItem("token") ? (
         <>
           <Link to='./login'> Login </Link>
           <Link to='./sign-up'> Sign-Up </Link>
-          <Link to='./cart'> My Cart </Link>
         </>
       ) : (
         <Link to='./login'> Logout </Link>
