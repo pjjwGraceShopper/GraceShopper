@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { registerUser } from "../../axios-services/users_ajax"
+import { registerUser, createUserCart } from "../../axios-services"
+
 
 const SignUp = ({ setMe }) => {
   const [username, setUsername] = useState("");
@@ -13,12 +14,16 @@ const SignUp = ({ setMe }) => {
     if (result.error) {
       setSignUpMessage(result);
     }
+    // REMOVE LATER
     localStorage.setItem("token", result.token);
     localStorage.setItem("username", username);
+    localStorage.setItem("id", result.user.id);
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     setMe({
       token: result.token, 
-      id : result.id
+      id : result.user.id
     })
+    await createUserCart(result.user.id)
     console.log(result)
   };
 

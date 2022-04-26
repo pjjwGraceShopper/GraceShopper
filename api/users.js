@@ -2,6 +2,7 @@ const express = require("express");
 const usersRouter = express.Router();
 const { usersDB } = require("../db/models");
 const { requireUser } = require("./utils")
+require("dotenv").config();
 const jwt = require("jsonwebtoken");
 
 
@@ -52,7 +53,7 @@ usersRouter.post("/login", async (req, res, next) => {
     });
   } catch (error) {
     next(error);
-  }
+  } finally { next()}
 });
 
 usersRouter.get("/me", requireUser, async (req, res, next) => {
@@ -61,7 +62,7 @@ usersRouter.get("/me", requireUser, async (req, res, next) => {
     res.send(user);
   } catch (error) {
     next(error);
-  }
+  } finally { next()}
 });
 
 module.exports = usersRouter;

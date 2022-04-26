@@ -4,8 +4,8 @@ const client = require('../client');
 
 //------------------------------------------------------------------------------
 // Json format for input into postgres server   '{"item": 1, "item2": 2}'
-async function createUserCart_DB (userid, JSONB) {
-
+async function createUserCart_DB (userid) {
+const JSONB = {}
     const {rows}  = await client.query(`
         INSERT INTO cart (user_cart, items)
         VALUES ( $1 , $2 )

@@ -20,8 +20,11 @@ const Login = ({ me, setMe }) => {
         token: result.token,
         id: result.user.id,
       });
+      // REMOVE LATER
       localStorage.setItem("token", result.token);
       localStorage.setItem("username", result.user.username);
+      localStorage.setItem("id", result.user.id);
+      // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
       navigate("/");
       console.log('is result from login: ', me.id)
     }
