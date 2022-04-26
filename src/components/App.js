@@ -3,12 +3,18 @@ import React, { useState, useEffect } from "react";
 // you can think of that directory as a collection of api adapters
 // where each adapter fetches specific info from our express server's /api route
 import { getAPIHealth } from "../axios-services";
-import "../style/index.css"
+import "../style/index.css";
 import "../style/App.css";
 import { Route, Routes } from "react-router-dom";
-import {Footer, Sidebar, Login, MyLibrary, SignUp, Home, UCart} from "./index";
-
-
+import {
+  Footer,
+  Sidebar,
+  Login,
+  MyLibrary,
+  SignUp,
+  Home,
+  UCart,
+} from "./index";
 
 const App = () => {
   const [APIHealth, setAPIHealth] = useState("");
@@ -30,19 +36,19 @@ const App = () => {
   return (
     <div className='sidebar-container'>
       <Sidebar />
-    <div className='app-container'>
-    <UCart />
-      <div className='main_title'>Hello, World!</div>
-      <p>API Status: {APIHealth}</p>
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/sign-up' element={<SignUp />} />
-        {/* sign-up route currently not working */}
-        <Route path='/my-library' element={<MyLibrary />} />
-      </Routes>
-      <Footer />
-    </div>
+      <div className='app-container'>
+        {/* <UCart /> */}
+        {/* <div className='main_title'>Hello, World!</div> */}
+        <p>API Status: {APIHealth}</p>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/sign-up' element={<SignUp />} />
+          {/* sign-up route currently not working */}
+          <Route path='/my-library' element={<MyLibrary />} />
+        </Routes>
+        <Footer />
+      </div>
     </div>
   );
 };
