@@ -1,24 +1,27 @@
 import React, {useState, useEffect} from "react";
-import {getUserCart} from "../../axios-services/Cart_ajax"
+import {getUserCart, addItemToCart, deleteItemFromCart, clearCart } from "../../axios-services"
 
 const UCart = (props, context) => {
-const [cart, setCart] = useState(null)
+const [cart, setCart] = useState([])
 
-    
+// clearCart(2)
+
 useEffect(() => {
 async function cartFetch (){
 const uCart = await getUserCart(1)
 console.log(uCart, "ucart**")
-setCart(uCart)
+setCart([uCart])
+await addItemToCart(2, {'item1337': `leetItem`, 'item69': `deleteItemFromCart` })
+await deleteItemFromCart(2,'item69')
 }
 cartFetch()
-}, [])
 
+}, [])
 
 
     return (
         <div className="cart-container">
-            user cart Contains: {`${cart}`}
+            user cart Contains: 
 
             <div className="cart-left-container">
                 im on the left
