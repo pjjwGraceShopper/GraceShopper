@@ -1,30 +1,42 @@
 import React, { useState, useEffect } from "react";
-import { registerUser, createUserCart } from "../../axios-services"
+import { useNavigate } from "react-router-dom";
+import { registerUser, createUserCart } from "../../axios-services";
 
-
-const SignUp = ({ setMe }) => {
+const SignUp = ({ setMe, loginStatus, setLoginStatus }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [loginStatus, setLoginStatus] = useState(false);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
   const [signUpMessage, setSignUpMessage] = useState({});
+
+  const navigate = useNavigate();
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    const result = await registerUser(username, password);
+    const result = await registerUser(
+      username,
+      password,
+      email,
+      firstName,
+      lastName
+    );
     if (result.error) {
       setSignUpMessage(result);
+    } else {
+      // REMOVE LATER
+      localStorage.setItem("token", result.token);
+      localStorage.setItem("username", username);
+      localStorage.setItem("id", result.user.id);
+      // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      setMe({
+        token: result.token,
+        id: result.user.id,
+      });
+      await createUserCart(result.user.id);
+      console.log(result);
+      navigate("/");
     }
-    // REMOVE LATER
-    localStorage.setItem("token", result.token);
-    localStorage.setItem("username", username);
-    localStorage.setItem("id", result.user.id);
-    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    setMe({
-      token: result.token, 
-      id : result.user.id
-    })
-    await createUserCart(result.user.id)
-    console.log(result)
   };
 
   useEffect(() => {
@@ -42,6 +54,30 @@ const SignUp = ({ setMe }) => {
           placeholder="Username"
           onChange={(e) => {
             setUsername(e.target.value);
+          }}
+        />
+        <input
+          value={firstName}
+          type="text"
+          placeholder="First Name"
+          onChange={(e) => {
+            setFirstName(e.target.value);
+          }}
+        />
+        <input
+          value={lastName}
+          type="text"
+          placeholder="Last Name"
+          onChange={(e) => {
+            setLastName(e.target.value);
+          }}
+        />
+        <input
+          value={email}
+          type="text"
+          placeholder="Email"
+          onChange={(e) => {
+            setEmail(e.target.value);
           }}
         />
         <input
@@ -63,4 +99,4 @@ const SignUp = ({ setMe }) => {
   );
 };
 
-export default SignUp
+export default SignUp;

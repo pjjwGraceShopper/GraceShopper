@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { userLogin } from "../../axios-services/users_ajax";
-const Login = ({ me, setMe }) => {
+
+const Login = ({ me, setMe, loginStatus, setLoginStatus }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [loginStatus, setLoginStatus] = useState(false);
   const [loginMessage, setLoginMessage] = useState({});
 
   const navigate = useNavigate();
@@ -36,6 +36,7 @@ const Login = ({ me, setMe }) => {
     localStorage.removeItem("username");
     console.log("Username and token removed from localStorage!");
     setLoginStatus(false);
+    navigate('/')
   };
 
   useEffect(() => {
