@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import MovieList from "./MovieList";
 
+
 function Home() {
   const [movies, setMovies] = useState([
     {
@@ -37,11 +38,17 @@ function Home() {
   return (
     <div>
       <h1 className='main_title'>Welcome to Blue Box!</h1>
-      <div className='home-titles'>
-        <h3>Movies</h3>
-        <div className="row">
-          <MovieList movies={movies} />
-          </div>
+      <div
+        className=''
+      >
+        <ul className=''>
+          <li>
+            <div className=''>
+              <MovieList movies={movies} />
+              <div className=''></div>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
   );

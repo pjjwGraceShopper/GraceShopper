@@ -6,6 +6,7 @@ import { getAPIHealth } from "../axios-services";
 import "../style/index.css";
 import "../style/App.css";
 import { Route, Routes } from "react-router-dom";
+import bootstrap from "bootstrap";
 import {
   Footer,
   Sidebar,
@@ -47,7 +48,7 @@ const App = () => {
           {/* sign-up route currently not working */}
           <Route path='/my-library' element={<MyLibrary />} />
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </div>
   );
