@@ -1,53 +1,63 @@
-import React, {useState, useEffect} from "react";
-import {getUserCart, addItemToCart, deleteItemFromCart, clearCart } from "../../axios-services"
+import React, { useState, useEffect } from "react";
+import {
+  getUserCart,
+  addItemToCart,
+  deleteItemFromCart,
+  clearCart,
+} from "../../axios-services";
 
-const UCart = (props, context) => {
-const [cart, setCart] = useState([])
+const Cart = ({ me, cartChange, setCartChange}) => {
+  const [cart, setCart] = useState([]);
 
-// clearCart(2)
-
-useEffect(() => {
-async function cartFetch (){
-const uCart = await getUserCart(1)
-console.log(uCart, "ucart**")
-setCart([uCart])
-await addItemToCart(2, {'item1337': `leetItem`, 'item69': `deleteItemFromCart` })
-await deleteItemFromCart(2,'item69')
-}
-cartFetch()
-
-}, [])
-
-
-    return (
-        <div className="cart-container">
-            user cart Contains: 
-
-            <div className="cart-left-container">
-                im on the left
-
-                <div className="cart-item-container">
-                    im an item
-                </div>
+  // clearCart(me.id)
+console.log(me)
+  useEffect(() => {
+    async function cartFetch() {
+      const userCart = await getUserCart(me.id);
+      console.log(userCart, "this cart is user's cart**");
+      setCart([userCart]);
+      await addItemToCart(me.id, {
+        item1337: `leetItem`,
+        item69: `deleteItemFromCart`,
+      });
+      await deleteItemFromCart(me.id, "item69");
+    }
+    if (me.id) {
+      cartFetch();
+      setCartChange(false);
+    }
+}, [cartChange, me]);
 
 
-            </div>
 
-            <div className="cart-right-container">
-            im on the right
 
-                <div className="cart-summary-item">
-                    im an item
-                </div>
 
-            </div>
+  return (
+    <div className="cart-container">
+      user cart Contains:
+      {/* {cart.length
+        ? cart.map((e, i) => {
+            return <div key={i + e}>{e}</div>;
+          })
+        : null} */}
+      <div className="cart-left-container">
+        im on the left
+        <div className="cart-item-container">im an item</div>
+      </div>
+      <div className="cart-right-container">
+        im on the right
+        <div className="cart-summary-item">im an item</div>
+      </div>
+      <div className="cart-bottom-container">
+        im on the bottom of left and right
+        <button className="template-button" 
+            onClick={()=> { 
+                    addItemToCart(me.id, {item1337v2: `leetItemButBetter`})
+                    setCartChange(true)}}> 
+        </button>
+      </div>
+    </div>
+  );
+};
 
-            <div className="cart-bottom-container">
-            im on the bottom of left and right
-            </div>
-
-        </div>
-    )
-}
-
-export default UCart
+export default Cart;

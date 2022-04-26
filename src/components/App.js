@@ -6,14 +6,27 @@ import { getAPIHealth } from "../axios-services";
 import "../style/index.css"
 import "../style/App.css";
 import { Route, Routes } from "react-router-dom";
-import {Footer, Sidebar, Login, MyLibrary, SignUp, Home, UCart} from "./index";
-
+import {Footer, Sidebar, Login, MyLibrary, SignUp, Home, Cart} from "./index";
 
 
 const App = () => {
   const [APIHealth, setAPIHealth] = useState("");
+  const [me, setMe] = useState({})
+  const [cartChange, setCartChange] = useState(false);
+
+
 
   useEffect(() => {
+
+    if(localStorage.getItem("token")) {
+      const id = localStorage.getItem("id")
+      const token = localStorage.getItem("token")
+      setMe({
+        token: token,
+        id: id
+      });
+    }
+
     // follow this pattern inside your useEffect calls:
     // first, create an async function that will wrap your axios service adapter
     // invoke the adapter, await the response, and set the data
@@ -31,13 +44,13 @@ const App = () => {
     <div className='sidebar-container'>
       <Sidebar />
     <div className='app-container'>
-    <UCart />
+    <Cart me={me} cartChange={cartChange} setCartChange={setCartChange}/>
       <div className='main_title'>Hello, World!</div>
       <p>API Status: {APIHealth}</p>
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/sign-up' element={<SignUp />} />
+        <Route path='/login' element={<Login setMe={setMe} me={me} />} />
+        <Route path='/sign-up' element={<SignUp setMe={setMe} />} />
         {/* sign-up route currently not working */}
         <Route path='/my-library' element={<MyLibrary />} />
       </Routes>

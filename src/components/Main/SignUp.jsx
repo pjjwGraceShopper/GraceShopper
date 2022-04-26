@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { registerUser } from "../../axios-services/users_ajax"
+import { registerUser, createUserCart } from "../../axios-services"
 
-const SignUp = ({  }) => {
+
+const SignUp = ({ setMe }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loginStatus, setLoginStatus] = useState(false);
@@ -13,18 +14,24 @@ const SignUp = ({  }) => {
     if (result.error) {
       setSignUpMessage(result);
     }
+    // REMOVE LATER
     localStorage.setItem("token", result.token);
     localStorage.setItem("username", username);
-    const myToken = result.token;
+    localStorage.setItem("id", result.user.id);
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    setMe({
+      token: result.token, 
+      id : result.user.id
+    })
+    await createUserCart(result.user.id)
     console.log(result)
-    // setToken(myToken);
   };
 
-  // useEffect(() => {
-  //   if (localStorage.getItem("token")) {
-  //     setLoginStatus(true);
-  //   }
-  // }, [loginStatus]);
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      setLoginStatus(true);
+    }
+  }, [loginStatus]);
 
   return (
     <div>

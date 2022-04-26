@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {getUserCart, addItemToCart, deleteItemFromCart, clearCart } from './Cart_ajax'
+import {getUserCart, addItemToCart, deleteItemFromCart, clearCart, createUserCart} from './Cart_ajax'
 import {getUsers, registerUser, userLogin} from './users_ajax'
 
 // this file holds your frontend network request adapters
@@ -30,5 +30,5 @@ export async function getAPIHealth() {
   }
 }
 
-export {getUserCart, addItemToCart, deleteItemFromCart, clearCart, registerUser, userLogin}
+export {getUserCart, addItemToCart, deleteItemFromCart, clearCart, createUserCart, registerUser, userLogin}
 
