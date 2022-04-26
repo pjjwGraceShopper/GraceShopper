@@ -5,10 +5,15 @@ import {
   deleteItemFromCart,
   clearCart,
 } from "../../axios-services";
-
+import { getPY } from "../../axios-services/PY_queries";
 
 const Cart = ({ me, cartChange, setCartChange}) => {
   const [cart, setCart] = useState([]);
+
+  useEffect( () => {
+  getPY()
+, []})
+
 
   // clearCart(me.id)
 console.log(me)
