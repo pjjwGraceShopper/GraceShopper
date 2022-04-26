@@ -39,3 +39,12 @@ export async function clearCart (userid) {
   }
 }
 //----------------------------------------------------------------
+export async function createUserCart (userid) {
+  try{ 
+    const data = await axios.post(`/api/cart/${userid}/create`,)
+  }catch (err) {
+    console.error(err, "axios error");
+    return err
+  }
+}
+//----------------------------------------------------------------
