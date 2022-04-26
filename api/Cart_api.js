@@ -56,7 +56,17 @@ cartRouter.post('/:userid/clear', async (req, res, next) => {
     next();
   }
 });
-
-
+//----------------------------------------------------------------
+cartRouter.post('/:userid/create', async (req, res, next) => {
+  const userID = req.params.userid
+  try{
+    const data = await cartDB.createUserCart_DB(userID)
+      res.status(200).send()
+    } catch (err) {
+        res.status(500).send
+    } finally {
+        next();
+      }
+    });
 //----------------------------------------------------------------
 module.exports = cartRouter

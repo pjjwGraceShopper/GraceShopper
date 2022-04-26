@@ -1,18 +1,24 @@
 const express = require("express");
 const usersRouter = express.Router();
 const { usersDB } = require("../db/models");
-const { requireUser } = require("./utils")
+const { requireUser } = require("./utils");
+require("dotenv").config();
 const jwt = require("jsonwebtoken");
 
-
 usersRouter.post("/register", async (req, res, next) => {
-  const { username, password } = req.body;
-  console.log("Username, password", username, password)
+  const { username, password, email, firstName, lastName } = req.body;
+  console.log("User info:", username, password, email, firstName, lastName);
   try {
     if (password.length >= 8) {
       let _user = await usersDB.getUserByUsername(username);
       if (!_user) {
-        const user = await usersDB.createUser({ username, password });
+        const user = await usersDB.createUser({
+          username,
+          password,
+          email,
+          firstName,
+          lastName,
+        });
         const token = jwt.sign(
           {
             id: user.id,
@@ -20,7 +26,9 @@ usersRouter.post("/register", async (req, res, next) => {
           },
           process.env.JWT_SECRET
         );
-        res.status(200).send({ message: "Successfully created a new user", token, user });
+        res
+          .status(200)
+          .send({ message: "Successfully created a new user", token, user });
       } else {
         next({ name: "UsernameTaken", message: "Username already exists" });
       }
@@ -30,7 +38,7 @@ usersRouter.post("/register", async (req, res, next) => {
   } catch (error) {
     next(error);
   } finally {
-    next()
+    next();
   }
 });
 
@@ -52,6 +60,8 @@ usersRouter.post("/login", async (req, res, next) => {
     });
   } catch (error) {
     next(error);
+  } finally {
+    next();
   }
 });
 
@@ -61,6 +71,8 @@ usersRouter.get("/me", requireUser, async (req, res, next) => {
     res.send(user);
   } catch (error) {
     next(error);
+  } finally {
+    next();
   }
 });
 
