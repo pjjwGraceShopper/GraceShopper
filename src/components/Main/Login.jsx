@@ -24,6 +24,9 @@ const Login = ({ me, setMe, loginStatus, setLoginStatus }) => {
       localStorage.setItem("token", result.token);
       localStorage.setItem("username", result.user.username);
       localStorage.setItem("id", result.user.id);
+      if(result.user.admin){
+        localStorage.setItem("isAdmin", result.user.admin)
+      }
       // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
       navigate("/");
       console.log('is result from login: ', me.id)
@@ -34,6 +37,8 @@ const Login = ({ me, setMe, loginStatus, setLoginStatus }) => {
     e.preventDefault();
     localStorage.removeItem("token");
     localStorage.removeItem("username");
+    localStorage.removeItem('id')
+    localStorage.removeItem("isAdmin")
     console.log("Username and token removed from localStorage!");
     setLoginStatus(false);
     navigate('/')
