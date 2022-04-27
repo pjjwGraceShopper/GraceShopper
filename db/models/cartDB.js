@@ -58,7 +58,7 @@ async function deleteCartItem_DB (userid, key) {
 async function addToCart_DB (userid, JSONB) {
     const {rows} = await client.query(`
     UPDATE cart
-    SET items = items || ( $2 )
+    SET items['items'] = items['items'] || ( $2 )
     where user_cart = ( $1 )
     `, [userid, JSONB])
     return rows
