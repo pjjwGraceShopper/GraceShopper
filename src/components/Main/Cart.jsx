@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { getPY } from "../../axios-services/PY_queries";
 import Cart_Item from "./Cart_Item";
 import {
   getUserCart,
@@ -6,6 +7,7 @@ import {
   deleteItemFromCart,
   clearCart,
 } from "../../axios-services";
+
 //----------------------------------------------------------------
 const Cart = ({ me, cartChange, setCartChange }) => {
   //----------------------------------------------------------------
@@ -31,11 +33,7 @@ async function updateDev () {
   }
 }
  //----------------------------------------------------------------
-  useEffect(() => {
-    console.log(userCart.cart)
-  }, [test]);
- 
-  //----------------------------------------------------------------
+
   return (
     <div className="cart-body">
       <div className="cart-container">
