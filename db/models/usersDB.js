@@ -5,6 +5,9 @@ const bcrypt = require("bcrypt");
 async function createUser({ username, password, email, firstName, lastName, admin }) {
   console.log(`Creating ${firstName}'s Account`)
   try {
+    if(admin !== true){
+      admin = false
+    }
     const SALT_COUNT = 10;
     const hashedPassword = await bcrypt.hash(password, SALT_COUNT);
 
@@ -87,10 +90,33 @@ async function getUserByUsername(username) {
   }
 }
 
-
+async function getUserByEmail(email) {
+  try {
+    const {
+      rows: [user],
+    } = await client.query(
+      `
+      SELECT *
+      FROM users
+      WHERE email = $1;
+    `,
+      [email]
+    );
+    return user;
+  } catch (error) {
+    console.error("Problem getting user by email...", error);
+  }
+}
 
 async function getAllUsers() {
-  /* this adapter should fetch a list of users from your db */
+  try {
+    const { rows: user } = await client.query(`
+      SELECT * FROM users;
+    `);
+    return user
+  } catch (error) {
+    console.error('Problem getting all users...', error)
+  }
 }
 
 module.exports = {
@@ -100,4 +126,5 @@ module.exports = {
   getUser,
   getUserByUsername,
   getAllUsers,
+  getUserByEmail
 };
