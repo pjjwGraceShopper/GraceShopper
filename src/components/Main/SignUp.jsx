@@ -25,16 +25,16 @@ const SignUp = ({ setMe, loginStatus, setLoginStatus }) => {
       setSignUpMessage(result);
     } else {
       // REMOVE LATER
-      console.log('RESULT FROM SIGNUP', result.user[0])
+      console.log('RESULT FROM SIGNUP', result.user)
       localStorage.setItem("token", result.token);
       localStorage.setItem("username", username);
-      localStorage.setItem("id", result.user[0].id);
+      localStorage.setItem("id", result.user.id);
       // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
       setMe({
         token: result.token,
-        id: result.user[0].id,
+        id: result.user.id,
       });
-      await createUserCart(result.user[0].id);
+      await createUserCart(result.user.id);
       console.log(result);
       navigate("/");
     }
