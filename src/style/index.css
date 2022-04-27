@@ -1,6 +1,9 @@
 /* import fonts here */
-@import url('https://cdn.jsdelivr.net/npm/uikit@3.13.10/dist/css/uikit.min.css');
-@import './App.css'; 
+/* @import url('https://cdn.jsdelivr.net/npm/uikit@3.13.10/dist/css/uikit.min.css'); */
+@import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import './App.css';
+
+
 
 
 * {
@@ -23,4 +26,6 @@ body {
   padding: 0;
   height: 100vh;
   width: 100vw;
+  background: #141414;
+  color: #fff;
 }

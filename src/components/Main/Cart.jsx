@@ -1,83 +1,95 @@
 import React, { useState, useEffect } from "react";
+import { getPY } from "../../axios-services/PY_queries";
+import Cart_Item from "./Cart_Item";
 import {
   getUserCart,
   addItemToCart,
   deleteItemFromCart,
   clearCart,
 } from "../../axios-services";
-import { getPY } from "../../axios-services/PY_queries";
 
-const Cart = ({ me, cartChange, setCartChange}) => {
-  const [cart, setCart] = useState([]);
+//----------------------------------------------------------------
+const Cart = ({ me, cartChange, setCartChange }) => {
+  //----------------------------------------------------------------
+  const [test, setTest] = useState(null)
+  const userCart =  {
+    response: null,
+    cart: [],
+    addItemToCart,
+    deleteItemFromCart,
+    clearCart,
+  }
+async function updateDev () {
+  if (me.id) {
+      const response = await getUserCart(me.id);
+     
+      setCartChange(true)
+      // userCart.response = response.items
+      setTest(Math.random())
+      userCart.cart = [response.items]
+      setCartChange(false)
+      console.log(userCart.cart)
 
-  useEffect( () => {
-  getPY()
-, []})
-
-
-  // clearCart(me.id)
-console.log(me)
-  useEffect(() => {
-    async function cartFetch() {
-      const userCart = await getUserCart(me.id);
-      console.log(userCart, "this cart is user's cart**");
-      setCart([userCart]);
-      await addItemToCart(me.id, {
-        item1337: `leetItem`,
-        item69: `deleteItemFromCart`,
-      });
-      await deleteItemFromCart(me.id, "item69");
-    }
-    if (me.id) {
-      cartFetch();
-      setCartChange(false);
-    }
-}, [cartChange, me]);
-
-
-
-
+  }
+}
+ //----------------------------------------------------------------
 
   return (
-    <div className="cart-container">
+    <div className="cart-body">
+      <div className="cart-container">
 
-<div className="header">
-                <h3 className="heading">Shopping Cart</h3>
-                <h5 className="action">Remove all</h5>
-            </div>
+        {/* HEADER */}
+        <div className="header">
+          <h3 className="heading">Shopping Cart</h3>
+          <h5 className="action">Remove all</h5>
+        </div>
+        {/* HEADER END ^^ */}
 
+        {/* LEFT HALF **************************** */}
+        <div className="cart-left-container">
+          <div className="cart-item-container">
+            {/* {setTimeout(() => } */}
+            {/* {cart ? cart.items.item69 : null} */}
+            {/* <Cart_Item cart={cart}/>  */}
+            {userCart.cart.map((e,i) => {return ( <div key={e + i}> {e} </div>) })}
+          </div>
+        </div>
+        {/* LEFT END ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
+ 
+        <div className="cart-right-container">
+          <div className="cart-summary-item">im an item</div>
+        </div>
+        {/* RIGHT END ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
 
+        {/* BOTTOM ****************************** */}
+        <div className="cart-bottom-container">
+          <button
+            className="btn btn-secondary"
+            onClick={() => {
+              addItemToCart(me.id, { item1337v2: `leetItemButBetter` });
+              setCartChange(true);
+            }}
+          > new item</button>
+           <button
+            className="btn btn-secondary"
+            onClick={() => updateDev()}>
+              update page
+            </button>
+        </div>
+        {/* BOTTOM END ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
 
-      user cart Contains:
-      {/* {cart.length
-        ? cart.map((e, i) => {
-            return <div key={i + e}>{e}</div>;
-          })
-        : null} */}
-
-
-
-
-        
-      <div className="cart-left-container">
-        im on the left
-        <div className="cart-item-container">im an item</div>
-      </div>
-      <div className="cart-right-container">
-        im on the right
-        <div className="cart-summary-item">im an item</div>
-      </div>
-      <div className="cart-bottom-container">
-        im on the bottom of left and right
-        <button className="template-button" 
-            onClick={()=> { 
-                    addItemToCart(me.id, {item1337v2: `leetItemButBetter`})
-                    setCartChange(true)}}> 
-        </button>
       </div>
     </div>
   );
 };
-
-
+//----------------------------------------------------------------
 export default Cart;
+
+
+
+// Dev testing / Notes
+   // await addItemToCart(me.id, {
+      //   item1337: `leetItem`,
+      //   item69: `deleteItemFromCart`,
+      // });
+      // await deleteItemFromCart(me.id, "item69");
