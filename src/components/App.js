@@ -1,4 +1,4 @@
-import "bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState, useEffect } from "react";
 // getAPIHealth is defined in our axios-services directory index.js
 // you can think of that directory as a collection of api adapters
@@ -8,7 +8,7 @@ import "../style/index.css";
 import "../style/App.css";
 import { Route, Routes } from "react-router-dom";
 import { Footer, Sidebar, Login, MyLibrary, SignUp, Home, Cart } from "./index";
-import * as bootstrap from "bootstrap"
+import * as bootstrap from "bootstrap";
 
 const App = () => {
   const [APIHealth, setAPIHealth] = useState("");
@@ -40,16 +40,15 @@ const App = () => {
   }, []);
 
   return (
-
-    <div className="sidebar-container">
+    <div className='sidebar-container'>
       <Sidebar loginStatus={loginStatus} />
-      <div className="app-container">
+      <div className='app-container'>
         {/* <div className="main_title">Hello, World!</div>
         <p>API Status: {APIHealth}</p> */}
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path='/' element={<Home />} />
           <Route
-            path="/login"
+            path='/login'
             element={
               <Login
                 setMe={setMe}
@@ -60,7 +59,7 @@ const App = () => {
             }
           />
           <Route
-            path="/sign-up"
+            path='/sign-up'
             element={
               <SignUp
                 setMe={setMe}
@@ -70,8 +69,17 @@ const App = () => {
             }
           />
           {/* sign-up route currently not working */}
-          <Route path="/my-library" element={<MyLibrary />} />
-           <Route path='/cart' element={<Cart me={me} cartChange={cartChange} setCartChange={setCartChange}/>} />
+          <Route path='/my-library' element={<MyLibrary />} />
+          <Route
+            path='/cart'
+            element={
+              <Cart
+                me={me}
+                cartChange={cartChange}
+                setCartChange={setCartChange}
+              />
+            }
+          />
         </Routes>
         <Footer />
       </div>

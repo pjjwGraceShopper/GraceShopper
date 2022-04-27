@@ -4,11 +4,9 @@ import MovieList from "./MovieList";
 import { getLibrary } from "../../axios-services";
 
 function Home() {
-
-
   return (
-    <div className='container-fluid movie-app'>
-      <div className='row'>
+    <div className='row'>
+      <div className='movie-imgs'>
         <MovieList />
       </div>
     </div>
