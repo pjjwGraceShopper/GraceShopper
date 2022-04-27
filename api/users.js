@@ -10,8 +10,9 @@ usersRouter.post("/register", async (req, res, next) => {
   console.log("User info:", username, password, email, firstName, lastName);
   try {
     if (password.length >= 8) {
-      let _user = await usersDB.getUserByUsername(username);
-      if (!_user) {
+      let _userEmail = await usersDB.getUserByEmail(email);
+      let _username = await usersDB.getUserByUsername(username)
+      if (!_username && !_userEmail) {
         const user = await usersDB.createUser({
           username,
           password,
@@ -30,7 +31,7 @@ usersRouter.post("/register", async (req, res, next) => {
           .status(200)
           .send({ message: "Successfully created a new user", token, user });
       } else {
-        next({ name: "UsernameTaken", message: "Username already exists" });
+        next({ name: "CredentialsTaken", message: "An account with that email or username already exists" });
       }
     } else {
       next({ name: "PasswordTooShort", message: "Password too short" });
@@ -75,5 +76,16 @@ usersRouter.get("/me", requireUser, async (req, res, next) => {
     next();
   }
 });
+
+usersRouter.get('/', async(req, res, next) => {
+  try {
+    const user = await usersDB.getAllUsers()
+    res.send(user)
+  } catch (error) {
+    next(error)
+  } finally {
+    next()
+  }
+})
 
 module.exports = usersRouter;

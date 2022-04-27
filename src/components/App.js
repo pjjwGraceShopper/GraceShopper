@@ -8,6 +8,7 @@ import "../style/index.css";
 import "../style/App.css";
 import { Route, Routes } from "react-router-dom";
 import { Footer, Sidebar, Login, MyLibrary, SignUp, Home, Cart, Lists } from "./index";
+import { Footer, Sidebar, Login, MyLibrary, SignUp, Home, Cart, Admin } from "./index";
 import * as bootstrap from "bootstrap"
 
 const App = () => {
@@ -73,6 +74,7 @@ const App = () => {
           <Route path="/my-library" element={<MyLibrary />} />
           <Route path="/Lists" element={<Lists/>}/>
            <Route path='/cart' element={<Cart me={me} cartChange={cartChange} setCartChange={setCartChange}/>} />
+           <Route path="/admin" element={<Admin />}/>
         </Routes>
         <Footer />
       </div>

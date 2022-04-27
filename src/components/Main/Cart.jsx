@@ -26,9 +26,9 @@ async function updateDev () {
       setCartChange(true)
       // userCart.response = response.items
       setTest(Math.random())
-      userCart.cart = [response.items]
+      userCart.cart = response
       setCartChange(false)
-      console.log(userCart.cart)
+      console.log(userCart.cart, "user cart on FE")
 
   }
 }
