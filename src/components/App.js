@@ -7,6 +7,7 @@ import "../style/index.css";
 import "../style/App.css";
 import { Route, Routes } from "react-router-dom";
 import { Footer, Sidebar, Login, MyLibrary, SignUp, Home, Cart } from "./index";
+import * as bootstrap from "bootstrap"
 
 const App = () => {
   const [APIHealth, setAPIHealth] = useState("");
@@ -42,8 +43,8 @@ const App = () => {
     <div className="sidebar-container">
       <Sidebar loginStatus={loginStatus} />
       <div className="app-container">
-        <div className="main_title">Hello, World!</div>
-        <p>API Status: {APIHealth}</p>
+        {/* <div className="main_title">Hello, World!</div>
+        <p>API Status: {APIHealth}</p> */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route
