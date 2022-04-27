@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import React, { useState, useEffect } from "react";
 import MovieList from "./MovieList";
-
+import { getLibrary } from "../../axios-services";
 
 function Home() {
   const [movies, setMovies] = useState([
@@ -35,20 +36,14 @@ function Home() {
       img: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQvQn5iyqbTd4SCkrBSdHIzpn4OfkXFjq29oi8V1Fzo8lGh1pqp",
     },
   ]);
+
+  
+  
+
   return (
-    <div>
-      <h1 className='main_title'>Welcome to Blue Box!</h1>
-      <div
-        className=''
-      >
-        <ul className=''>
-          <li>
-            <div className=''>
-              <MovieList movies={movies} />
-              <div className=''></div>
-            </div>
-          </li>
-        </ul>
+    <div className='container-fluid movie-app'>
+      <div className='row'>
+        <MovieList />
       </div>
     </div>
   );
