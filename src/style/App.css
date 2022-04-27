@@ -164,6 +164,21 @@ a {
 }
 
 
+.lists ul li{
+  font-size: 25px;
+  list-style: none;
+  display: inline;
+  margin-left: -120px;
+}
+.detail-container{
+  width:50rem;
+  height:40px;
+  background-color: #282828;
+  margin-top: 90px;
+  margin-left: -100px;
+}
+ 
+
 
 
 
