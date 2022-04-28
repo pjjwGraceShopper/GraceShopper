@@ -128,46 +128,47 @@ async function populateInitialData() {
     const user5Cart = await cartDB.createUserCart_DB(5)
     //----------------------------------------------------------------
     console.log("Populating Intial Users Carts")
-    const user1CartItem1 = await cartDB.addToCartItems_DB(1, {
-      "id": 8,
-      "name": "Shang-Chi and the Legend of the Ten Rings",
-      "type": "movie",
-      "year": 2021,
-      "genre": "Fantasy / Action",
-      "length": 212,
-      "price": "$3.99",
-      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4q-3DRHJ_mIeRpY8itjj58cYh6RdkMNYZeqWO6WbKsEaxwVEKgiJyGdbyiKGDETwFJzk&usqp=CAU"
-    })
-    const user1CartItem2 = await cartDB.addToCartItems_DB(1, {
-      "id": 12,
-      "name": "Run",
-      "type": "movie ",
-      "year": 2020,
-      "genre": "Thriller",
-      "length": 130,
-      "price": "$4.99",
-      "img": "https://fr.web.img2.acsta.net/pictures/21/06/25/17/30/1095745.jpg"
-    })
-    const user5CartItem1 = await cartDB.addToCartItems_DB(5, {
-      "id": 13,
-      "name": "Redeeming Love",
-      "type": "movie ",
-      "year": 2022,
-      "genre": "Western/Romance",
-      "length": 214,
-      "price": "$5.99",
-      "img": "https://m.media-amazon.com/images/M/MV5BMTMxMmRmMWUtNGNhZS00MWYxLTkwNzUtM2QwNzI4MGU1ZTI2XkEyXkFqcGdeQXVyNTQ3MjE4NTU@._V1_.jpg"
-    })
-    const user5CartItem2 = await cartDB.addToCartItems_DB(5, {
-      "id": 15,
-      "name": "Cyrano",
-      "type": "movie ",
-      "year": 2021,
-      "genre": "Romance",
-      "length": 203,
-      "price": "$5.99",
-      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSod_b_CNpKDrlfF2F0cpjZwcWvpE59hzKcziP0K4TkjfiM8zLQGD1uxU19PzYhrEQZyfA&usqp=CAU"
-    })
+     const user2CartItem1 = await cartDB.addToCartItems_DB(2, { 8 : "Shang-Chi and the Legend of the Ten Rings" })
+    // const user1CartItem1 = await cartDB.addToCartItems_DB(1, {
+    //   "id": 8,
+    //   "name": "Shang-Chi and the Legend of the Ten Rings",
+    //   "type": "movie",
+    //   "year": 2021,
+    //   "genre": "Fantasy / Action",
+    //   "length": 212,
+    //   "price": "$3.99",
+    //   "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4q-3DRHJ_mIeRpY8itjj58cYh6RdkMNYZeqWO6WbKsEaxwVEKgiJyGdbyiKGDETwFJzk&usqp=CAU"
+    // })
+    // const user1CartItem2 = await cartDB.addToCartItems_DB(1, {
+    //   "id": 12,
+    //   "name": "Run",
+    //   "type": "movie ",
+    //   "year": 2020,
+    //   "genre": "Thriller",
+    //   "length": 130,
+    //   "price": "$4.99",
+    //   "img": "https://fr.web.img2.acsta.net/pictures/21/06/25/17/30/1095745.jpg"
+    // })
+    // const user5CartItem1 = await cartDB.addToCartItems_DB(5, {
+    //   "id": 13,
+    //   "name": "Redeeming Love",
+    //   "type": "movie ",
+    //   "year": 2022,
+    //   "genre": "Western/Romance",
+    //   "length": 214,
+    //   "price": "$5.99",
+    //   "img": "https://m.media-amazon.com/images/M/MV5BMTMxMmRmMWUtNGNhZS00MWYxLTkwNzUtM2QwNzI4MGU1ZTI2XkEyXkFqcGdeQXVyNTQ3MjE4NTU@._V1_.jpg"
+    // })
+    // const user5CartItem2 = await cartDB.addToCartItems_DB(5, {
+    //   "id": 15,
+    //   "name": "Cyrano",
+    //   "type": "movie ",
+    //   "year": 2021,
+    //   "genre": "Romance",
+    //   "length": 203,
+    //   "price": "$5.99",
+    //   "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSod_b_CNpKDrlfF2F0cpjZwcWvpE59hzKcziP0K4TkjfiM8zLQGD1uxU19PzYhrEQZyfA&usqp=CAU"
+    // })
     //----------------------------------------------------------------
     // expect(user1Cart.user_cart).to.equal(user1.id)
     // expect(user5Cart.user_cart).to.equal(user5.id)
