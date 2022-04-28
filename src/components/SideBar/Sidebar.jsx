@@ -14,6 +14,7 @@ useEffect
       {/* <Link to="../Search"> Search </Link> */}
       {/* <Link to="./profile"> Profile </Link> */}
       <Link to='/my-library'>My Library</Link>
+      <Link to='/Lists'>Lists</Link>
       <Link to='./cart'> MyCart </Link>
       {!localStorage.getItem("token") ? (
         <>

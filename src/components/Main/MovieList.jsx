@@ -11,6 +11,7 @@ const MovieList = () => {
     thing();
   }, []);
   if (!movies) return <h3>Loading...</h3>;
+
   return (
     <>
       {movies.map((movie, index) => (
@@ -23,6 +24,7 @@ const MovieList = () => {
       ))}
     </>
   );
+
 };
 
 export default MovieList;

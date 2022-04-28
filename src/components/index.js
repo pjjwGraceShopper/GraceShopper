@@ -3,7 +3,8 @@ export { default as Login } from "./Main/Login";
 export { default as SignUp } from "./Main/SignUp";
 export { default as Sidebar } from "./SideBar/Sidebar";
 export { default as Footer } from "./Footer/Footer";
-export { default as Cart} from "./Main/Cart";
+export { default as Cart } from "./Main/Cart";
 export { default as MyLibrary } from "./Main/MyLibrary";
-export {default as Home } from "./Main/Home";
-
+export { default as Home } from "./Main/Home";
+export { default as Lists } from "./Main/Lists";
+export { default as Admin } from "./Main/Admin";

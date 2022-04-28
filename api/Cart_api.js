@@ -23,7 +23,7 @@ cartRouter.post('/:userid/add', async (req, res, next) => {
   const userID = req.params.userid
   const {items} = req.body
   try{
-    const data = await cartDB.addToCart_DB(userID, items)
+    const data = await cartDB.addToCartItems_DB(userID, items)
     res.status(200).send(data)
 } catch (err) {
     res.status(500).send
