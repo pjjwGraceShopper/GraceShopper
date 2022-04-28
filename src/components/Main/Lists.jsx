@@ -1,6 +1,21 @@
 import React from "react";
+import { getLibrary } from "../../axios-services";
+
+
+  
+
 
 const Lists = () => {
+  const [movies, setMovies] = useState([]);
+  
+  useEffect(() => {
+    async function thing() {
+      const lib = await getLibrary();
+      setMovies(lib);
+    }
+    thing();
+  }, []);
+
   return (
     <div className="lists">
       <ul>
