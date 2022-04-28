@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {getUserCart, addItemToCart, deleteItemFromCart, clearCart, createUserCart} from './Cart_ajax'
+import {getUserCart, addItemToCart, deleteItemFromCart, clearCart, createUserCart, getUserCartIDX} from './Cart_ajax'
 import {getUsers, registerUser, userLogin} from './users_ajax'
 import { getLibrary } from "./lib_ajax";
 
@@ -34,6 +34,7 @@ export async function getAPIHealth() {
 
 export {
   getUserCart,
+  getUserCartIDX,
   addItemToCart,
   deleteItemFromCart,
   clearCart,

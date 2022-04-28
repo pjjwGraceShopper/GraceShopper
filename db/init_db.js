@@ -128,7 +128,7 @@ async function populateInitialData() {
     const user5Cart = await cartDB.createUserCart_DB(5)
     //----------------------------------------------------------------
     console.log("Populating Intial Users Carts")
-     const user2CartItem1 = await cartDB.addToCartItems_DB(2, { "Shang-Chi and the Legend of the Ten Rings" : 8 })
+     const user2CartItem1 = await cartDB.addToCartItems_DB(2, { 8 : "Shang-Chi and the Legend of the Ten Rings" })
     // const user1CartItem1 = await cartDB.addToCartItems_DB(1, {
     //   "id": 8,
     //   "name": "Shang-Chi and the Legend of the Ten Rings",

@@ -6,6 +6,7 @@ const {cartDB} = require('../db/index')
 
 
 //----------------------------------------------------------------  
+// retrieves the full cart list
 cartRouter.get('/:userid', async (req, res, next) => {
 const userID = req.params.userid
 
@@ -18,6 +19,19 @@ const userID = req.params.userid
     next();
     }
 });
+//----------------------------------------------------------------
+// for use in cart indicator
+cartRouter.get('/:userid/idx', async (req, res, next) => {
+  const userID = req.params.userid
+    try{
+    const data = await cartDB.getUserCartIdx_DB(userID)
+    res.status(200).send(data)
+    } catch (err) {
+      res.status(500).send
+    } finally {
+      next();
+      }
+  });
 //----------------------------------------------------------------
 cartRouter.post('/:userid/add', async (req, res, next) => {
   const userID = req.params.userid
