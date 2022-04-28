@@ -1,8 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { getLibrary } from "../../axios-services";
 
-const Lists = () => {
+const Lists = ({currentMovie}) => {
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    async function thing() {
+      const lib = await getLibrary();
+      setMovies(lib);
+      // console.log(movies);
+    }
+    thing();
+  }, []);
+  // console.log(movies);
+
   return (
     <div className="lists">
+     
       <ul>
         <li>All</li>
         <li>Movies</li>
@@ -11,21 +25,22 @@ const Lists = () => {
       </ul>
       <div className="title-container">
         <ul className="title">
-        <h3>Title</h3>
-        <h4>RATE</h4>
+          <h3>{currentMovie.name}</h3>
+          <h4>Rate</h4>
         </ul>
       </div>
       <div className="detail-container">
         <ul>
-          <il>Year -</il>
-          <il> Type -</il>
-          <il> Duration -</il>
-          <li> Price </li>
+          <li>{currentMovie.year} </li>
+          <li>{currentMovie.type} </li>
+          <li> {currentMovie.length} </li>
+          <li> {currentMovie.price} </li>
+          <li> {currentMovie.genre} </li>
         </ul>
       </div>
       <div className="flex-container">
         <div className="flex-child poster">
-          <p>Link Poster </p>
+          <img key={currentMovie.id} className="movie-img" scr={currentMovie.img} alt="movie"></img> 
         </div>
         <div className="flex-child description">
           <p> Movie description</p>
