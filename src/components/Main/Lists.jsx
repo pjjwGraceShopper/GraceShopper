@@ -33,8 +33,23 @@ const Lists = () => {
             anim id est laborum.</p> */}
       </div>
     </div>
-            
+
+    <div className="wishlist-bottom-container">
+           <button
+            className=""
+            onClick={() => updateDev()}>
+              Wish List
+            </button>
+          <button
+            className=""
+            onClick={() => {
+              addItemToCart(me.id, { item1337v2: `leetItemButBetter` });
+              setCartChange(true);
+            }}
+          > Add To Cart</button>
+        </div>
     </div>
+    
   );
 };
 
