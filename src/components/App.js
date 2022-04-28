@@ -7,8 +7,7 @@ import { getAPIHealth } from "../axios-services";
 import "../style/index.css";
 import "../style/App.css";
 import { Route, Routes } from "react-router-dom";
-import { Footer, Sidebar, Login, MyLibrary, SignUp, Home, Cart, Lists } from "./index";
-import { Footer, Sidebar, Login, MyLibrary, SignUp, Home, Cart, Admin } from "./index";
+import { Footer, Sidebar, Login, MyLibrary, SignUp, Home, Cart, Lists, Admin } from "./index";
 import * as bootstrap from "bootstrap"
 
 const App = () => {

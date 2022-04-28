@@ -7,5 +7,4 @@ export { default as Cart } from "./Main/Cart";
 export { default as MyLibrary } from "./Main/MyLibrary";
 export { default as Home } from "./Main/Home";
 export { default as Lists } from "./Main/Lists";
-export { default as Home } from "./Main/Home";
 export { default as Admin } from "./Main/Admin";
