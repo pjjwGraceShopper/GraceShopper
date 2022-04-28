@@ -1,24 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { getLibrary } from "../../axios-services";
 
 const Lists = () => {
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    async function thing() {
+      const lib = await getLibrary();
+      setMovies(lib);
+    }
+    thing();
+  }, []);
+
   return (
-    <div className="lists">
+    <div className='lists'>
       <ul>
         <li>Movies Title</li>
       </ul>
-      <div className="detail-container">
+      <div className='detail-container'>
         <ul>
           <il>Year -</il>
           <il> Type -</il>
           <il> Duration</il>
         </ul>
       </div>
-    <div className="flex-container">
-      <div className="flex-child poster">
-        <p>"Link Poster" </p>
-      </div>
-      <div className="flex-child description">
-        {/* <p>Lorem ipsum dolor sit amet, 
+      <div className='flex-container'>
+        <div className='flex-child poster'>
+          <p>"Link Poster" </p>
+        </div>
+        <div className='flex-child description'>
+          {/* <p>Lorem ipsum dolor sit amet, 
             consectetur adipiscing elit, 
             sed do eiusmod tempor incididunt 
             ut labore et dolore magna aliqua. 
@@ -31,9 +42,8 @@ const Lists = () => {
             sint occaecat cupidatat non proident, 
             sunt in culpa qui officia deserunt mollit 
             anim id est laborum.</p> */}
+        </div>
       </div>
-    </div>
-            
     </div>
   );
 };
