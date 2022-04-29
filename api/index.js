@@ -5,7 +5,7 @@ const libRouter = require("./libRouter");
 const jwt = require("jsonwebtoken");
 const { getUserById } = require("../db/models/usersDB");
 const { JWT_SECRET } = process.env;
-
+//------------------------------------------------------------------------------
 apiRouter.use(async (req, res, next) => {
   const prefix = "Bearer ";
   const auth = req.header("Authorization");
@@ -32,14 +32,19 @@ apiRouter.use(async (req, res, next) => {
     });
   }
 });
-
+//------------------------------------------------------------------------------
+apiRouter.get("/", (req, res, next) => {
+  res.send("hi"
+  );
+  next();
+});
+//------------------------------------------------------------------------------
 apiRouter.get("/health", (req, res, next) => {
   res.send({
     healthy: true,
   });
   next();
 });
-
 //----------------------------------------------------------------
 apiRouter.use("/cart", cartRouter);
 apiRouter.use("/users", usersRouter);

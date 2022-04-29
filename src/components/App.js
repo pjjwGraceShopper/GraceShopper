@@ -4,25 +4,16 @@ import { getAPIHealth } from "../axios-services";
 import "../style/index.css";
 import "../style/App.css";
 import { Route, Routes } from "react-router-dom";
-import {
-  Footer,
-  Sidebar,
-  Login,
-  MyLibrary,
-  SignUp,
-  Home,
-  Cart,
-  Lists,
-  Admin,
-} from "./index";
-import * as bootstrap from "bootstrap";
-//---------------------------------------------------------------
+import { Footer, Sidebar, Login, MyLibrary, SignUp, Home, Cart, Lists, Admin } from "./index";
+import * as bootstrap from "bootstrap"
+
 const App = () => {
   //--------------------------------------------------------------
   const [me, setMe] = useState({});
   const [cartChange, setCartChange] = useState(null);
   const [loginStatus, setLoginStatus] = useState(false);
   const [APIHealth, setAPIHealth] = useState("");
+  const [currentMovie, setCurrentMovie] = useState(null);
   //----------------------------------------------------------------
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -36,7 +27,7 @@ const App = () => {
 
       
     const getAPIStatus = async () => {
-      const { healthy } = await getAPIHealth();
+      const healthy = await getAPIHealth();
       setAPIHealth(healthy ? "api is up! :D" : "api is down :/");
     };
 
@@ -49,7 +40,7 @@ const App = () => {
       <Sidebar loginStatus={loginStatus} />
       <div className="app-container">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home currentMovie={currentMovie} setCurrentMovie={setCurrentMovie}/> } />
           <Route
             path="/login"
             element={
@@ -72,18 +63,9 @@ const App = () => {
             }
           />
           <Route path="/my-library" element={<MyLibrary />} />
-          <Route path="/Lists" element={<Lists />} />
-          <Route
-            path="/cart"
-            element={
-              <Cart
-                me={me}
-                cartChange={cartChange}
-                setCartChange={setCartChange}
-              />
-            }
-          />
-          <Route path="/admin" element={<Admin />} />
+          <Route path="/Lists/:id" element={<Lists currentMovie={currentMovie} setCurrentMovie={setCurrentMovie}/>}/>
+           <Route path='/cart' element={<Cart me={me} cartChange={cartChange} setCartChange={setCartChange}/>} />
+           <Route path="/admin" element={<Admin />}/>
         </Routes>
         <Footer />
       </div>

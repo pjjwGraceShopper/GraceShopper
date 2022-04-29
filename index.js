@@ -2,7 +2,6 @@
 require('dotenv').config();
 const express = require('express');
 const server = express();
-// const apiRouter = require('./api')
 
 // enable cross-origin resource sharing to proxy api requests
 // from localhost:3000 to localhost:4000 in local dev env
@@ -17,7 +16,7 @@ server.use(morgan('dev'));
 server.use(express.json());
 server.use((req, res, next) => {
     console.log('*** NEW express request ***');
-
+  next();
 });
 
 
@@ -26,7 +25,8 @@ const path = require('path');
 server.use(express.static(path.join(__dirname, 'build')));
 
 // here's our API
-server.use('/api', require("./api"));
+server.use('/api', require('./api'));
+server.get('/favicon.ico', (req, res, next) => { res.status(204); next()});
 
 // by default serve up the react app if we don't recognize the route
 // server.use((req, res, next) => {
