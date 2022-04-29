@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getLibrary } from "../../axios-services";
+import { Link } from "react-router-dom";
+import MovieList from "./MovieList";
 
 
 const Lists = ({currentMovie}) => {
@@ -17,19 +19,16 @@ const Lists = ({currentMovie}) => {
 
   return (
     <div className="lists">
-     
       <ul>
-        <li>All</li>
-        <li>Movies</li>
-        <li>TV Shows</li>
-        <li>Rented</li>
+      <li><Link to='/'> All</Link></li>
+        <li><Link to='/my-library'> Movies </Link></li>
+        <li><Link to='/my-library'>TV Shows</Link></li>
+        <li><Link to='/my-library'>Rented</Link></li>
       </ul>
-
       <div className="title-container">
-        <ul className="title">
+        <div className="title">
           <h3>{currentMovie.name}</h3>
-          <h4></h4>
-        </ul>
+        </div>
       </div>
       <div className="detail-container">
 

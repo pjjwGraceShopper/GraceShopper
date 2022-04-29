@@ -190,6 +190,7 @@ a {
   list-style: none;
   display: inline;
   padding-right: 1rem;
+  margin-left: 10px;
 }
 
 .title-container{
