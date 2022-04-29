@@ -16,6 +16,7 @@ const App = () => {
   const [me, setMe] = useState({});
   const [cartChange, setCartChange] = useState(false);
   const [loginStatus, setLoginStatus] = useState(false);
+  const [currentMovie, setCurrentMovie] = useState(null);
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -47,7 +48,9 @@ const App = () => {
         {/* <div className="main_title">Hello, World!</div>
         <p>API Status: {APIHealth}</p> */}
         <Routes>
-          <Route path='/' element={<Home />} />
+
+          <Route path="/" element={<Home currentMovie={currentMovie} setCurrentMovie={setCurrentMovie}/> } />
+
           <Route
             path='/login'
             element={
@@ -72,7 +75,7 @@ const App = () => {
           {/* sign-up route currently not working */}
 
           <Route path="/my-library" element={<MyLibrary />} />
-          <Route path="/Lists" element={<Lists/>}/>
+          <Route path="/Lists/:id" element={<Lists currentMovie={currentMovie} setCurrentMovie={setCurrentMovie}/>}/>
            <Route path='/cart' element={<Cart me={me} cartChange={cartChange} setCartChange={setCartChange}/>} />
            <Route path="/admin" element={<Admin />}/>
 

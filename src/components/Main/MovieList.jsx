@@ -1,8 +1,12 @@
+import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { getLibrary } from "../../axios-services";
 import { useNavigate } from "react-router-dom";
 
-const MovieList = () => {
+
+const MovieList = ({currentMovie, setCurrentMovie}) => {
+  const navigate = useNavigate();
+
   const [movies, setMovies] = useState([]);
   useEffect(() => {
     async function thing() {
@@ -12,25 +16,25 @@ const MovieList = () => {
     thing();
   }, []);
   if (!movies) return <h3>Loading...</h3>;
-  const navigate = useNavigate();
 
-  function handleClick(e) {
-    e.preventDefault;
-    navigate("/Lists");
-  }
-  return (
-    <>
-      {movies.map((movie, index) => (
+    return (
+      <>
+        {movies.map((movie, index) => (
         <img
-          onClick={handleClick}
+        onClick={(e)=>{e.preventDefault;
+          setCurrentMovie(movie)
+          navigate(`/Lists/${movie.id}`)}}
+
           key={movie.id}
           className='movie-img'
           src={movie.img}
           alt='movie'
         ></img>
-      ))}
-    </>
-  );
+
+        ))}
+      </>
+    );
+
 };
 
 export default MovieList;
