@@ -11,7 +11,7 @@ import {
 //------------------------------------------------------------------
 const Cart = ({ me, cartChange, setCartChange }) => {
   //----------------------------------------------------------------
-  const [userCart, setUserCart] = useState([{ name: "message" }]);
+  const [userCart, setUserCart] = useState([{ name: "Nothing Yet!" }]);
   //-----------------------------------------------------------------
   async function updateDev() {
     if (me.id) {
@@ -46,8 +46,7 @@ const Cart = ({ me, cartChange, setCartChange }) => {
           {/* <CartItemList userCart={userCart} cartChange={setCartChange} me={me} /> */}
           {userCart.map((e, i) => (
             <div key={i} className='card'>
-              {" "}
-              {"random"}{" "}
+              {e.name}
             </div>
           ))}
         </div>
