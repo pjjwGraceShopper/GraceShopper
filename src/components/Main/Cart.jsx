@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getPY } from "../../axios-services/PY_queries";
-import CartItemList from "./CartItemList";
+import CartItem from "./CartItem";
 import {
   getUserCart,
   addItemToCart,
@@ -44,11 +44,9 @@ const Cart = ({ me, cartChange, setCartChange }) => {
         {/* LEFT HALF **************************** */}
         <div className='cart-left-container --bs-dark'>
           {/* <CartItemList userCart={userCart} cartChange={setCartChange} me={me} /> */}
-          {userCart.map((e, i) => (
-            <div key={i} className='card'>
-              {e.name}
-            </div>
-          ))}
+          {userCart.length ? userCart.map((e, i) => (
+            <CartItem userCart={userCart} e={e} cartChange={setCartChange} me={me} i={i}/>
+          )) : "Nothing Yet!"}
         </div>
         {/* LEFT END ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
 

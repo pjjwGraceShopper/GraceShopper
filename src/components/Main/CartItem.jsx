@@ -1,25 +1,25 @@
 import React, { useState, useEffect } from "react";
-import {
-  getUserCart,
-  deleteItemFromCart,
-} from "../../axios-services";
+import { getUserCart, deleteItemFromCart } from "../../axios-services";
 //----------------------------------------------------------------
-const CartItemList = ({ userCart, cartChange, me }) => {
+const CartItem = ({ userCart, e, i, cartChange, me }) => {
   //-----------------------------------------------------------
 
   //--------------------------------------------------------
   useEffect(() => {
- console.log(userCart.cart, "cart list")
-  }, [userCart.cart]);
+    console.log(userCart, "cart item");
+  }, [userCart]);
   //-------------------------------------------
   return (
     <div className="card --bs-dark">
-      list
-   
+      <div>
+        <img className="movie-img" src={e.img} key={e + i} alt="movie"></img>
+        {e.name}
+        {e.price}
+      </div>
     </div>
   );
 };
 //----------------------------------------------------------------
-export default CartItemList;
+export default CartItem;
 
 // cart.map((e, i) => { return <div className="cart-item" key={i}> {e} </div>; })
