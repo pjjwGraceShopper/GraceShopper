@@ -10,9 +10,19 @@ try{
 }
 }
 //----------------------------------------------------------------
-export async function addItemToCart (userid, items) {
+export async function getUserCartIDX (userid){
+  try{
+    const {data}= await axios.get(`/api/cart/${userid}/idx`)
+      return data;
+  } catch (err) {
+    console.error(err, "axios error");
+    return err
+  }
+  }
+//----------------------------------------------------------------
+export async function addItemToCart (userid, item) {
   try{ 
-    const {data}= await axios.post(`/api/cart/${userid}/add`, {items: items} )
+    const {data}= await axios.post(`/api/cart/${userid}/add`, {item: item} )
     return data;
   } catch (err) {
     console.error(err, "axios error");

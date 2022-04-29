@@ -66,7 +66,16 @@ async function updateDev () {
           <button
             className="btn btn-secondary"
             onClick={() => {
-              addItemToCart(me.id, { item1337v2: `leetItemButBetter` });
+              addItemToCart(me.id, {
+                "id": 15,
+                "name": "Cyrano",
+                "type": "movie ",
+                "year": 2021,
+                "genre": "Romance",
+                "length": 203,
+                "price": "$5.99",
+                "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSod_b_CNpKDrlfF2F0cpjZwcWvpE59hzKcziP0K4TkjfiM8zLQGD1uxU19PzYhrEQZyfA&usqp=CAU"
+              });
               setCartChange(true);
             }}
           > new item</button>

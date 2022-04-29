@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import MovieList from "./MovieList";
 import { getLibrary } from "../../axios-services";
 
+
 function Home({currentMovie, setCurrentMovie}) {
 
 
@@ -10,6 +11,7 @@ function Home({currentMovie, setCurrentMovie}) {
     <div className='container-fluid movie-app'>
       <div className='row'>
         <MovieList currentMovie={currentMovie} setCurrentMovie={setCurrentMovie}/>
+
       </div>
     </div>
   );

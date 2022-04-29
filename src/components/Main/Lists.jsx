@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getLibrary } from "../../axios-services";
 
+
 const Lists = ({currentMovie}) => {
   const [movies, setMovies] = useState([]);
 
@@ -23,6 +24,7 @@ const Lists = ({currentMovie}) => {
         <li>TV Shows</li>
         <li>Rented</li>
       </ul>
+
       <div className="title-container">
         <ul className="title">
           <h3>{currentMovie.name}</h3>
@@ -30,6 +32,7 @@ const Lists = ({currentMovie}) => {
         </ul>
       </div>
       <div className="detail-container">
+
         <ul>
           <li>{currentMovie.year} </li>
           <li>{currentMovie.type} </li>
@@ -38,6 +41,7 @@ const Lists = ({currentMovie}) => {
           <li> {currentMovie.genre} </li>
         </ul>
       </div>
+
       <div className="flex-container">
         <div className="flex-child poster">
           <img className="movie-image" src={currentMovie.img} style={{width: 300, height: 400}}></img>
@@ -46,6 +50,7 @@ const Lists = ({currentMovie}) => {
         <div className="flex-child description">
           <p> Movie description</p>
           {/* <p className="text-break">Lorem ipsum dolor sit amet, 
+
             consectetur adipiscing elit, 
             sed do eiusmod tempor incididunt 
             ut labore et dolore magna aliqua. 
@@ -59,6 +64,7 @@ const Lists = ({currentMovie}) => {
             sunt in culpa qui officia deserunt mollit 
             anim id est laborum.</p> */}
         </div>
+
       </div>
 
       <div className="wishlist-bottom-container">
@@ -75,6 +81,7 @@ const Lists = ({currentMovie}) => {
           {" "}
           Add To Cart
         </button>
+
       </div>
     </div>
   );
