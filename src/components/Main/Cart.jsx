@@ -11,7 +11,7 @@ import {
 //------------------------------------------------------------------
 const Cart = ({ me, cartChange, setCartChange }) => {
   //----------------------------------------------------------------
- const [userCart, setUserCart] = useState([])
+  const [userCart, setUserCart] = useState([{ name: "message" }]);
   //-----------------------------------------------------------------
   async function updateDev() {
     if (me.id) {
@@ -23,43 +23,43 @@ const Cart = ({ me, cartChange, setCartChange }) => {
     if (me.id) {
       async function update() {
         const response = await getUserCart(me.id);
-        setUserCart(response)
+        setUserCart(response);
       }
       // update();
-      console.log(userCart)
-      update()
+      console.log(userCart);
+      update();
     }
-  }, [cartChange])
+  }, [cartChange]);
   //----------------------------------------------------------------
   return (
-    <div className="cart-body">
-      
-      <div className="cart-container">
+    <div className='cart-body'>
+      <div className='cart-container'>
         {/* HEADER */}
-        <div className="header">
-          <h3 className="heading">Shopping Cart</h3>
-          <h5 className="action">Remove all</h5>
+        <div className='header'>
+          <h3 className='heading'>Shopping Cart</h3>
+          <h5 className='action'>Remove all</h5>
         </div>
         {/* HEADER END ^^ */}
 
         {/* LEFT HALF **************************** */}
-        <div className="cart-left-container --bs-dark">
-        {/* <CartItemList userCart={userCart} cartChange={setCartChange} me={me} /> */}
-        {userCart.length ? userCart.map((e, i) => {
-        <div key={i} className="card"> {i} </div>;
-      }): null}
+        <div className='cart-left-container --bs-dark'>
+          {/* <CartItemList userCart={userCart} cartChange={setCartChange} me={me} /> */}
+          {userCart.map((e, i) => (
+            <div key={i} className='card'>
+              {" "}
+              {"random"}{" "}
+            </div>
+          ))}
         </div>
         {/* LEFT END ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
 
-        <div className="cart-right-container">
-      
-        </div>
+        <div className='cart-right-container'></div>
         {/* RIGHT END ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
 
         {/* BOTTOM ****************************** */}
-        <div className="cart-bottom-container">
+        <div className='cart-bottom-container'>
           <button
-            className="btn btn-secondary"
+            className='btn btn-secondary'
             onClick={() => {
               addItemToCart(me.id, {
                 2: "test",
@@ -69,11 +69,11 @@ const Cart = ({ me, cartChange, setCartChange }) => {
           >
             new item
           </button>
-          <button className="btn btn-secondary" onClick={() => updateDev()}>
+          <button className='btn btn-secondary' onClick={() => updateDev()}>
             update page
           </button>
           <button
-            className="btn btn-secondary"
+            className='btn btn-secondary'
             onClick={() => deleteItemFromCart(me.id, { 2: "test" })}
           >
             delete temp
