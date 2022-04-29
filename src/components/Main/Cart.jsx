@@ -27,11 +27,10 @@ const Cart = ({ me, cartChange, setCartChange }) => {
       }
       // update();
       console.log(userCart)
+      update()
     }
-  }, []);
-
+  }, [cartChange])
   //----------------------------------------------------------------
-
   return (
     <div className="cart-body">
       
@@ -46,9 +45,9 @@ const Cart = ({ me, cartChange, setCartChange }) => {
         {/* LEFT HALF **************************** */}
         <div className="cart-left-container --bs-dark">
         {/* <CartItemList userCart={userCart} cartChange={setCartChange} me={me} /> */}
-        {/* {userCart.length ? userCart.map((e, i) => {
+        {userCart.length ? userCart.map((e, i) => {
         <div key={i} className="card"> {i} </div>;
-      }): null} */}
+      }): null}
         </div>
         {/* LEFT END ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
 

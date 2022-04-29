@@ -16,19 +16,19 @@ let client
 const DB_URL = process.env.DATABASE_URL || `${DB_LINK}`;
 
 // github actions client config
-// if (process.env.CI) {
-//   client = new Client({
-//     host: 'localhost',
-//     port: 5432,
-//     user: 'postgres',
-//     password: 'postgres',
-//     database: 'postgres',
-//   });
-// } else {
-//   // local / heroku client config
-//   client = new Client(DB_URL);
-// }
-client = new Client({connectionString: process.env.DATABASE_URL || `${DB_LINK}`,
-ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : undefined});
+if (process.env.CI) {
+  client = new Client({
+    host: 'localhost',
+    port: 5432,
+    user: 'postgres',
+    password: 'postgres',
+    database: 'postgres',
+  });
+} else {
+  // local / heroku client config
+  client = new Client(DB_LINK);
+}
+// client = new Client({connectionString: process.env.DATABASE_URL || `${DB_LINK}`,
+// ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : undefined});
 
 module.exports = client;
