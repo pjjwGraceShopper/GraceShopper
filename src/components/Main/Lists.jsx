@@ -48,9 +48,10 @@ const Lists = ({currentMovie}) => {
           {/* <img key={currentMovie.id} className="movie-img" scr={currentMovie.img} alt="movie"></img>  */}
         </div>
         <div className="flex-child description">
-          <p> Movie description</p>
-          {/* <p className="text-break">Lorem ipsum dolor sit amet, 
-
+          <p className="p1">{currentMovie.name}</p>
+          <p> Rate This Movie</p>
+          <p className="text-break">
+          Lorem ipsum dolor sit amet,
             consectetur adipiscing elit, 
             sed do eiusmod tempor incididunt 
             ut labore et dolore magna aliqua. 
@@ -62,7 +63,7 @@ const Lists = ({currentMovie}) => {
             eu fugiat nulla pariatur. Excepteur 
             sint occaecat cupidatat non proident, 
             sunt in culpa qui officia deserunt mollit 
-            anim id est laborum.</p> */}
+            anim id est laborum.</p>
         </div>
 
       </div>
