@@ -181,7 +181,7 @@ a {
   display: flex;
   flex-direction:row;
   align-items: baseline;
-  gap: 600%;
+  gap: 0%;
   
 }
 
@@ -237,7 +237,9 @@ a {
   background-color: #282828;
   margin-top: 10px;
   height: 400px;
+  width: 300px;
   margin-bottom: 10px;
+  
 }  
 
 .flex-child:first-child {
@@ -257,7 +259,9 @@ a {
  margin-bottom: 10px;
 }
 
-
+.movie-image{
+  margin-left: 45px;
+}
 
 
 

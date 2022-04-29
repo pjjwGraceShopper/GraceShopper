@@ -26,7 +26,7 @@ const Lists = ({currentMovie}) => {
       <div className="title-container">
         <ul className="title">
           <h3>{currentMovie.name}</h3>
-          <h4>Rate</h4>
+          <h4></h4>
         </ul>
       </div>
       <div className="detail-container">
@@ -40,7 +40,8 @@ const Lists = ({currentMovie}) => {
       </div>
       <div className="flex-container">
         <div className="flex-child poster">
-          <img key={currentMovie.id} className="movie-img" scr={currentMovie.img} alt="movie"></img> 
+          <img className="movie-image" src={currentMovie.img} style={{width: 300, height: 400}}></img>
+          {/* <img key={currentMovie.id} className="movie-img" scr={currentMovie.img} alt="movie"></img>  */}
         </div>
         <div className="flex-child description">
           <p> Movie description</p>
