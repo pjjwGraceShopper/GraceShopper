@@ -7,7 +7,6 @@ import { getAPIHealth } from "../axios-services";
 import "../style/index.css";
 import "../style/App.css";
 import { Route, Routes } from "react-router-dom";
-
 import { Footer, Sidebar, Login, MyLibrary, SignUp, Home, Cart, Lists, Admin } from "./index";
 import * as bootstrap from "bootstrap"
 
@@ -32,7 +31,7 @@ const App = () => {
     // first, create an async function that will wrap your axios service adapter
     // invoke the adapter, await the response, and set the data
     const getAPIStatus = async () => {
-      const { healthy } = await getAPIHealth();
+      const healthy = await getAPIHealth();
       setAPIHealth(healthy ? "api is up! :D" : "api is down :/");
     };
 
