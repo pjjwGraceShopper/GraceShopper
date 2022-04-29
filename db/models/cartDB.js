@@ -35,12 +35,11 @@ async function getUserCartIdx_DB(userid) {
             WHERE user_cart = 2;     
         `, [userid])
         //converts nested Object into array of objects 
-        console.log(data.items, "user_cart return")
-        Object.keys(data.items).forEach((k, v) => output.push({
-            [k]: data.items[k]
-        }))
+        // Object.keys(data.items).forEach((k, v) => output.push({
+        //     [k]: data.items[k]
+        // }))
         // returns "JSON" of Items [ {}, {} ]
-        return output
+        return data
     } catch (err) {
         throw err
     }
@@ -51,7 +50,7 @@ async function getUserCart_DB(userid) {
     const output = []
     try {
         const {
-            rows: [data]
+            rows: data
         } = await client.query(`
     Select name,type,genre,length,price,img FROM idxlib
     JOIN ( 
@@ -63,12 +62,12 @@ async function getUserCart_DB(userid) {
     ON cartList::int = idxlib.id
         `, [userid])
         //converts nested Object into array of objects 
-        console.log(data.items, "user_cart return")
-        Object.keys(data.items).forEach((k, v) => output.push({
-            [k]: data.items[k]
-        }))
+       
+        // Object.keys(data.items).forEach(k => output.push({
+        //     [k]: data.items[k]
+        // }))
         // returns "JSON" of Items [ {}, {} ]
-        return output
+        return data
     } catch (err) {
         throw err
     }
@@ -115,7 +114,7 @@ async function addToCartItems_DB(userid, JSONB) {
         rows
     } = await client.query(`
     UPDATE cart
-    SET items = items || ( $2 )
+    SET items = COALESCE(items || ( $2 ))
     where user_cart = ( $1 )
     `, [userid, JSONB])
     return rows

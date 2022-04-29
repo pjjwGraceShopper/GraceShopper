@@ -10,7 +10,7 @@ try{
 }
 }
 //----------------------------------------------------------------
-export async function getUserCartIDX (userid){
+export async function getUserCartIdxList (userid){
   try{
     const {data}= await axios.get(`/api/cart/${userid}/idx`)
       return data;

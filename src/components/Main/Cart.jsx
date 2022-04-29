@@ -1,43 +1,40 @@
 import React, { useState, useEffect } from "react";
 import { getPY } from "../../axios-services/PY_queries";
-import Cart_Item from "./Cart_Item";
+import CartItemList from "./CartItemList";
 import {
   getUserCart,
   addItemToCart,
   deleteItemFromCart,
   clearCart,
+  getUserCartIdxList,
 } from "../../axios-services";
-
-//----------------------------------------------------------------
+//------------------------------------------------------------------
 const Cart = ({ me, cartChange, setCartChange }) => {
   //----------------------------------------------------------------
-  const [test, setTest] = useState(null)
-  const userCart =  {
-    response: null,
-    cart: [],
-    addItemToCart,
-    deleteItemFromCart,
-    clearCart,
+ const [userCart, setUserCart] = useState([])
+  //-----------------------------------------------------------------
+  async function updateDev() {
+    if (me.id) {
+      setCartChange(Math.random());
+    }
   }
-async function updateDev () {
-  if (me.id) {
-      const response = await getUserCart(me.id);
-     
-      setCartChange(true)
-      // userCart.response = response.items
-      setTest(Math.random())
-      userCart.cart = response
-      setCartChange(false)
-      console.log(userCart.cart, "user cart on FE")
-
-  }
-}
- //----------------------------------------------------------------
-
+  //-----------------------------------------------------------------
+  useEffect(() => {
+    if (me.id) {
+      async function update() {
+        const response = await getUserCart(me.id);
+        setUserCart(response)
+      }
+      // update();
+      console.log(userCart)
+      update()
+    }
+  }, [cartChange])
+  //----------------------------------------------------------------
   return (
     <div className="cart-body">
+      
       <div className="cart-container">
-
         {/* HEADER */}
         <div className="header">
           <h3 className="heading">Shopping Cart</h3>
@@ -46,18 +43,16 @@ async function updateDev () {
         {/* HEADER END ^^ */}
 
         {/* LEFT HALF **************************** */}
-        <div className="cart-left-container">
-          <div className="cart-item-container">
-            {/* {setTimeout(() => } */}
-            {/* {cart ? cart.items.item69 : null} */}
-            {/* <Cart_Item cart={cart}/>  */}
-            {userCart.cart.map((e,i) => {return ( <div key={e + i}> {e} </div>) })}
-          </div>
+        <div className="cart-left-container --bs-dark">
+        {/* <CartItemList userCart={userCart} cartChange={setCartChange} me={me} /> */}
+        {userCart.length ? userCart.map((e, i) => {
+        <div key={i} className="card"> {i} </div>;
+      }): null}
         </div>
         {/* LEFT END ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
- 
+
         <div className="cart-right-container">
-          <div className="cart-summary-item">im an item</div>
+      
         </div>
         {/* RIGHT END ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
 
@@ -67,26 +62,24 @@ async function updateDev () {
             className="btn btn-secondary"
             onClick={() => {
               addItemToCart(me.id, {
-                "id": 15,
-                "name": "Cyrano",
-                "type": "movie ",
-                "year": 2021,
-                "genre": "Romance",
-                "length": 203,
-                "price": "$5.99",
-                "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSod_b_CNpKDrlfF2F0cpjZwcWvpE59hzKcziP0K4TkjfiM8zLQGD1uxU19PzYhrEQZyfA&usqp=CAU"
+                2: "test",
               });
-              setCartChange(true);
+              setCartChange(Math.random());
             }}
-          > new item</button>
-           <button
+          >
+            new item
+          </button>
+          <button className="btn btn-secondary" onClick={() => updateDev()}>
+            update page
+          </button>
+          <button
             className="btn btn-secondary"
-            onClick={() => updateDev()}>
-              update page
-            </button>
+            onClick={() => deleteItemFromCart(me.id, { 2: "test" })}
+          >
+            delete temp
+          </button>
         </div>
         {/* BOTTOM END ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
-
       </div>
     </div>
   );
@@ -94,11 +87,9 @@ async function updateDev () {
 //----------------------------------------------------------------
 export default Cart;
 
-
-
 // Dev testing / Notes
-   // await addItemToCart(me.id, {
-      //   item1337: `leetItem`,
-      //   item69: `deleteItemFromCart`,
-      // });
-      // await deleteItemFromCart(me.id, "item69");
+// await addItemToCart(me.id, {
+//   item1337: `leetItem`,
+//   item69: `deleteItemFromCart`,
+// });
+// await deleteItemFromCart(me.id, "item69");
