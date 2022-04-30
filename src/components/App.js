@@ -74,7 +74,7 @@ const App = () => {
           {/* sign-up route currently not working */}
 
           <Route path="/my-library" element={<MyLibrary />} />
-          <Route path="/Lists/:id" element={<Lists currentMovie={currentMovie} setCurrentMovie={setCurrentMovie}/>}/>
+          <Route path="/Lists/:id" element={<Lists currentMovie={currentMovie} setCurrentMovie={setCurrentMovie} me={me} setCartChange={setCartChange}/>}/>
            <Route path='/cart' element={<Cart me={me} cartChange={cartChange} setCartChange={setCartChange}/>} />
            <Route path="/admin" element={<Admin />}/>
 

@@ -7,13 +7,16 @@ import {
   deleteItemFromCart,
   clearCart,
   getUserCartIdxList,
+  getUserCartSubTotal
 } from "../../axios-services";
 
 //------------------------------------------------------------------
 const Cart = ({ me, cartChange, setCartChange }) => {
   //----------------------------------------------------------------
   const [userCart, setUserCart] = useState([{ name: "Nothing Yet!" }]);
-  const subTotal = {}
+  const [subTotal, setSubTotal] = useState({ value: ""})
+  
+  
   //-----------------------------------------------------------------
   async function updateDev() {
     if (me.id) {
@@ -26,9 +29,11 @@ const Cart = ({ me, cartChange, setCartChange }) => {
       async function update() {
         const response = await getUserCart(me.id);
         setUserCart(response);
+        const fetchSubtotal = await getUserCartSubTotal(me.id);
+        setSubTotal({ value: `${fetchSubtotal}`})
+        console.log(fetchSubtotal)
       }
       // update();
-      console.log(userCart);
       update();
     }
   }, [cartChange]);
@@ -47,13 +52,13 @@ const Cart = ({ me, cartChange, setCartChange }) => {
         <div className="cart-left-container --bs-dark">
           {/* <CartItemList userCart={userCart} cartChange={setCartChange} me={me} /> */}
           {userCart.length
-            ? userCart.map((e, i) => (<CartItem userCart={userCart} elem={e}cartChange={setCartChange} me={me} idx={i} subTotal={subTotal} /> ))
+            ? userCart.map((e, i) => (<CartItem userCart={userCart} elem={e}cartChange={setCartChange} me={me} idx={i} /> ))
             : "Nothing Yet!"}
         </div>
         {/* LEFT END ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
         {/* RIGHT HALF **************************** */}
         <div className="cart-right-container">
-          {/* <span> subtotal: {subTotal.sum} </span> */}
+         
         </div>
         {/* RIGHT END ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
 
@@ -67,6 +72,7 @@ const Cart = ({ me, cartChange, setCartChange }) => {
           <button className="btn btn-secondary" onClick={() => updateDev()}>
             Checkout
           </button>
+          <div>Subtotal: {subTotal.value}</div>
         </div>
         {/* BOTTOM END ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
       </div>

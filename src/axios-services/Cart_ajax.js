@@ -58,3 +58,12 @@ export async function createUserCart (userid) {
   }
 }
 //----------------------------------------------------------------
+export async function getUserCartSubTotal(userid){
+  try{
+    const {data}= await axios.get(`/api/cart/${userid}/subtotal`)
+      return data;
+  } catch (err) {
+    console.error(err, "axios error");
+    return err
+  }
+  }

@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { getLibrary } from "../../axios-services";
+import { getLibrary, addItemToCart } from "../../axios-services";
 
-
-const Lists = ({currentMovie}) => {
+const Lists = ({ currentMovie, me, setCartChange}) => {
   const [movies, setMovies] = useState([]);
-
+  const movieToAdd = new Object();
+  movieToAdd[currentMovie.id] = currentMovie.price;
+  //----------------------------------------------------------------
   useEffect(() => {
+    "";
     async function thing() {
       const lib = await getLibrary();
       setMovies(lib);
@@ -17,7 +19,6 @@ const Lists = ({currentMovie}) => {
 
   return (
     <div className="lists">
-     
       <ul>
         <li>All</li>
         <li>Movies</li>
@@ -32,7 +33,6 @@ const Lists = ({currentMovie}) => {
         </ul>
       </div>
       <div className="detail-container">
-
         <ul>
           <li>{currentMovie.year} </li>
           <li>{currentMovie.type} </li>
@@ -44,7 +44,11 @@ const Lists = ({currentMovie}) => {
 
       <div className="flex-container">
         <div className="flex-child poster">
-          <img className="movie-image" src={currentMovie.img} style={{width: 300, height: 400}}></img>
+          <img
+            className="movie-image"
+            src={currentMovie.img}
+            style={{ width: 300, height: 400 }}
+          ></img>
           {/* <img key={currentMovie.id} className="movie-img" scr={currentMovie.img} alt="movie"></img>  */}
         </div>
         <div className="flex-child description">
@@ -64,24 +68,28 @@ const Lists = ({currentMovie}) => {
             sunt in culpa qui officia deserunt mollit 
             anim id est laborum.</p> */}
         </div>
-
       </div>
 
       <div className="wishlist-bottom-container">
-        <button className="wishlist-bottom" onClick={() => updateDev()}>
+        <button
+          className="wishlist-bottom"
+          onClick={() => {
+            addItemToCart(me.id, movieToAdd);
+            setCartChange(Math.random());
+          }}
+        >
           Add to Wishlist
         </button>
         <button
           className="wishlist-bottom"
           onClick={() => {
-            addItemToCart(me.id, { item1337v2: `leetItemButBetter` });
-            setCartChange(true);
+            addItemToCart(me.id, movieToAdd);
+            setCartChange(Math.random());
           }}
         >
           {" "}
           Add To Cart
         </button>
-
       </div>
     </div>
   );

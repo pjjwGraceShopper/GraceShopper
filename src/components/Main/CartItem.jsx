@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { getUserCart, deleteItemFromCart } from "../../axios-services";
 //----------------------------------------------------------------
-const CartItem = ({ userCart, elem, idx, cartChange, me, subTotal}) => {
+const CartItem = ({ userCart, elem, idx, cartChange, me}) => {
   //-----------------------------------------------------------
-  // subTotal.values.push(elem.price)
+  
   //--------------------------------------------------------
   useEffect(() => {
     console.log(userCart, "cart item");

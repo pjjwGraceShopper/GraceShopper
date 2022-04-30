@@ -119,6 +119,26 @@ async function addToCartItems_DB(userid, JSONB) {
     `, [userid, JSONB])
     return rows
 }
+//----------------------------------------------------------------
+async function getUserCartSubTotal_DB(userid) {
+    try {
+        const {
+            rows : [rows]
+        } = await client.query(` 
+        Select SUM(price) FROM idxlib
+    JOIN ( 
+       Select JSONB_OBJECT_KEYS(items) 
+       AS cartList
+       FROM cart
+       WHERE user_cart = ( $1 )
+       ) cart
+    ON cartList::int = idxlib.id
+    `, [userid])
+        return rows.sum
+    } catch (err) {
+        throw err
+    }
+}
 //----------------------------------------------------------------    
 module.exports = {
     getUserCart_DB,
@@ -127,5 +147,6 @@ module.exports = {
     deleteCartItem_DB,
     updateCart_DB,
     addToCartItems_DB,
-    getUserCartIdx_DB
+    getUserCartIdx_DB,
+    getUserCartSubTotal_DB
 };
