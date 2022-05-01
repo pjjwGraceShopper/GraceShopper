@@ -24,7 +24,6 @@ export const registerUser = async (
       firstName,
       lastName,
     });
-    console.log("Data", data);
     return data;
   } catch (err) {
     console.error("error", err);
@@ -37,9 +36,23 @@ export const userLogin = async (username, password) => {
       username,
       password,
     });
-    console.log("Data", data);
     return data;
   } catch (err) {
     console.error("error", err);
+  }
+};
+
+export const myData = async (token) => {
+  if (token) {
+    try {
+      const {data} = await axios.get("api/users/me", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return data;
+    } catch (error) {
+      console.error("error", error);
+    }
   }
 };

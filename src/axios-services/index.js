@@ -41,5 +41,7 @@ export {
   registerUser,
   userLogin,
   getLibrary,
+  getUsers,
+  
 };
 

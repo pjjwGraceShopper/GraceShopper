@@ -29,7 +29,6 @@ const Login = ({ me, setMe, loginStatus, setLoginStatus }) => {
       }
       // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
       navigate("/");
-      console.log("is result from login: ", me.id);
     }
   };
 
@@ -39,7 +38,6 @@ const Login = ({ me, setMe, loginStatus, setLoginStatus }) => {
     localStorage.removeItem("username");
     localStorage.removeItem("id");
     localStorage.removeItem("isAdmin");
-    console.log("Username and token removed from localStorage!");
     setLoginStatus(false);
     navigate("/");
   };
