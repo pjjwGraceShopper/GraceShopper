@@ -6,8 +6,7 @@ useEffect
 
   return (
 
-    <div id="Sidebar">
-      <div id="sidebar-container" >
+    <div className="sidebar-container">
         <div id="sidebar-column">
       <Link to="/" > Home </Link>
 
@@ -24,7 +23,6 @@ useEffect
       ) : (
         <Link to='./login'> Logout </Link>
       )}
-      </div>
       </div>
     </div>
   );

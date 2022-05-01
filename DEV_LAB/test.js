@@ -7,14 +7,14 @@
 // }
 // testing()
 
-const {cartDB} = require('../db');
+// const {cartDB} = require('../db');
 
-const query = {}
-async function testQuery() {
-const response = await cartDB.getUserCart_DB(2)
-return query += response
-}
-testQuery()
-setTimeout(() => console.log(query),200)
+// const query = {}
+// async function testQuery() {
+// const response = await cartDB.getUserCart_DB(2)
+// return query += response
+// }
+// testQuery()
+// setTimeout(() => console.log(query),200)
 
 

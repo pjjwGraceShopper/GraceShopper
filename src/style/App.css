@@ -1,63 +1,32 @@
-* {
-  margin: 0;
+/* MAIN CORE START */
+.main-container h1 {
+  color: var(--green);
+  padding: 1rem;
 }
-
-.movie-imgs {
-  display: flex;
+/* MAIN CORE END ^^^^^^^^^^^^^ */
+/* MOVIE LIST START */
+.movie-img {
+  max-width: 7rem;
+  max-height: 9rem;
   overflow-y: hidden;
   overflow-x: scroll;
-  margin-left: 15rem;
-  margin-top: 2rem;
-  padding: 20px;
+  padding: 1%;
+  transition: transform 450ms;
+  margin: 2% .5% 0 0;
 }
-
-.movie-imgs::-webkit-scrollbar {
+.movie-img::-webkit-scrollbar {
   display: none;
 }
-
-.movie-img {
-  object-fit: contain;
-  width: 100%;
-  max-height: 200px;
-  max-width: 180px;
-  transition: transform 450ms;
-  margin-right: 20px;
-}
-
 .movie-img:hover {
   transform: scale(1.2);
   opacity: 1;
 }
-
 .movie-app > .row {
   overflow-x: auto;
   flex-wrap: nowrap;
 }
-
-.app-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-}
-
-.app-container h1 {
-  color: var(--green);
-  padding: 1rem;
-}
-
-.footer {
-  background-color: #212121;
-  color: white;
-  margin: 0;
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-  font-size: 10px;
-}
-
+/* MOVIES LIST END ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+/* FOOTER START SECTION */
 .footer-columns {
   display: flex;
   justify-content: space-evenly;
@@ -66,49 +35,53 @@
 }
 
 .footer-columns ul {
-  list-style: none;
+  text-decoration: none;
   padding-right: 5rem;
 }
 
 .footer-heads {
   margin-bottom: 1rem;
-  font-size: 11px;
+  font-size: 10px;
 }
-
 hr {
   border: 0;
   height: 1px;
   width: 95%;
   background: #484848;
 }
-
 .footer-row {
-  display: flex;
   align-items: center;
-  justify-content: flex-start;
   padding-left: 0.5rem;
   font-size: 8px;
 }
-
+/* FOOTER END ^^^^^^^^^^^^^ */
+/* MY LIBRARY */
 .myLib {
   background: #2e3135;
-  height: 100vh;
-  width: 100vw;
+align-items: center;
 }
 
 .myLib ul li {
-  list-style: none;
-  display: inline;
+  text-decoration: none;
   padding-right: 1rem;
 }
 
 .myLib-container {
-  display: table;
+  flex-flow: column nowrap;
   background: #2e3135;
-  width: 100vw;
-  height: 100vh;
-}
 
+}
+.myLib-Nav{
+  height: 10%;
+  margin: 1% 0 0 0;
+  top:0;
+}
+.myLib-Nav * {
+  height: 10%;
+}
+.myLib{
+  flex-flow: row nowrap;
+}
 /* .myLib-overflow {
   overflow: hidden;
   position: relative;
@@ -144,27 +117,13 @@ hr {
   float: left;
 }
 
-#Sidebar {
-  position: fixed;
-  width: 8%;
-  height: 100vh;
-  background: #212121;
-  /* margin-left: 20px; */
-  margin-top: 0;
-}
-
+/* SIDEBAR SUB */
 #sidebar-column {
   display: flex;
   /* justify-content: left; */
   flex-direction: column;
 }
 
-#sidebar-container {
-  padding: 0px;
-  margin: 0px;
-  margin-top: 30px;
-  height: 100%;
-}
 
 a:link {
   text-decoration: none;
@@ -288,47 +247,66 @@ a {
 
 
 /* CART */
-
-.cart-body {
-  margin-left: 0px;
-  padding: 0;
-  background: linear-gradient(to bottom right, #e3f0ff, #fafcff);
-  height: 58vh;
-  width: 60rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.cart-left-container * {
-  color: black;
-}
 .cart-container {
-  width: 70%;
-  height: 85%;
-  background-color: #ffffff;
+  margin: 10%;
+  background-color: #022956;
   border-radius: 20px;
-  box-shadow: 0px 25px 40px #1687d933;
+  box-shadow: 0px 25px 40px #0c86dd33;
+  flex-flow: column;
 }
-
 .header {
-  margin: auto;
   width: 90%;
-  height: 20%;
-  display: flex;
+  height: 10%;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
 }
 .heading {
   font-size: 20px;
   font-family: ‘Open Sans’;
   font-weight: 700;
-  color: #2f3841;
+  align-items: center;
+  justify-content: center;
 }
 .action {
   font-size: 14px;
   font-family: ‘Open Sans’;
   font-weight: 600;
-  color: #cb920f;
   cursor: pointer;
-  border-bottom: 1px solid #cb920f;
+  align-items: center;
+  justify-content: flex-end;
+}
+.cart-body {
+  margin-left: 0px;
+  padding: 5%;
+  background: linear-gradient(to bottom right, #005ec9, #020b19);
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+}
+.cart-body * {
+  color: #cff0f1;
+  font-size: .8rem;
+}
+.cart-left-container{
+  flex-flow: column;
+  height: 60%;
+  width: 40%;
+}
+.cart-left-container button {
+  height: 25%;
+  width: 60%;
+}
+.cart-right-container{
+  flex-flow: column;
+  height: 60%;
+  width: 40%;
+}
+.cart-bottom-container{
+  flex-flow: row;
+  width: 90%;
+  height: 30%;
+}
+.cart-bottom-container button {
+  height: 50%;
+  width: 30%;
 }

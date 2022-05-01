@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { getUserCart, deleteItemFromCart } from "../../axios-services";
 //----------------------------------------------------------------
-const CartItem = ({ userCart, elem, idx, cartChange, me, subTotal}) => {
+const CartItem = ({ userCart, elem, idx, cartChange, me, inCart}) => {
   //-----------------------------------------------------------
-  // subTotal.values.push(elem.price)
+  inCart.ids[elem.id] = elem.price
   //--------------------------------------------------------
   useEffect(() => {
     console.log(userCart, "cart item");
   }, [userCart]);
   //-------------------------------------------
   return (
-    <div className="card --bs-dark">
+    <div className="cart-item-container card --bs-dark">
        <img className="movie-img" src={elem.img} key={elem + idx} alt="movie"></img>
-      <div>
+      <div key={elem.id}>
         {elem.name}
         {elem.price}
       </div>
-      <button className="btn btn-secondary" onClick={() => deleteItemFromCart}> </button>
+      <button className="btn btn-secondary" onClick={() => {deleteItemFromCart(me.id, elem.id); setCartChange(Math.random())}}> Remove Item </button>
     </div>
   );
 };

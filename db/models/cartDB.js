@@ -52,7 +52,7 @@ async function getUserCart_DB(userid) {
         const {
             rows: data
         } = await client.query(`
-    Select name,type,genre,length,price,img FROM idxlib
+    Select id,name,type,genre,length,price,img FROM idxlib
     JOIN ( 
        Select JSONB_OBJECT_KEYS(items) 
        AS cartList
@@ -77,7 +77,8 @@ async function getUserCart_DB(userid) {
 // must include old cart items + new cart items ******
 
 // UPDATES THE **ENTIRE** CART, use with caution
-async function updateCart_DB(userid, JSONB) {
+async function updateCart_DB(userid, JSONB={}) {
+    
     try {
         const {
             rows
@@ -119,6 +120,26 @@ async function addToCartItems_DB(userid, JSONB) {
     `, [userid, JSONB])
     return rows
 }
+//----------------------------------------------------------------
+async function getUserCartSubTotal_DB(userid) {
+    try {
+        const {
+            rows : [rows]
+        } = await client.query(` 
+        Select SUM(price) FROM idxlib
+    JOIN ( 
+       Select JSONB_OBJECT_KEYS(items) 
+       AS cartList
+       FROM cart
+       WHERE user_cart = ( $1 )
+       ) cart
+    ON cartList::int = idxlib.id
+    `, [userid])
+        return rows.sum
+    } catch (err) {
+        throw err
+    }
+}
 //----------------------------------------------------------------    
 module.exports = {
     getUserCart_DB,
@@ -127,5 +148,6 @@ module.exports = {
     deleteCartItem_DB,
     updateCart_DB,
     addToCartItems_DB,
-    getUserCartIdx_DB
+    getUserCartIdx_DB,
+    getUserCartSubTotal_DB
 };
