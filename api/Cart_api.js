@@ -62,7 +62,7 @@ cartRouter.post('/:userid/delete', async (req, res, next) => {
 cartRouter.post('/:userid/clear', async (req, res, next) => {
   const userID = req.params.userid
   try{
-    const data = await cartDB.updateCart_DB(userID, {items: {}})
+    const data = await cartDB.updateCart_DB(userID, {})
     res.status(200).send(data)
 } catch (err) {
     res.status(500).send

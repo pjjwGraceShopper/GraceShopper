@@ -41,9 +41,9 @@ const App = () => {
   }, []);
 
   return (
-    <div className='sidebar-container'>
+    <div className="app-container">
       <Sidebar loginStatus={loginStatus} />
-      <div className='app-container'>
+      <div className='main-container'>
         {/* <div className="main_title">Hello, World!</div>
         <p>API Status: {APIHealth}</p> */}
         <Routes>
@@ -73,15 +73,14 @@ const App = () => {
           />
           {/* sign-up route currently not working */}
 
-          <Route path="/my-library" element={<MyLibrary />} />
+          <Route path="/my-library" element={<MyLibrary me={me} />} />
           <Route path="/Lists/:id" element={<Lists currentMovie={currentMovie} setCurrentMovie={setCurrentMovie} me={me} setCartChange={setCartChange}/>}/>
            <Route path='/cart' element={<Cart me={me} cartChange={cartChange} setCartChange={setCartChange}/>} />
            <Route path="/admin" element={<Admin />}/>
-
         </Routes>
         <Footer />
       </div>
-    </div>
+      </div>
   );
 };
 

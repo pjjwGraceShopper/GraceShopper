@@ -2,6 +2,7 @@ const apiRouter = require("express").Router();
 const usersRouter = require("./users");
 const cartRouter = require("./Cart_api");
 const libRouter = require("./libRouter");
+const myLibraryRouter = require("./myLibrary")
 const jwt = require("jsonwebtoken");
 const { getUserById } = require("../db/models/usersDB");
 const { JWT_SECRET } = process.env;
@@ -49,6 +50,7 @@ apiRouter.get("/health", (req, res, next) => {
 apiRouter.use("/cart", cartRouter);
 apiRouter.use("/users", usersRouter);
 apiRouter.use("/library", libRouter);
+apiRouter.use("/mylibrary", myLibraryRouter);
 //----------------------------------------------------------------
 //.. Error Handler
 apiRouter.use((error, req, res, next) => {

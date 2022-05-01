@@ -52,7 +52,7 @@ async function getUserCart_DB(userid) {
         const {
             rows: data
         } = await client.query(`
-    Select name,type,genre,length,price,img FROM idxlib
+    Select id,name,type,genre,length,price,img FROM idxlib
     JOIN ( 
        Select JSONB_OBJECT_KEYS(items) 
        AS cartList
@@ -77,7 +77,8 @@ async function getUserCart_DB(userid) {
 // must include old cart items + new cart items ******
 
 // UPDATES THE **ENTIRE** CART, use with caution
-async function updateCart_DB(userid, JSONB) {
+async function updateCart_DB(userid, JSONB={}) {
+    
     try {
         const {
             rows
