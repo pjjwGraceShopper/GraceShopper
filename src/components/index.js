@@ -8,3 +8,4 @@ export { default as MyLibrary } from "./Main/MyLibrary";
 export { default as Home } from "./Main/Home";
 export { default as Lists } from "./Main/Lists";
 export { default as Admin } from "./Main/Admin";
+export { default as Profile } from "./Main/Profile"

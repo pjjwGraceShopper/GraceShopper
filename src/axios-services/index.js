@@ -45,6 +45,7 @@ export {
   getLibrary,
   getUserCartSubTotal,
   getMyLibrary,
+  getUsers,
   createUserLibrary,
   addToUserLibrary
 };
