@@ -21,10 +21,10 @@ useEffect
         </>
       ) : (
         <Link to='./login'> Logout </Link>
-          {localStorage.getItem("isAdmin") ? (
+      )}
+       {localStorage.getItem("isAdmin") ? (
             <Link to="./admin">Admin</Link>
           ) : null}
-      )}
       </div>
     </div>
   );

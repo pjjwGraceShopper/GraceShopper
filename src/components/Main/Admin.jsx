@@ -16,14 +16,16 @@ const Admin = () => {
     fetchUsers();
   }, [setUsers]);
   return (
-    <div>
+    <div className="admin-container">
       {admin === true ? (
         <>
+        <div className="admin-header">
           <h1>Admin Page</h1>
           <h2>All Users Info</h2>
-          <table className="table table-dark table-striped">
-            <thead>
-              <tr>
+          </div>
+          <table className="table table-dark table-striped admin-table">
+            <thead className="admin-table-header">
+              <tr className="admin-table-row">
                 <th scope="col">ID</th>
                 <th scope="col">First Name</th>
                 <th scope="col">Last Name</th>
@@ -31,7 +33,7 @@ const Admin = () => {
                 <th scope="col">Username</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="admin-table-body">
               {users.map((user) => (
                 <tr key={user.id}>
                   <>

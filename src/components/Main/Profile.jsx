@@ -12,7 +12,7 @@ const Profile = () => {
     fetchUser();
   }, [setUser]);
   return (
-    <div>
+    <div className="profile-container">
       <h1>{user.username}'s Profile</h1>
       <h2 className="header header-textAlign">Account Information</h2>
       <table className="table table-dark">

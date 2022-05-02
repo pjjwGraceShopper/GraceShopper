@@ -1,0 +1,33 @@
+.admin-container{
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+  }
+  .admin-header {
+    align-items: center;
+    margin: 0;
+    justify-content: center;
+    flex-flow: column nowrap;
+  }
+  .admin-header * {
+    height: 10%;
+    align-items: center;
+    justify-content: center;
+    }
+  .admin-table-header{
+    align-items: center;
+  }
+  .admin-table{
+    flex-flow: column nowrap;
+    width: 60%;
+  }
+  .admin-table-body {
+    flex-flow: column nowrap;
+  }
+  .admin-table-row{
+    flex-flow: row;
+  }
+  
+  .profile-container{
+    flex-flow: column nowrap;
+  }

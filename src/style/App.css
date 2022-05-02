@@ -100,7 +100,7 @@ a {
   display: inline;
   padding-right: 1rem;
   margin-left: 10px;
-
+}
 .Detailed-View-Container{
   flex-flow: column nowrap;
   align-items: center;
@@ -179,3 +179,4 @@ position: relative;
  flex-flow: row nowrap;
  flex:1;
 }
+
