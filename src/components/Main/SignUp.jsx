@@ -56,8 +56,8 @@ const SignUp = ({ setMe, loginStatus, setLoginStatus }) => {
               className="card bg-dark text-white"
               style={{ borderRadius: "1rem" }}
             >
-              <div className="card-body p-10 text-center">
-                <div className="mb-md-0 mt-md-0 pb-0">
+              <div className="card-body-p-10-text-center">
+                <div className="mb-md-0-mt-md-0-pb-0">
                   <h2 className="fw-bold mb-0 mx-0 text-uppercase">Sign Up</h2>
                   <p className="text-white-50 mb-5">
                     Please enter your info to Sign Up!
@@ -123,12 +123,14 @@ const SignUp = ({ setMe, loginStatus, setLoginStatus }) => {
                         }}
                       />
                     </div>
+                    <div className="login-block">
                     <button
                           className="btn btn-outline-light btn-lg px-5"
                           type="submit"
                         >
                           SignUp
                         </button>
+                        </div>
                   </form>
                   {signUpMessage.error ? (
                     <>
