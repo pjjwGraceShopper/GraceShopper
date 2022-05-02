@@ -10,9 +10,19 @@ try{
 }
 }
 //----------------------------------------------------------------
-export async function addItemToCart (userid, items) {
+export async function getUserCartIdxList (userid){
+  try{
+    const {data}= await axios.get(`/api/cart/${userid}/idx`)
+      return data;
+  } catch (err) {
+    console.error(err, "axios error");
+    return err
+  }
+  }
+//----------------------------------------------------------------
+export async function addItemToCart (userid, item) {
   try{ 
-    const {data}= await axios.post(`/api/cart/${userid}/add`, {items: items} )
+    const {data}= await axios.post(`/api/cart/${userid}/add`, {item: item} )
     return data;
   } catch (err) {
     console.error(err, "axios error");
@@ -20,9 +30,9 @@ export async function addItemToCart (userid, items) {
   }
 }
 //----------------------------------------------------------------
-export async function deleteItemFromCart (userid, item) {
+export async function deleteItemFromCart (userid, key) {
   try{ 
-    const data = await axios.post(`/api/cart/${userid}/delete`, {item: item})
+    const data = await axios.post(`/api/cart/${userid}/delete`, {item: key})
     return data;
   } catch (err) {
     console.error(err, "axios error");
@@ -48,3 +58,12 @@ export async function createUserCart (userid) {
   }
 }
 //----------------------------------------------------------------
+export async function getUserCartSubTotal(userid){
+  try{
+    const {data}= await axios.get(`/api/cart/${userid}/subtotal`)
+      return data;
+  } catch (err) {
+    console.error(err, "axios error");
+    return err
+  }
+  }

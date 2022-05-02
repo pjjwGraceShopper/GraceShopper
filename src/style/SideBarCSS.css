@@ -1,0 +1,35 @@
+/* SIDEBAR SUB */
+#sidebar-column {
+    display: flex;
+    /* justify-content: left; */
+    flex-direction: column;
+    padding: 10% 0 0 10%;
+  }
+  
+  
+  a:link {
+    text-decoration: none;
+    font-size: 16px;
+    font: weight 200px;
+    text-align: center;
+    position: relative;
+    height: 40px;
+    /* line-height:40px; */
+    margin-top: 10px;
+    overflow: hidden;
+    width: 100%;
+    margin-left: 5%;
+    cursor: pointer;
+  }
+  
+  a {
+    color: white;
+  }
+  
+  .lists ul li{
+    font-size: 15px;
+    list-style: none;
+    display: inline;
+    padding-right: 1rem;
+  }
+  

@@ -7,7 +7,6 @@ import { getAPIHealth } from "../axios-services";
 import "../style/index.css";
 import "../style/App.css";
 import { Route, Routes } from "react-router-dom";
-
 import {
   Footer,
   Sidebar,
@@ -22,11 +21,13 @@ import {
 } from "./index";
 import * as bootstrap from "bootstrap";
 
+
 const App = () => {
   const [APIHealth, setAPIHealth] = useState("");
   const [me, setMe] = useState({});
   const [cartChange, setCartChange] = useState(false);
   const [loginStatus, setLoginStatus] = useState(false);
+  const [currentMovie, setCurrentMovie] = useState(null);
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -52,13 +53,13 @@ const App = () => {
   }, []);
 
   return (
-    <div className="sidebar-container">
+    <div className="app-container">
       <Sidebar loginStatus={loginStatus} />
-      <div className="app-container">
+      <div className='main-container'>
         {/* <div className="main_title">Hello, World!</div>
         <p>API Status: {APIHealth}</p> */}
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home currentMovie={currentMovie} setCurrentMovie={setCurrentMovie}/> } />
           <Route
             path="/login"
             element={
@@ -81,25 +82,17 @@ const App = () => {
             }
           />
           {/* sign-up route currently not working */}
-
-          <Route path="/my-library" element={<MyLibrary />} />
-          <Route path="/Lists" element={<Lists />} />
-          <Route
-            path="/cart"
-            element={
-              <Cart
-                me={me}
-                cartChange={cartChange}
-                setCartChange={setCartChange}
-              />
-            }
-          />
-          <Route path="/admin" element={<Admin />} />
+          <Route path="/my-library" element={<MyLibrary me={me} />} />
+          <Route path="/Lists/:id" element={<Lists currentMovie={currentMovie} setCurrentMovie={setCurrentMovie} me={me} setCartChange={setCartChange}/>}/>
+           <Route path='/cart' element={<Cart me={me} cartChange={cartChange} setCartChange={setCartChange}/>} />
+           <Route path="/admin" element={<Admin />}/>
           <Route path="/profile" element={<Profile />}/>
+
         </Routes>
-        <Footer />
+        
       </div>
-    </div>
+      <Footer />
+      </div>
   );
 };
 

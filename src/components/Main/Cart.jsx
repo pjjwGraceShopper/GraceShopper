@@ -1,95 +1,96 @@
 import React, { useState, useEffect } from "react";
 import { getPY } from "../../axios-services/PY_queries";
-import Cart_Item from "./Cart_Item";
+import CartItem from "./CartItem";
 import {
   getUserCart,
   addItemToCart,
   deleteItemFromCart,
   clearCart,
+  getUserCartIdxList,
+  getUserCartSubTotal,
+  addToUserLibrary,
 } from "../../axios-services";
 
-//----------------------------------------------------------------
+//------------------------------------------------------------------
 const Cart = ({ me, cartChange, setCartChange }) => {
   //----------------------------------------------------------------
-  const [test, setTest] = useState(null)
-  const userCart =  {
-    response: null,
-    cart: [],
-    addItemToCart,
-    deleteItemFromCart,
-    clearCart,
-  }
-async function updateDev () {
-  if (me.id) {
-      const response = await getUserCart(me.id);
-     
-      setCartChange(true)
-      // userCart.response = response.items
-      setTest(Math.random())
-      userCart.cart = response
-      setCartChange(false)
-      console.log(userCart.cart, "user cart on FE")
+  const [userCart, setUserCart] = useState([{ name: "Nothing Yet!" }]);
+  const [subTotal, setSubTotal] = useState({ value: "" });
+  const inCart = { ids: {} };
 
+  //-----------------------------------------------------------------
+  async function updateDev() {
+    if (me.id) {
+      setCartChange(Math.random());
+    }
   }
-}
- //----------------------------------------------------------------
-
+  //----------------------------------------------------------------
+  async function handleCheckout() {
+    addToUserLibrary(me.id, inCart.ids);
+    clearCart(me.id);
+    setCartChange(Math.random());
+  }
+  //-----------------------------------------------------------------
+  useEffect(() => {
+    if (me.id) {
+      async function update() {
+        const response = await getUserCart(me.id);
+        setUserCart(response);
+        const fetchSubtotal = await getUserCartSubTotal(me.id);
+        setSubTotal({ value: `${fetchSubtotal}` });
+        console.log(fetchSubtotal);
+      }
+      // update();
+      update();
+    }
+  }, [cartChange]);
+  //----------------------------------------------------------------
   return (
-    <div className="cart-body">
-      <div className="cart-container">
-
-        {/* HEADER */}
-        <div className="header">
-          <h3 className="heading">Shopping Cart</h3>
-          <h5 className="action">Remove all</h5>
-        </div>
-        {/* HEADER END ^^ */}
-
+    <div className="cart-container">
+      {/* HEADER */}
+      <div className="header">
+        <h3 className="heading">Shopping Cart</h3>
+        <h5 className="action">Remove all</h5>
+      </div>
+      {/* HEADER END ^^ */}
+      <div className="cart-body">
         {/* LEFT HALF **************************** */}
-        <div className="cart-left-container">
-          <div className="cart-item-container">
-            {/* {setTimeout(() => } */}
-            {/* {cart ? cart.items.item69 : null} */}
-            {/* <Cart_Item cart={cart}/>  */}
-            {userCart.cart.map((e,i) => {return ( <div key={e + i}> {e} </div>) })}
-          </div>
+        <div className="cart-left-container --bs-dark">
+          {/* <CartItemList userCart={userCart} cartChange={setCartChange} me={me} /> */}
+          {userCart.length
+            ? userCart.map((e, i) => (
+                <CartItem
+                  inCart={inCart}
+                  userCart={userCart}
+                  elem={e}
+                  cartChange={setCartChange}
+                  me={me}
+                  idx={i}
+                />
+              ))
+            : "Nothing Yet!"}
         </div>
         {/* LEFT END ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
- 
-        <div className="cart-right-container">
-          <div className="cart-summary-item">im an item</div>
-        </div>
+        {/* RIGHT HALF **************************** */}
+        <div className="cart-right-container"></div>
         {/* RIGHT END ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
-
         {/* BOTTOM ****************************** */}
         <div className="cart-bottom-container">
+          <button className="btn btn-secondary" onClick={() => updateDev()}>
+            update cart
+          </button>
           <button
             className="btn btn-secondary"
-            onClick={() => {
-              addItemToCart(me.id, { item1337v2: `leetItemButBetter` });
-              setCartChange(true);
-            }}
-          > new item</button>
-           <button
-            className="btn btn-secondary"
-            onClick={() => updateDev()}>
-              update page
-            </button>
+            onClick={() => handleCheckout()}
+          >
+            Checkout
+          </button>
+          <div>Subtotal: {subTotal.value}</div>
         </div>
         {/* BOTTOM END ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
-
       </div>
     </div>
   );
 };
 //----------------------------------------------------------------
 export default Cart;
-
-
-
-// Dev testing / Notes
-   // await addItemToCart(me.id, {
-      //   item1337: `leetItem`,
-      //   item69: `deleteItemFromCart`,
-      // });
-      // await deleteItemFromCart(me.id, "item69");

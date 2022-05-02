@@ -1,8 +1,8 @@
 import axios from 'axios';
-import {getUserCart, addItemToCart, deleteItemFromCart, clearCart, createUserCart} from './Cart_ajax'
+import {getUserCart, addItemToCart, deleteItemFromCart, clearCart, createUserCart, getUserCartIdxList, getUserCartSubTotal} from './Cart_ajax'
 import {getUsers, registerUser, userLogin} from './users_ajax'
 import { getLibrary } from "./lib_ajax";
-
+import { getMyLibrary, createUserLibrary, addToUserLibrary} from "./myLibrary_ajax"
 
 // this file holds your frontend network request adapters
 // think about each function as a service that provides data
@@ -26,7 +26,8 @@ export async function getAPIHealth() {
   try {
     const { data } = await axios.get("/api/health");
     return data;
-  } catch (err) {
+  } 
+  catch (err) {
     console.error(err);
     return { healthy: false };
   }
@@ -34,6 +35,7 @@ export async function getAPIHealth() {
 
 export {
   getUserCart,
+  getUserCartIdxList,
   addItemToCart,
   deleteItemFromCart,
   clearCart,
@@ -41,7 +43,10 @@ export {
   registerUser,
   userLogin,
   getLibrary,
+  getUserCartSubTotal,
+  getMyLibrary,
   getUsers,
-  
+  createUserLibrary,
+  addToUserLibrary
 };
 

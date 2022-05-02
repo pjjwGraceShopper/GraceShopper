@@ -2,10 +2,11 @@ const apiRouter = require("express").Router();
 const usersRouter = require("./users");
 const cartRouter = require("./Cart_api");
 const libRouter = require("./libRouter");
+const myLibraryRouter = require("./myLibrary")
 const jwt = require("jsonwebtoken");
 const { getUserById } = require("../db/models/usersDB");
 const { JWT_SECRET } = process.env;
-
+//------------------------------------------------------------------------------
 apiRouter.use(async (req, res, next) => {
   const prefix = "Bearer ";
   const auth = req.header("Authorization");
@@ -32,18 +33,24 @@ apiRouter.use(async (req, res, next) => {
     });
   }
 });
-
+//------------------------------------------------------------------------------
+apiRouter.get("/", (req, res, next) => {
+  res.send("hi"
+  );
+  next();
+});
+//------------------------------------------------------------------------------
 apiRouter.get("/health", (req, res, next) => {
   res.send({
     healthy: true,
   });
   next();
 });
-
 //----------------------------------------------------------------
 apiRouter.use("/cart", cartRouter);
 apiRouter.use("/users", usersRouter);
 apiRouter.use("/library", libRouter);
+apiRouter.use("/mylibrary", myLibraryRouter);
 //----------------------------------------------------------------
 //.. Error Handler
 apiRouter.use((error, req, res, next) => {

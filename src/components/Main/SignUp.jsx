@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { registerUser, createUserCart } from "../../axios-services";
+import { registerUser, createUserCart, createUserLibrary } from "../../axios-services";
 
 const SignUp = ({ setMe, loginStatus, setLoginStatus }) => {
   const [username, setUsername] = useState("");
@@ -35,6 +35,7 @@ const SignUp = ({ setMe, loginStatus, setLoginStatus }) => {
         id: result.user.id,
       });
       await createUserCart(result.user.id);
+      await createUserLibrary(result.user.id)
       console.log(result);
       navigate("/");
     }
