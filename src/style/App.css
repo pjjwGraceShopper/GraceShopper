@@ -90,14 +90,22 @@ align-items: center;
   float: left;
 }
 
+a {
+  color: white;
+}
 
-
-
+.lists ul li{
+  font-size: 15px;
+  list-style: none;
+  display: inline;
+  padding-right: 1rem;
+  margin-left: 10px;
 
 .Detailed-View-Container{
   flex-flow: column nowrap;
   align-items: center;
   margin: 10%;
+
 }
 .title-container{
   width: 80%;
@@ -171,5 +179,3 @@ position: relative;
  flex-flow: row nowrap;
  flex:1;
 }
-
-

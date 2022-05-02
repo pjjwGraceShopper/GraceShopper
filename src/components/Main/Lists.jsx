@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import MovieList from "./MovieList";
 import { getLibrary, addItemToCart } from "../../axios-services";
+
 
 const Lists = ({ currentMovie, me, setCartChange }) => {
   const [movies, setMovies] = useState([]);
