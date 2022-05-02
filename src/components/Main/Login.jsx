@@ -102,13 +102,16 @@ const Login = ({ me, setMe, loginStatus, setLoginStatus }) => {
                             Password
                           </label>
                         </div>
+                        <div className="login-block">
                         <button
                           className="btn btn-outline-light btn-lg px-5"
                           type="submit"
                         >
                           Login
                         </button>
+                        </div>
                       </form>
+                      
                       {loginMessage.error ? (
                         <>
                           <h3>{loginMessage.name}</h3>
