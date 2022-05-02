@@ -57,13 +57,14 @@ const SignUp = ({ setMe, loginStatus, setLoginStatus }) => {
               style={{ borderRadius: "1rem" }}
             >
               <div className="card-body-p-10-text-center">
-                <div className="mb-md-0-mt-md-0-pb-0">
+                <div className="sign-container">
                   <h2 className="fw-bold mb-0 mx-0 text-uppercase">Sign Up</h2>
                   <p className="text-white-50 mb-5">
                     Please enter your info to Sign Up!
                   </p>
+                  <div className="block-sign">
                   <form onSubmit={onSignUp}>
-                    <div className="form-outline form-white mb-4">
+                    <div className="form-outline-container">
                       <input
                         value={firstName}
                         type="text"
@@ -75,7 +76,7 @@ const SignUp = ({ setMe, loginStatus, setLoginStatus }) => {
                         }}
                       />
                     </div>
-                    <div className="form-outline form-white mb-4">
+                    <div className="form-outline-container">
                       <input
                         value={lastName}
                         type="text"
@@ -87,7 +88,8 @@ const SignUp = ({ setMe, loginStatus, setLoginStatus }) => {
                         }}
                       />
                     </div>
-                    <div className="form-outline form-white mb-4">
+                    
+                    <div className="form-outline-container">
                       <input
                         value={email}
                         type="text"
@@ -99,7 +101,7 @@ const SignUp = ({ setMe, loginStatus, setLoginStatus }) => {
                         }}
                       />
                     </div>
-                    <div className="form-outline form-white mb-4">
+                    <div className="form-outline-container">
                       <input
                         value={username}
                         type="username"
@@ -111,7 +113,7 @@ const SignUp = ({ setMe, loginStatus, setLoginStatus }) => {
                         }}
                       />
                     </div>
-                    <div className="form-outline form-white mb-4">
+                    <div className="form-outline-container">
                       <input
                         value={password}
                         type="password"
@@ -132,6 +134,7 @@ const SignUp = ({ setMe, loginStatus, setLoginStatus }) => {
                         </button>
                         </div>
                   </form>
+                  </div>
                   {signUpMessage.error ? (
                     <>
                       <h3>{signUpMessage.name}</h3>

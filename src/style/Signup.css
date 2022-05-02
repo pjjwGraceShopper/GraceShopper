@@ -1,7 +1,19 @@
-/* .card-body-p-10-text-center {
-  margin-top: 10%;
-  margin-bottom: 90%;
-} */
+.form-outline-container{
+background-color: rgb(11, 58, 98);
+margin-right: px;
+width: 600px;
+height: 40px;
+}
 
+.sign-container{
+  flex-direction:column;
+  align-self: flex-end;
+
+}
+
+.block-sign{
+  width: 100%;
+  height: auto; 
+}
 
 
