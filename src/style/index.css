@@ -1,7 +1,12 @@
 /* import fonts here */
 /* @import url('https://cdn.jsdelivr.net/npm/uikit@3.13.10/dist/css/uikit.min.css'); */
 @import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "./SideBarCSS.css";
+@import "./FooterCSS";
 @import "./App.css";
+@import "./CartCSS.css";
+
+
 
 :root {
   /* define variables here */
@@ -29,7 +34,8 @@ body * {
   height:100%;
 }
 .app-container {
-  display: flex;
+  flex-flow: column;
+  height: 115%;
 }
 .main-container {
   flex-direction: column;
@@ -43,25 +49,23 @@ body * {
   position: absolute;
 }
 .sidebar-container {
-  padding: 0 0 0 1%;
+  padding: 0 0 2% 1%;
   margin: 0 0 0 0;
   height: 100%;
   max-width: 12%;
   top: 0;
   left:0;
+  bottom: 0;
   background: #212121;
-  position: absolute;
+  position: sticky;
   align-items: center;
 }
 .foot-container {
   background-color: #212121;
   color: white;
-  margin: 0;
-  width: 100%;
-  position: fixed;
-  max-height: 10%;
+  padding: 1% 0 1% 0;
+  max-height: 12%;
   bottom: 0;
-  top:90;
   position: relative;
   font-size: 10px;
 }
