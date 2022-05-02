@@ -78,8 +78,9 @@ const App = () => {
            <Route path='/cart' element={<Cart me={me} cartChange={cartChange} setCartChange={setCartChange}/>} />
            <Route path="/admin" element={<Admin />}/>
         </Routes>
-        <Footer />
+        
       </div>
+      <Footer />
       </div>
   );
 };

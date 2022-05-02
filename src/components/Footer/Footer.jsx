@@ -3,6 +3,7 @@ import React from "react";
 const Footer = () => {
   return (
       <div className='foot-container'>
+        <div className='foot-inner'>
         <div className='footer-columns'>
           <ul>
             <li className='footer-heads'>BROWSE</li>
@@ -28,6 +29,7 @@ const Footer = () => {
           <p>
             &copy;{new Date().getFullYear()} DUMMY INPUT | All rights reserved
           </p>
+        </div>
         </div>
       </div>
   );
