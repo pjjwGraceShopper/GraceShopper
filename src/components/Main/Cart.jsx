@@ -1,22 +1,34 @@
 import React, { useState, useEffect } from "react";
 import { getPY } from "../../axios-services/PY_queries";
-import CartItemList from "./CartItemList";
+import CartItem from "./CartItem";
 import {
   getUserCart,
   addItemToCart,
   deleteItemFromCart,
   clearCart,
   getUserCartIdxList,
+  getUserCartSubTotal,
+  addToUserLibrary,
 } from "../../axios-services";
+
 //------------------------------------------------------------------
 const Cart = ({ me, cartChange, setCartChange }) => {
   //----------------------------------------------------------------
   const [userCart, setUserCart] = useState([{ name: "Nothing Yet!" }]);
+  const [subTotal, setSubTotal] = useState({ value: "" });
+  const inCart = { ids: {} };
+
   //-----------------------------------------------------------------
   async function updateDev() {
     if (me.id) {
       setCartChange(Math.random());
     }
+  }
+  //----------------------------------------------------------------
+  async function handleCheckout() {
+    addToUserLibrary(me.id, inCart.ids);
+    clearCart(me.id);
+    setCartChange(Math.random());
   }
   //-----------------------------------------------------------------
   useEffect(() => {
@@ -24,59 +36,56 @@ const Cart = ({ me, cartChange, setCartChange }) => {
       async function update() {
         const response = await getUserCart(me.id);
         setUserCart(response);
+        const fetchSubtotal = await getUserCartSubTotal(me.id);
+        setSubTotal({ value: `${fetchSubtotal}` });
+        console.log(fetchSubtotal);
       }
       // update();
-      console.log(userCart);
       update();
     }
   }, [cartChange]);
   //----------------------------------------------------------------
   return (
-    <div className='cart-body'>
-      <div className='cart-container'>
-        {/* HEADER */}
-        <div className='header'>
-          <h3 className='heading'>Shopping Cart</h3>
-          <h5 className='action'>Remove all</h5>
-        </div>
-        {/* HEADER END ^^ */}
-
+    <div className="cart-container">
+      {/* HEADER */}
+      <div className="header">
+        <h3 className="heading">Shopping Cart</h3>
+        <h5 className="action">Remove all</h5>
+      </div>
+      {/* HEADER END ^^ */}
+      <div className="cart-body">
         {/* LEFT HALF **************************** */}
-        <div className='cart-left-container --bs-dark'>
+        <div className="cart-left-container --bs-dark">
           {/* <CartItemList userCart={userCart} cartChange={setCartChange} me={me} /> */}
-          {userCart.map((e, i) => (
-            <div key={i} className='card'>
-              {e.name}
-            </div>
-          ))}
+          {userCart.length
+            ? userCart.map((e, i) => (
+                <CartItem
+                  inCart={inCart}
+                  userCart={userCart}
+                  elem={e}
+                  cartChange={setCartChange}
+                  me={me}
+                  idx={i}
+                />
+              ))
+            : "Nothing Yet!"}
         </div>
         {/* LEFT END ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
-
-        <div className='cart-right-container'></div>
+        {/* RIGHT HALF **************************** */}
+        <div className="cart-right-container"></div>
         {/* RIGHT END ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
-
         {/* BOTTOM ****************************** */}
-        <div className='cart-bottom-container'>
-          <button
-            className='btn btn-secondary'
-            onClick={() => {
-              addItemToCart(me.id, {
-                2: "test",
-              });
-              setCartChange(Math.random());
-            }}
-          >
-            new item
-          </button>
-          <button className='btn btn-secondary' onClick={() => updateDev()}>
-            update page
+        <div className="cart-bottom-container">
+          <button className="btn btn-secondary" onClick={() => updateDev()}>
+            update cart
           </button>
           <button
-            className='btn btn-secondary'
-            onClick={() => deleteItemFromCart(me.id, { 2: "test" })}
+            className="btn btn-secondary"
+            onClick={() => handleCheckout()}
           >
-            delete temp
+            Checkout
           </button>
+          <div>Subtotal: {subTotal.value}</div>
         </div>
         {/* BOTTOM END ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
       </div>
@@ -85,10 +94,3 @@ const Cart = ({ me, cartChange, setCartChange }) => {
 };
 //----------------------------------------------------------------
 export default Cart;
-
-// Dev testing / Notes
-// await addItemToCart(me.id, {
-//   item1337: `leetItem`,
-//   item69: `deleteItemFromCart`,
-// });
-// await deleteItemFromCart(me.id, "item69");

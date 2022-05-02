@@ -1,16 +1,14 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+
 
 const Sidebar = ({ loginStatus, setCartChange }) => {
 useEffect
 
   return (
-
-    <div id="Sidebar">
-      <div id="sidebar-container" >
+    <div className="sidebar-container">
         <div id="sidebar-column">
-      <Link to="/" > Home </Link>
-
+          <Link to="/"> Home </Link>
       {/* <Link to="../Search"> Search </Link> */}
       {/* <Link to="./profile"> Profile </Link> */}
       <Link to='/my-library'>My Library</Link>
@@ -23,8 +21,10 @@ useEffect
         </>
       ) : (
         <Link to='./login'> Logout </Link>
+          {localStorage.getItem("isAdmin") ? (
+            <Link to="./admin">Admin</Link>
+          ) : null}
       )}
-      </div>
       </div>
     </div>
   );
@@ -33,36 +33,3 @@ useEffect
 export default Sidebar;
 
 
-
-
-
-
-
-{
-  /* 
-  import React from "react";
-import { Link } from "react-router-dom";
-const Sidebar = ({ loginState, setLoginState }) => {
-  const history = useHistory();
-  <div id="Sidebar">
-<Link to="../Home"> Home </Link>
-<Link to="../Search"> Search </Link>
-{loginState ? (
-  <Link to="../profile"> Profile </Link>
-) : (
-  <Link to="../Login"> Login </Link>
-)}
-{loginState ? (
-  <form
-    onSubmit={() => {
-      setLoginState(false);
-      history.push("/home");
-    }}
-  >
-    <button type="submit"> Sign Out </button>
-  </form>
-) : null}
-</div>
-);
-}; */
-}

@@ -7,7 +7,8 @@
 const client = require("./client");
 const {
   usersDB,
-  cartDB
+  cartDB,
+  myLibraryDB
 } = require("./index");
 // import {describe, expect, test} from '@jest/globals'
 
@@ -16,6 +17,7 @@ async function buildTables() {
   try {
     // drop tables in correct order
     await client.query(`
+    DROP TABLE IF EXISTS userlibrary;
     DROP TABLE IF EXISTS cart;
     DROP TABLE IF EXISTS movies;
     DROP TABLE IF EXISTS idxlib;
@@ -58,7 +60,13 @@ async function buildTables() {
     (
       id SERIAL PRIMARY KEY,
       "user_cart" INTEGER REFERENCES users(id) NOT NULL,
-      items JSONB
+      items JSONB DEFAULT '{}'::jsonb
+    );
+    CREATE TABLE userlibrary
+    (
+      id SERIAL PRIMARY KEY,
+      "user_lib" INTEGER REFERENCES users(id) NOT NULL,
+      items JSONB DEFAULT '{}'::jsonb
     );
       
     `);
@@ -120,56 +128,35 @@ async function populateInitialData() {
       CSV HEADER;
       `);
     //----------------------------------------------------------------
-    console.log("Populating Intial Users Carts")
+    console.log("Populating Intial Users Carts...")
     const user1Cart = await cartDB.createUserCart_DB(1)
     const user2Cart = await cartDB.createUserCart_DB(2)
     const user3Cart = await cartDB.createUserCart_DB(3)
     const user4Cart = await cartDB.createUserCart_DB(4)
     const user5Cart = await cartDB.createUserCart_DB(5)
     //----------------------------------------------------------------
-    console.log("Populating Intial Users Carts")
-     const user2CartItem1 = await cartDB.addToCartItems_DB(2, { 8 : "Shang-Chi and the Legend of the Ten Rings" })
-    // const user1CartItem1 = await cartDB.addToCartItems_DB(1, {
-    //   "id": 8,
-    //   "name": "Shang-Chi and the Legend of the Ten Rings",
-    //   "type": "movie",
-    //   "year": 2021,
-    //   "genre": "Fantasy / Action",
-    //   "length": 212,
-    //   "price": "$3.99",
-    //   "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4q-3DRHJ_mIeRpY8itjj58cYh6RdkMNYZeqWO6WbKsEaxwVEKgiJyGdbyiKGDETwFJzk&usqp=CAU"
-    // })
-    // const user1CartItem2 = await cartDB.addToCartItems_DB(1, {
-    //   "id": 12,
-    //   "name": "Run",
-    //   "type": "movie ",
-    //   "year": 2020,
-    //   "genre": "Thriller",
-    //   "length": 130,
-    //   "price": "$4.99",
-    //   "img": "https://fr.web.img2.acsta.net/pictures/21/06/25/17/30/1095745.jpg"
-    // })
-    // const user5CartItem1 = await cartDB.addToCartItems_DB(5, {
-    //   "id": 13,
-    //   "name": "Redeeming Love",
-    //   "type": "movie ",
-    //   "year": 2022,
-    //   "genre": "Western/Romance",
-    //   "length": 214,
-    //   "price": "$5.99",
-    //   "img": "https://m.media-amazon.com/images/M/MV5BMTMxMmRmMWUtNGNhZS00MWYxLTkwNzUtM2QwNzI4MGU1ZTI2XkEyXkFqcGdeQXVyNTQ3MjE4NTU@._V1_.jpg"
-    // })
-    // const user5CartItem2 = await cartDB.addToCartItems_DB(5, {
-    //   "id": 15,
-    //   "name": "Cyrano",
-    //   "type": "movie ",
-    //   "year": 2021,
-    //   "genre": "Romance",
-    //   "length": 203,
-    //   "price": "$5.99",
-    //   "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSod_b_CNpKDrlfF2F0cpjZwcWvpE59hzKcziP0K4TkjfiM8zLQGD1uxU19PzYhrEQZyfA&usqp=CAU"
-    // })
+    console.log("Populating Intial Users Cart Items...")
+    const user1CartItem = await cartDB.addToCartItems_DB(1, { 8 : "Shang-Chi and the Legend of the Ten Rings" })
+    const user2CartItem = await cartDB.addToCartItems_DB(2, { 8 : "Shang-Chi and the Legend of the Ten Rings" })
+    const user3CartItem = await cartDB.addToCartItems_DB(3, { 8 : "Shang-Chi and the Legend of the Ten Rings" })
+    const user4CartItem = await cartDB.addToCartItems_DB(4, { 9 : "Banana"})
+    const user5CartItem = await cartDB.addToCartItems_DB(5, { 10 : "Pickles"})
     //----------------------------------------------------------------
+    console.log("Populating Intial Users Libraries...")
+    const user1Librarary = await myLibraryDB.createUserLibrary_DB(1)
+    const user2Librarary = await myLibraryDB.createUserLibrary_DB(2)
+    const user3Librarary = await myLibraryDB.createUserLibrary_DB(3)
+    const user4Librarary = await myLibraryDB.createUserLibrary_DB(4)
+    const user5Librarary = await myLibraryDB.createUserLibrary_DB(5)
+    //----------------------------------------------------------------
+    console.log("Populating Initial User Libraries...")
+    const user1LibraryItem = await myLibraryDB.addToUserLibrary_DB(1, {1: "test"})
+    const user2LibraryItem = await myLibraryDB.addToUserLibrary_DB(2, {2: "test"})
+    const user3LibraryItem = await myLibraryDB.addToUserLibrary_DB(3, {4: "test"})
+    const user4LibraryItem = await myLibraryDB.addToUserLibrary_DB(4, {5: "test"})
+    const user5LibraryItem = await myLibraryDB.addToUserLibrary_DB(5, {6: "test"})
+    //----------------------------------------------------------------
+    console.log("rebuild completed")
     // expect(user1Cart.user_cart).to.equal(user1.id)
     // expect(user5Cart.user_cart).to.equal(user5.id)
     //----------------------------------------------------------------

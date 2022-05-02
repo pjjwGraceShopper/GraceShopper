@@ -30,9 +30,9 @@ export async function addItemToCart (userid, item) {
   }
 }
 //----------------------------------------------------------------
-export async function deleteItemFromCart (userid, item) {
+export async function deleteItemFromCart (userid, key) {
   try{ 
-    const data = await axios.post(`/api/cart/${userid}/delete`, {item: item})
+    const data = await axios.post(`/api/cart/${userid}/delete`, {item: key})
     return data;
   } catch (err) {
     console.error(err, "axios error");
@@ -58,3 +58,12 @@ export async function createUserCart (userid) {
   }
 }
 //----------------------------------------------------------------
+export async function getUserCartSubTotal(userid){
+  try{
+    const {data}= await axios.get(`/api/cart/${userid}/subtotal`)
+      return data;
+  } catch (err) {
+    console.error(err, "axios error");
+    return err
+  }
+  }

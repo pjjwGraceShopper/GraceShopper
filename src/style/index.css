@@ -1,12 +1,12 @@
 /* import fonts here */
 /* @import url('https://cdn.jsdelivr.net/npm/uikit@3.13.10/dist/css/uikit.min.css'); */
 @import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "./SideBarCSS.css";
+@import "./FooterCSS";
 @import "./App.css";
+@import "./CartCSS.css";
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-}
+
 
 :root {
   /* define variables here */
@@ -14,7 +14,6 @@
   --red: red;
   --blue: blue;
 }
-
 html {
   touch-action: manipulation;
 }
@@ -26,4 +25,47 @@ body {
   width: 100vw;
   background: #141414;
   color: #fff;
+}
+body * {
+  box-sizing: border-box;
+  display:flex;
+  margin: 0;
+  width:100%;
+  height:100%;
+}
+.app-container {
+  flex-flow: column;
+  height: 115%;
+}
+.main-container {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 88%;
+  height: 100%;
+  right:0;
+  left: 88;
+  top:0;
+  position: absolute;
+}
+.sidebar-container {
+  padding: 0 0 2% 1%;
+  margin: 0 0 0 0;
+  height: 100%;
+  max-width: 12%;
+  top: 0;
+  left:0;
+  bottom: 0;
+  background: #212121;
+  position: sticky;
+  align-items: center;
+}
+.foot-container {
+  background-color: #212121;
+  color: white;
+  padding: 1% 0 1% 0;
+  max-height: 12%;
+  bottom: 0;
+  position: relative;
+  font-size: 10px;
 }

@@ -17,8 +17,9 @@ const MovieList = ({currentMovie, setCurrentMovie}) => {
   if (!movies) return <h3>Loading...</h3>;
 
     return (
-      <>
-        {movies.map((movie, index) => (
+      <div className="MovieList-container">
+        <>
+        {movies.length ? movies.map((movie, index) => (
         <img
         onClick={(e)=>{e.preventDefault;
           setCurrentMovie(movie)
@@ -30,8 +31,9 @@ const MovieList = ({currentMovie, setCurrentMovie}) => {
           alt='movie'
         ></img>
 
-        ))}
-      </>
+        )): "Your Purchased Movies will be displayed here"}
+        </>
+      </div>
     );
 
 };

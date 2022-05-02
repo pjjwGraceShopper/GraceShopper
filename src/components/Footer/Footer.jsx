@@ -2,8 +2,8 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className='footer'>
       <div className='foot-container'>
+        <div className='foot-inner'>
         <div className='footer-columns'>
           <ul>
             <li className='footer-heads'>BROWSE</li>
@@ -30,8 +30,8 @@ const Footer = () => {
             &copy;{new Date().getFullYear()} DUMMY INPUT | All rights reserved
           </p>
         </div>
+        </div>
       </div>
-    </div>
   );
 };
 
