@@ -1,10 +1,12 @@
 const client = require("../client");
 
-async function getLibrary() {
+async function getLibrary(limit='all', offset='none') {
   try {
     const { rows } = await client.query(`
         SELECT * 
         FROM idxlib
+        LIMIT ${limit}
+        OFFSET ${offset}
             `);
 
     return rows;

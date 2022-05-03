@@ -2,9 +2,13 @@ const express = require("express");
 const libRouter = express.Router();
 const { library } = require("../db/models");
 
-libRouter.get("/", async (req, res, next) => {
+libRouter.put("/", async (req, res, next) => {
+  let limit = req.body.limit
+  let offset = req.body.offset
+  if(!limit){limit=null}
+  if(!offset){offset=null}
   try {
-    const data = await library.getLibrary();
+    const data = await library.getLibrary(limit, offset);
     res.status(200).send(data);
   } catch (err) {
     res.status(500).send;

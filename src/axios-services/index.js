@@ -3,6 +3,7 @@ import {getUserCart, addItemToCart, deleteItemFromCart, clearCart, createUserCar
 import {getUsers, registerUser, userLogin} from './users_ajax'
 import { getLibrary, addMovie } from "./lib_ajax";
 import { getMyLibrary, createUserLibrary, addToUserLibrary} from "./myLibrary_ajax"
+import { getPy, submitPayment} from "./PY_queries"
 
 // this file holds your frontend network request adapters
 // think about each function as a service that provides data
@@ -48,6 +49,7 @@ export {
   getUsers,
   createUserLibrary,
   addToUserLibrary, 
-  addMovie
+  addMovie,
+  submitPayment
 };
 
