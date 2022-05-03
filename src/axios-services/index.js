@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {getUserCart, addItemToCart, deleteItemFromCart, clearCart, createUserCart, getUserCartIdxList, getUserCartSubTotal} from './Cart_ajax'
 import {getUsers, registerUser, userLogin} from './users_ajax'
-import { getLibrary } from "./lib_ajax";
+import { getLibrary, addMovie } from "./lib_ajax";
 import { getMyLibrary, createUserLibrary, addToUserLibrary} from "./myLibrary_ajax"
 
 // this file holds your frontend network request adapters
@@ -47,6 +47,7 @@ export {
   getMyLibrary,
   getUsers,
   createUserLibrary,
-  addToUserLibrary
+  addToUserLibrary, 
+  addMovie
 };
 

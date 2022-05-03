@@ -5,8 +5,8 @@ import { getLibrary } from "../../axios-services";
 
 const MovieList = ({currentMovie, setCurrentMovie}) => {
   const navigate = useNavigate();
-
   const [movies, setMovies] = useState([]);
+  
   useEffect(() => {
     async function thing() {
       const lib = await getLibrary();

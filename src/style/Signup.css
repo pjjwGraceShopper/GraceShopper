@@ -1,0 +1,17 @@
+.form-outline-container{
+width: 600px;
+height: 30px;
+margin-top: 5px;
+margin-right: 5px;
+}
+
+.sign-container{
+  flex-direction:column;
+}
+
+.block-sign{
+  width: 100%;
+  height: auto; 
+}
+
+

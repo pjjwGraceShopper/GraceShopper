@@ -6,6 +6,14 @@
 /* MAIN CORE END ^^^^^^^^^^^^^ */
 /* MOVIE LIST START */
 
+.movie-app{
+ flex-flow: column;
+}
+
+.new-form{
+  flex-flow: column nowrap;
+}
+
 .movie-img {
   max-width: 7.5rem;
   max-height: 10rem;
@@ -179,4 +187,6 @@ position: relative;
  flex-flow: row nowrap;
  flex:1;
 }
-
+.new-movie-container{
+  flex-flow: column
+}
