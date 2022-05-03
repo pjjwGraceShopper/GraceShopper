@@ -58,8 +58,8 @@ const SignUp = ({ setMe, loginStatus, setLoginStatus }) => {
             >
               <div className="card-body-p-10-text-center">
                 <div className="sign-container">
-                  <h2 className="fw-bold mb-0 mx-0 text-uppercase">Sign Up</h2>
-                  <p className="text-white-50 mb-5">
+                  <h2 className="fw-boldmb-0mx-0text-uppercase">Sign Up</h2>
+                  <p className="text-white-50mb-5">
                     Please enter your info to Sign Up!
                   </p>
                   <div className="block-sign">
