@@ -22,6 +22,9 @@ function Home({ currentMovie, setCurrentMovie, movies, setMovies }) {
   //----------------------------------------------------------------
   return (
     <div className="container-fluid movie-app">
+       <div id="Logo-container">
+       <img src="../../../logo/BlueBox.png" id="Logo" alt="BlueBox"></img>
+        </div>
       <div className="row-scroller">
         <MovieList
           currentMovie={currentMovie}

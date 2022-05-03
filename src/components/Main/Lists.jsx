@@ -87,9 +87,7 @@ const Lists = ({ currentMovie, me, setCartChange }) => {
             addItemToCart(me.id, movieToAdd);
             setCartChange(Math.random());
           }}
-        >
-          {" "}
-          Add To Cart
+        >Add To Cart
         </button>
       </div>
       {/* END ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}

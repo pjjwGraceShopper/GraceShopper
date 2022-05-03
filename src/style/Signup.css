@@ -1,20 +1,38 @@
 .sign-container { 
   align-items: center;
+  margin-left: 20px;
 }
+
+.fw-boldmb-0mx-0text-uppercase{
+  width: 100%;
+  height: 100px;
+}
+.text-white-50mb-5{
+  width: 100%;
+  height: 100px;
+}
+  
 .form-outline-container{
-width: 600px;
+width: 500px;
 height: 30px;
 margin-top: 5px;
 margin-right: 5px;
 }
 
 .sign-container{
+  display: flex;
   flex-direction:column;
+  width: 100%;
+  height: 100%;
 }
 
 .block-sign{
   width: 100%;
   height: auto; 
+}
+.login-block{
+  margin-top: 0px;
+  width: 15%;
 }
 
 

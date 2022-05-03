@@ -3,25 +3,31 @@
     display: flex;
     /* justify-content: left; */
     flex-direction: column;
-    padding: 10% 0 0 10%;
+    padding: 10% 0 0 5%;
   }
   
   
   a:link {
     text-decoration: none;
     font-size: 16px;
-    font: weight 200px;
     text-align: center;
     position: relative;
-    height: 40px;
+    height: 2.5rem;
     /* line-height:40px; */
     margin-top: 10px;
     overflow: hidden;
     width: 100%;
-    margin-left: 5%;
     cursor: pointer;
   }
-  
+  .sideIcon {
+    color: #8abde9;
+    font-size: 1.5rem;
+    padding: .5rem;
+    text-shadow: 0 0 2px #55616cbb;
+  }
+  .sideIcon:hover {
+    text-shadow: 0 0 5px #98acbdbb;
+  }
   a {
     color: white;
   }

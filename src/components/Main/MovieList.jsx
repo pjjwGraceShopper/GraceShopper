@@ -24,7 +24,6 @@ const MovieList = ({currentMovie, setCurrentMovie}) => {
         onClick={(e)=>{e.preventDefault;
           setCurrentMovie(movie)
           navigate(`/Lists/${movie.id}`)}}
-
           key={movie.id}
           className='movie-img'
           src={movie.img}
