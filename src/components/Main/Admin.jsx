@@ -1,7 +1,8 @@
 import react, { useEffect, useState } from "react";
 import { getUsers } from "../../axios-services/users_ajax";
+import AddMovie from "./AddMovie";
 
-const Admin = () => {
+const Admin = ({ movies, setMovies }) => {
   const [users, setUsers] = useState([]);
   let admin = false;
   if (localStorage.getItem("isAdmin")) {
@@ -49,6 +50,7 @@ const Admin = () => {
           </table>
         </>
       ) : null}
+       <AddMovie movies={movies} setMovies={setMovies} />
     </div>
   );
 };

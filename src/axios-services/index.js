@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {getUserCart, addItemToCart, deleteItemFromCart, clearCart, createUserCart, getUserCartIdxList, getUserCartSubTotal} from './Cart_ajax'
 import {getUsers, registerUser, userLogin} from './users_ajax'
-import { getLibrary, addMovie } from "./lib_ajax";
+import { getLibrary, addMovie, updateMovie } from "./lib_ajax";
 import { getMyLibrary, createUserLibrary, addToUserLibrary} from "./myLibrary_ajax"
 import { getPy, submitPayment} from "./PY_queries"
 
@@ -50,6 +50,7 @@ export {
   createUserLibrary,
   addToUserLibrary, 
   addMovie,
-  submitPayment
+  updateMovie,
+  submitPayment,
 };
 

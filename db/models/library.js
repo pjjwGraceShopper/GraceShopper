@@ -1,6 +1,25 @@
 const client = require("../client");
 
+
+async function getMovieById(id) {
+  try {
+    const {
+      rows: [movie],
+    } = await client.query(
+      `
+        SELECT * FROM idxlib
+        WHERE id = $1;
+    `,
+      [id]
+    );
+    return movie;
+  } catch (error) {
+    console.error("Problem getting movie by id", error);
+  }
+}
+
 async function getLibrary(limit='all', offset='none') {
+
   try {
     const { rows } = await client.query(`
         SELECT * 
@@ -33,4 +52,31 @@ async function addMovie(name, type, year, genre, length, price, img) {
   }
 }
 
-module.exports = { getLibrary, addMovie };
+async function updateMovie(id, name, type, year, genre, length, price, img) {
+  const fields = { name, type, year, genre, length, price, img };
+  const setString = Object.keys(fields)
+    .map((key, index) => `"${key}"=$${index + 1}`)
+    .join(", ");
+
+  if (setString.length === 0) {
+    return;
+  }
+  try {
+    const {
+      rows: [movie],
+    } = await client.query(
+      `
+            UPDATE idxlib
+            SET ${setString}
+            WHERE id=${id}
+            RETURNING *;
+        `,
+      Object.values(fields)
+    );
+    return movie;
+  } catch (error) {
+    console.error("Problem updating Movie", error);
+  }
+}
+
+module.exports = { getLibrary, getMovieById, addMovie, updateMovie };

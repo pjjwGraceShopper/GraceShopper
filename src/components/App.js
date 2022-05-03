@@ -117,7 +117,10 @@ const App = () => {
               />
             }
           />
-          <Route path="/admin" element={<Admin />} />
+          <Route
+            path="/admin"
+            element={<Admin movies={movies} setMovies={setMovies} />}
+          />
           <Route path="/profile" element={<Profile />} />
           <Route
             path="/Checkout"

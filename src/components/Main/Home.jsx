@@ -2,6 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState, useEffect } from "react";
 import MovieList from "./MovieList";
 import { getLibrary } from "../../axios-services";
+import UpdateMovie from "./UpdateMovie";
 import AddMovie from "./AddMovie";
 //----------------------------------------------------------------
 function Home({ currentMovie, setCurrentMovie, movies, setMovies }) {
@@ -23,8 +24,6 @@ function Home({ currentMovie, setCurrentMovie, movies, setMovies }) {
           currentMovie={currentMovie}
           setCurrentMovie={setCurrentMovie}
         />
-        
-        
       </div>
       <div className="movielist-bottom-container">
         {otherMovies.length ? otherMovies.map((movie, index) => (

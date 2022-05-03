@@ -27,3 +27,28 @@ export const addMovie = async (name, type, year, genre, length, price, img) => {
     return error;
   }
 };
+
+export const updateMovie = async (
+  name,
+  type,
+  year,
+  genre,
+  length,
+  price,
+  img
+) => {
+  try {
+    const { data } = await axios.patch(`/api/library/${movies.id}`, {
+      name,
+      type,
+      year,
+      genre,
+      length,
+      price,
+      img,
+    })
+    return data
+  } catch (er) {
+    console.error("Unable to edit movie", err)
+  }
+};
