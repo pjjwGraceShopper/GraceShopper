@@ -77,8 +77,8 @@ async function getUserCart_DB(userid) {
 // must include old cart items + new cart items ******
 
 // UPDATES THE **ENTIRE** CART, use with caution
-async function updateCart_DB(userid, JSONB={}) {
-    
+async function updateCart_DB(userid, cartList) {
+    if(!cartList){ let cartList = {}}
     try {
         const {
             rows
@@ -87,7 +87,7 @@ async function updateCart_DB(userid, JSONB={}) {
         SET items = ( $2 )
         WHERE user_cart = ( $1 )
         RETURNING *;
-    `, [userid, JSONB])
+    `, [userid, cartList.cartlist])
         return rows
     } catch (err) {
         throw err
@@ -95,17 +95,16 @@ async function updateCart_DB(userid, JSONB={}) {
 }
 //----------------------------------------------------------------
 async function deleteCartItem_DB(userid, key) {
+    const key2 = key.toString()
     const {
-        rows: {
-            newcartlist
-        }
+        rows : [cartList]
     } = await client.query(`
         Select items - ( $2 )::text 
         AS cartList
         FROM cart
         WHERE user_cart = ( $1 )
-    `, [userid, key])
-    const result = await updateCart_DB(userid, newcartlist)
+    `, [userid, key2])
+    const result = await updateCart_DB(userid, cartList)
     return result
 }
 //----------------------------------------------------------------

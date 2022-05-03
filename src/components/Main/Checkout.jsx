@@ -11,18 +11,20 @@ import {
 //------------------------------------------------------------------
 const Checkout = ({ me, cartChange, setCartChange }) => {
     const [isCheckedOut, setIsCheckedOut] = useState(false)
+    const [cReturn, setCReturn] = useState([])
     const inCart = { ids: {} };
 //----------------------------------------------------------------
     async function handleCheckout(){
         const response = await submitPayment()
-        console.log(response)
+        addToUserLibrary(me.id, inCart.ids);
+        setCReturn(response)
+        clearCart(me.id);
+        setIsCheckedOut(true)
+        setCartChange(Math.random());
     }
 //----------------------------------------------------------------
     async function finalizeCheckout(){
-        addToUserLibrary(me.id, inCart.ids);
-        clearCart(me.id);
-        setCartChange(Math.random());
-        setIsCheckedOut(true);
+      
     }
 //----------------------------------------------------------------
 
@@ -48,7 +50,12 @@ useEffect(() => {
             </div> :
             // OR ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
             <div className="checkout-sub-container">
-                <button onClick={() => finalizeCheckout()}> Go back </button>
+                <div className="checkout-final">
+                <small>{cReturn.status}</small> 
+                    <small>{cReturn.receipt_url}</small> 
+
+                </div>
+               
                 </div>}
         </div>
     )

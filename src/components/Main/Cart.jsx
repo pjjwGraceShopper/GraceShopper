@@ -30,7 +30,7 @@ const Cart = ({ me, cartChange, setCartChange }) => {
         setSubTotal({ value: `${fetchSubtotal}` });
         
       }
-      // update();
+      // update();  
       update();
       
     }
@@ -46,8 +46,7 @@ const Cart = ({ me, cartChange, setCartChange }) => {
       {/* HEADER END ^^ */}
       <div className="cart-body">
         {/* LEFT HALF **************************** */}
-        <div className="cart-left-container --bs-dark">
-          {/* <CartItemList userCart={userCart} cartChange={setCartChange} me={me} /> */}
+        <div className="cart-left-container">
           {userCart.length
             ? userCart.map((e, i) => (
                 <CartItem

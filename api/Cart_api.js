@@ -45,10 +45,11 @@ cartRouter.post('/:userid/add', async (req, res, next) => {
     next();
   }
 });
-//----------------------------------------------------------------
+//----------------------------------------------------------------  
 cartRouter.post('/:userid/delete', async (req, res, next) => {
   const userID = req.params.userid
   const {item} = req.body
+  console.log(item)
   try{
     const data = await cartDB.deleteCartItem_DB(userID, item)
     res.status(200).send(data)
