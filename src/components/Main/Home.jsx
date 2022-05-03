@@ -2,10 +2,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState, useEffect } from "react";
 import MovieList from "./MovieList";
 import { getLibrary } from "../../axios-services";
-import AddMovie from "./AddMovie";
+import UpdateMovie from "./UpdateMovie";
 
 function Home({ currentMovie, setCurrentMovie, movies, setMovies }) {
-
   return (
     <div className="container-fluid movie-app">
       <div className="row">
@@ -13,10 +12,7 @@ function Home({ currentMovie, setCurrentMovie, movies, setMovies }) {
           currentMovie={currentMovie}
           setCurrentMovie={setCurrentMovie}
         />
-        
-        
       </div>
-      <AddMovie movies={movies} setMovies={setMovies} />
     </div>
   );
 }
