@@ -87,9 +87,9 @@ const Lists = ({ currentMovie, me, setCartChange }) => {
           {" "}
           Add To Cart
         </button>
-        <button>
+        {/* <button>
           
-        </button>
+        </button> */}
       </div>
       {/* END ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
     </div>
