@@ -172,8 +172,6 @@ async function populateInitialData() {
     });
     //----------------------------------------------------------------
     console.log("rebuild completed");
-    // expect(user1Cart.user_cart).to.equal(user1.id)
-    // expect(user5Cart.user_cart).to.equal(user5.id)
     //----------------------------------------------------------------
   } catch (error) {
     throw error;
