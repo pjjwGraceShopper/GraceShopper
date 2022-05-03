@@ -26,7 +26,7 @@ server.use(express.static(path.join(__dirname, 'build')));
 
 // here's our API
 server.use('/api', require('./api'));
-server.get('/favicon.ico', (req, res, next) => { res.status(204); next()});
+server.get('/favicon.ico', (req, res, next) => { res.status(204)});
 
 // by default serve up the react app if we don't recognize the route
 // server.use((req, res, next) => {

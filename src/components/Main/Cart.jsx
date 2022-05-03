@@ -39,8 +39,10 @@ const Cart = ({ me, cartChange, setCartChange }) => {
   return (
     <div className="cart-container">
       {/* HEADER */}
-      <div className="header">
-        <h3 className="heading">BlueBox</h3>
+      <div className="cart-header">
+      <div id="Logo-container">
+       <img src="../../../logo/BlueBox.png" id="Logo" alt="BlueBox"></img>
+        </div>
         <h5 className="action">Remove all</h5>
       </div>
       {/* HEADER END ^^ */}

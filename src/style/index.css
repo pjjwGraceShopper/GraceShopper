@@ -76,3 +76,19 @@ body * {
   position: relative;
   font-size: 10px;
 }
+#Logo-container {
+  height: 6.5rem;
+  width: 12rem;
+  margin: -.6rem 0 -1.5rem -1rem;
+  padding: 1rem 0 .5rem 0;
+  align-items: center;
+  justify-content: center;
+  background: conic-gradient(from 100deg at 53% 60%, transparent, #88a0b4b1 10%, #9ac2eab1 100%,  #536280e0 90%);
+  box-shadow: inset 0rem 0rem 1rem 1.8rem #141414;
+}
+#Logo {
+  width: 7rem;
+  height:5rem;
+  background: transparent;
+  margin: 0 1rem 3rem 0;
+}

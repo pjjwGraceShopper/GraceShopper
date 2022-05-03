@@ -10,25 +10,20 @@ const Sidebar = ({ loginStatus, setCartChange }) => {
   return (
     <div className="sidebar-container">
       <div id="sidebar-column">
-        <Link to="./cart">
-        <i class="bi bi-minecart-loaded sideIcon"></i>
-        </Link>
-        <Link to="/"><i class="bi bi-house-door sideIcon"></i> </Link>
-        {/* <Link to="../Search"> Search </Link> */}
-        {/* <Link to="./profile"> Profile </Link> */}
-        <Link to="/my-library"><i class="bi bi-door-open-fill sideIcon"></i></Link>
-        {/* <Link to='/Lists'>Lists</Link> */}
-
+       
+        <Link to="./cart"><i className="bi bi-minecart-loaded sideIcon"></i></Link>
+        <Link to="/"><i className="bi bi-house-door sideIcon"></i> </Link>
+        <Link to="/my-library"><i className="bi bi-door-open-fill sideIcon"></i></Link>
         {!localStorage.getItem("token") ? (
           <>
-            <Link to="./login"><i class="bi bi-key sideIcon"></i></Link>
-            <Link to="./sign-up"><i class="bi bi-pencil-square sideIcon"></i></Link>
+            <Link to="./login"><i className="bi bi-key sideIcon"></i></Link>
+            <Link to="./sign-up"><i className="bi bi-pencil-square sideIcon"></i></Link>
           </>
         ) : (
-          <Link to="./login"><i class="bi bi-person-x-fill sideIcon"></i></Link>
+          <Link to="./login"><i className="bi bi-person-x-fill sideIcon"></i></Link>
         )}
         {localStorage.getItem("isAdmin") ? (
-          <Link to="./admin"><i class="bi bi-person-heart sideIcon"></i></Link>
+          <Link to="./admin"><i className="bi bi-person-heart sideIcon"></i></Link>
         ) : null}
       </div>
     </div>
@@ -36,3 +31,7 @@ const Sidebar = ({ loginStatus, setCartChange }) => {
 };
 
 export default Sidebar;
+
+{/* <Link to="../Search"> Search </Link>  */}
+{/* <Link to="./profile"> Profile </Link> */}
+{/* <Link to='/Lists'>Lists</Link> */}
