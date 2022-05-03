@@ -1,0 +1,19 @@
+.Checkout-container{
+    width: 60%;
+    height: 80%;
+    flex-flow: column;
+
+}
+.checkout-sub-container{
+    flex-flow: column;
+}
+.checkout-form {
+    flex-flow: column;
+}
+.checkout-checkbox {
+    width: 10%;
+    height: 10%;
+}
+.checkbox-label{
+    height: 10%;
+}

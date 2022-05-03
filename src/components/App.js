@@ -18,6 +18,7 @@ import {
   Lists,
   Admin,
   Profile,
+  Checkout,
 } from "./index";
 import * as bootstrap from "bootstrap";
 
@@ -121,6 +122,14 @@ const App = () => {
             element={<Admin movies={movies} setMovies={setMovies} />}
           />
           <Route path="/profile" element={<Profile />} />
+          <Route
+            path="/Checkout"
+            element={
+              <Checkout
+                me={me}
+                cartChange={cartChange}
+                setCartChange={setCartChange}
+              />}/>
         </Routes>
       </div>
       <Footer />

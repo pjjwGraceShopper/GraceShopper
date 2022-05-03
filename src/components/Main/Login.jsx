@@ -50,15 +50,15 @@ const Login = ({ me, setMe, loginStatus, setLoginStatus }) => {
 
   return (
     <div>
-      <div className="container py-3 h-100">
+      <div className="container-login">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col-12 col-md-0 col-lg-0 col-xl-0">
             <div
-              className="card bg-dark text-white"
+              className="card-login"
               style={{ borderRadius: "1rem" }}
             >
-              <div className="card-body p-10 text-center">
-                <div className="mb-md-0 mt-md-0 pb-0">
+              <div className="card-body-p-10-text-center">
+                <div className="mb-md-0-mt-md-0-pb-0">
                   {!loginStatus ? (
                     <>
                       <h2 className="fw-bold mb-0 mx-0 text-uppercase">
@@ -78,7 +78,7 @@ const Login = ({ me, setMe, loginStatus, setLoginStatus }) => {
                             type="username"
                             placeholder="Username"
                             id="typeUsernameX"
-                            className="form-control form-control-lg"
+                            className="form-control-form-control-lg"
                             onChange={(e) => {
                               setUsername(e.target.value);
                             }}
@@ -93,7 +93,7 @@ const Login = ({ me, setMe, loginStatus, setLoginStatus }) => {
                             type="password"
                             placeholder="Password"
                             id="typePasswordX"
-                            className="form-control form-control-lg"
+                            className="form-control-form-control-lg"
                             onChange={(e) => {
                               setPassword(e.target.value);
                             }}
@@ -102,13 +102,16 @@ const Login = ({ me, setMe, loginStatus, setLoginStatus }) => {
                             Password
                           </label>
                         </div>
+                        <div className="login-block">
                         <button
                           className="btn btn-outline-light btn-lg px-5"
                           type="submit"
                         >
                           Login
                         </button>
+                        </div>
                       </form>
+                      
                       {loginMessage.error ? (
                         <>
                           <h3>{loginMessage.name}</h3>

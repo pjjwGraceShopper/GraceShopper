@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getUserCart, deleteItemFromCart } from "../../axios-services";
 //----------------------------------------------------------------
-const CartItem = ({ userCart, elem, idx, cartChange, me, inCart}) => {
+const CartItem = ({ userCart, elem, idx, setCartChange, cartChange, me, inCart}) => {
   //-----------------------------------------------------------
   inCart.ids[elem.id] = elem.price
   //--------------------------------------------------------
@@ -16,7 +16,9 @@ const CartItem = ({ userCart, elem, idx, cartChange, me, inCart}) => {
         {elem.name}
         {elem.price}
       </div>
-      <button className="btn btn-secondary" onClick={() => {deleteItemFromCart(me.id, elem.id); setCartChange(Math.random())}}> Remove Item </button>
+      <button className="btn btn-secondary" onClick={() => {
+        deleteItemFromCart(me.id, elem.id) 
+        setCartChange(Math.random())}}> Remove Item </button>
     </div>
   );
 };

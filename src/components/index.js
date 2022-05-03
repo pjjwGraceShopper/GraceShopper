@@ -9,3 +9,4 @@ export { default as Home } from "./Main/Home";
 export { default as Lists } from "./Main/Lists";
 export { default as Admin } from "./Main/Admin";
 export { default as Profile } from "./Main/Profile"
+export { default as Checkout } from "./Main/Checkout";
