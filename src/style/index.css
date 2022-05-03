@@ -77,8 +77,8 @@ body * {
   font-size: 10px;
 }
 #Logo-container {
-  height: 6.5rem;
-  width: 12rem;
+  height: 6.8rem;
+  width: 13.5rem;
   margin: -.6rem 0 -1.5rem -1rem;
   padding: 1rem 0 .5rem 0;
   align-items: center;
@@ -87,8 +87,8 @@ body * {
   box-shadow: inset 0rem 0rem 1rem 1.8rem #141414;
 }
 #Logo {
-  width: 7rem;
-  height:5rem;
+  width: 6rem;
+  height: 3rem;
   background: transparent;
-  margin: 0 1rem 3rem 0;
+  margin: 0 0rem .5rem 0;
 }
