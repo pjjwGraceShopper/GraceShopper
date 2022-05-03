@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import MovieList from "./MovieList";
 import { getLibrary, addItemToCart } from "../../axios-services";
+import UpdateMovie from "./UpdateMovie";
 
 
 const Lists = ({ currentMovie, me, setCartChange }) => {
@@ -12,7 +13,7 @@ const Lists = ({ currentMovie, me, setCartChange }) => {
   useEffect(() => {
     "";
     async function thing() {
-      const lib = await getLibrary();
+      const lib = await getLibrary({limit:false});
       setMovies(lib);
       // console.log(movies);
     }
@@ -29,6 +30,9 @@ const Lists = ({ currentMovie, me, setCartChange }) => {
           <h4></h4>
         </div>
       </div>
+        <div>
+          <UpdateMovie setMovies={setMovies} movieId={currentMovie.id}/>
+        </div>
       {/* END ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
       <div className="seg1-container">
       {/* DETAILS START **************************** */}
@@ -83,13 +87,8 @@ const Lists = ({ currentMovie, me, setCartChange }) => {
             addItemToCart(me.id, movieToAdd);
             setCartChange(Math.random());
           }}
-        >
-          {" "}
-          Add To Cart
+        >Add To Cart
         </button>
-        {/* <button>
-          
-        </button> */}
       </div>
       {/* END ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
     </div>

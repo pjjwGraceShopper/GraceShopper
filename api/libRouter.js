@@ -65,4 +65,16 @@ libRouter.patch("/:movieId", async (req, res, next) => {
   }
 });
 
+libRouter.delete("/:movieId", async(req, res, next) => {
+  const { movieId } = req.params
+  try {
+    const data = await library.deleteMovie(movieId)
+    res.status(200).send(data);
+  } catch (err) {
+    res.status(500).send
+  } finally {
+    next()
+  }
+})
+
 module.exports = libRouter;

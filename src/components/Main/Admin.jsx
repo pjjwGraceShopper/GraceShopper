@@ -16,13 +16,29 @@ const Admin = ({ movies, setMovies }) => {
     };
     fetchUsers();
   }, [setUsers]);
+
+  /*function toggleAddMovie(){
+    let addMovie = AddMovie 
+    let displaySetting = addMovie.style.display;
+    let add = document.getElementById('clockButton');
+if (displaySetting == 'block') {
+      myClock.style.display = 'none';
+      clockButton.innerHTML = 'Show clock';
+    }
+    else {
+      addMovie.style.display = 'block';
+      clockButton.innerHTML = 'Hide clock';
+    }
+  }
+  }*/
+
   return (
     <div className="admin-container">
       {admin === true ? (
         <>
-        <div className="admin-header">
-          <h1>Admin Page</h1>
-          <h2>All Users Info</h2>
+          <div className="admin-header">
+            <h1>Admin Page</h1>
+            <h2>All Users Info</h2>
           </div>
           <table className="table table-dark table-striped admin-table">
             <thead className="admin-table-header">
@@ -50,7 +66,8 @@ const Admin = ({ movies, setMovies }) => {
           </table>
         </>
       ) : null}
-       <AddMovie movies={movies} setMovies={setMovies} />
+      <button onClick={toggleAddMovie} id="add-btn">Add New Movie</button>
+      <AddMovie movies={movies} setMovies={setMovies} />
     </div>
   );
 };
