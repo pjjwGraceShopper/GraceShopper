@@ -1,7 +1,7 @@
 node_modules
 build
 .env
-Lib
+site-packages
 __pycache__/
 *.pyc
 dist
