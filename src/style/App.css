@@ -16,6 +16,7 @@
 }
 .movie-app{
  flex-flow: column;
+ margin: 0 0 0 5.5rem;
 }
 
 .new-form{
@@ -51,11 +52,10 @@ flex: 0;
 /* MY LIBRARY */
 .myLib-container {
   flex-flow: column nowrap;
-  background: #2e3135;
-
+  margin: 0 0 0 7rem;
 }
 .myLib {
-  background: #2e3135;
+
 flex-flow: row nowrap;
 }
 

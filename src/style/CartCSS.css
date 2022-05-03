@@ -1,7 +1,8 @@
 /* CART */
 .cart-container {
-    width: 80%;
-    height: 80%;
+    width: 70%;
+    height: 70%;
+    margin: 0 3rem 0 3rem;
     background-color: #383c40;
     border-radius: 20px;
     background: conic-gradient(from 290deg at 80% 85%, transparent, #4d687fb1, #384350b1 100%,  #5d75a0e0 80%);
@@ -12,7 +13,6 @@
   .header {
     width: 90%;
     height: 10%;
-    
     justify-content: space-between;
     align-items: center;
   }
