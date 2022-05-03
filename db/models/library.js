@@ -48,11 +48,11 @@ async function addMovie(name, type, year, genre, length, price, img) {
     );
     return movie;
   } catch (error) {
-    console.error("Problem creating movie", error);
+    console.error("Problem creating movie...", error);
   }
 }
 
-async function updateMovie(id, name, type, year, genre, length, price, img) {
+async function updateMovie({id, name, type, year, genre, length, price, img}) {
   const fields = { name, type, year, genre, length, price, img };
   const setString = Object.keys(fields)
     .map((key, index) => `"${key}"=$${index + 1}`)
@@ -75,8 +75,22 @@ async function updateMovie(id, name, type, year, genre, length, price, img) {
     );
     return movie;
   } catch (error) {
-    console.error("Problem updating Movie", error);
+    console.error("Problem updating Movie...", error);
   }
 }
 
-module.exports = { getLibrary, getMovieById, addMovie, updateMovie };
+async function deleteMovie(id) {
+  try {
+    const {  rows: [movie] } = await client.query(`
+      DELETE FROM idxlib
+      WHERE id=${id}
+      RETURNING *;
+    `);
+    console.log("Finished deleting Movie!");
+    return movie
+  } catch (error) {
+    console.error("Problem deleting Movie...", error);
+  }
+}
+
+module.exports = { getLibrary, getMovieById, addMovie, updateMovie, deleteMovie };

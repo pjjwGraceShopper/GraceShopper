@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { updateMovie } from "../../axios-services/lib_ajax";
+import React, { useState, useEffect } from "react";
+import { deleteMovie, updateMovie } from "../../axios-services/lib_ajax";
 
 const UpdateMovie = ({ movieId, movies, setMovies }) => {
   const [name, setName] = useState("");
@@ -12,10 +12,19 @@ const UpdateMovie = ({ movieId, movies, setMovies }) => {
 
   const authenticated = localStorage.getItem("isAdmin") ? true : false;
 
-  const onUpdate = async (e) => {
+  const onUpdate = async (e, movieId) => {
     e.preventDefault();
-    const data = await updateMovie();
-    if (data && data.name) {
+    const data = await updateMovie(
+      name,
+      type,
+      year,
+      genre,
+      length,
+      price,
+      img,
+      movieId
+    );
+    if (data && data.name && movies) {
       const newMovies = [
         data,
         ...movies.filter((movie) => {
@@ -33,6 +42,12 @@ const UpdateMovie = ({ movieId, movies, setMovies }) => {
       setImg("");
     }
   };
+
+  const onDelete = async (movieId) => {
+    const data = await deleteMovie(movieId);
+  };
+
+  useEffect(() => {}, [movieId]);
 
   return (
     <div className="new-movie-container">
@@ -93,6 +108,7 @@ const UpdateMovie = ({ movieId, movies, setMovies }) => {
           </>
         ) : null}
       </div>
+      <button onClick={() => onDelete(movieId)}>Delete Movie</button>
     </div>
   );
 };
