@@ -35,10 +35,11 @@ const AddMovie = ({movies, setMovies }) => {
   useEffect(() => {}, [admin]);
   return (
       <div className="new-movie-container">
-    <div>
       {authenticated === true ? (
         <>
+          <div className='new-movie-header'>
           <h3>Add New Movie</h3>
+          </div>
           <form className="new-form" onSubmit={onCreate}>
             <input
               type="text"
@@ -91,7 +92,7 @@ const AddMovie = ({movies, setMovies }) => {
           ) : null}
         </>
       ) : (null)}
-    </div>
+    
     </div>
   );
 };

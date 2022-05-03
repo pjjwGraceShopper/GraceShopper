@@ -18,7 +18,7 @@ async function getMovieById(id) {
   }
 }
 
-async function getLibrary(limit='all', offset='none') {
+async function getLibrary(limit='all', offset='0') {
 
   try {
     const { rows } = await client.query(`

@@ -11,6 +11,7 @@
   }
   .admin-header * {
     height: 10%;
+    margin: 1%;
     align-items: center;
     justify-content: center;
     }
@@ -30,4 +31,20 @@
   
   .profile-container{
     flex-flow: column nowrap;
+  }
+
+  .new-movie-container{
+    flex-flow: column;
+    width: 60%;
+    padding: 5%;
+  }
+  .new-movie-header{
+    height: 15%;
+    margin: 1%;
+
+  }
+  .new-movie-header * {
+    justify-content: center;
+    color: var(--green);
+    text-shadow: 0 .1px 5px rgba(245, 245, 245, 0.152)
   }

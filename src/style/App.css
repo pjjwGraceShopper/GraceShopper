@@ -22,7 +22,8 @@
   flex-flow: column;
 }
 .row-scroller{
-min-height:20%;
+max-height: 25%;;
+flex: 0;
 }
 
 .movie-img {
@@ -41,16 +42,21 @@ min-height:20%;
   transform: scale(1.2);
   opacity: 1;
 }
-.movie-app > .row {
+.movie-app > .row-scroller {
   overflow-x: auto;
   flex-wrap: nowrap;
 }
 /* MOVIES LIST END ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 
 /* MY LIBRARY */
+.myLib-container {
+  flex-flow: column nowrap;
+  background: #2e3135;
+
+}
 .myLib {
   background: #2e3135;
-align-items: center;
+flex-flow: row nowrap;
 }
 
 .myLib ul li {
@@ -58,22 +64,15 @@ align-items: center;
   padding-right: 1rem;
 }
 
-.myLib-container {
-  flex-flow: column nowrap;
-  background: #2e3135;
-
-}
 .myLib-Nav{
-  height: 10%;
+  height: 1.6rem;
   margin: 1% 0 0 0;
   top:0;
 }
 .myLib-Nav * {
-  height: 10%;
+  height: 1.6rem;
 }
-.myLib{
-  flex-flow: row nowrap;
-}
+
 /* .myLib-overflow {
   overflow: hidden;
   position: relative;
@@ -197,7 +196,4 @@ position: relative;
  justify-content: center;
  flex-flow: row nowrap;
  flex:1;
-}
-.new-movie-container{
-  flex-flow: column
 }

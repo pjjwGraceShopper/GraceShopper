@@ -4,14 +4,17 @@ import MovieList from "./MovieList";
 import { getLibrary } from "../../axios-services";
 import UpdateMovie from "./UpdateMovie";
 import AddMovie from "./AddMovie";
+import { useNavigate } from "react-router-dom";
+
 //----------------------------------------------------------------
 function Home({ currentMovie, setCurrentMovie, movies, setMovies }) {
   //----------------------------------------------------------------
   const [otherMovies, setOtherMovies] = useState([])
+  const navigate = useNavigate();
   //----------------------------------------------------------------
   useEffect(() => {
     async function thing() {
-      const lib2 = await getLibrary({limit:false}, {offset: 20});
+      const lib2 = await getLibrary({limit:false}, {offset: '20'});
       setOtherMovies(lib2)
     }
     thing();
@@ -40,7 +43,6 @@ function Home({ currentMovie, setCurrentMovie, movies, setMovies }) {
 
         )): "Loading..."}
         </div>
-      <AddMovie movies={movies} setMovies={setMovies} />
     </div>
   );
 }
