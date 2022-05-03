@@ -5,11 +5,7 @@
 // } = require('./');
 
 const client = require("./client");
-const {
-  usersDB,
-  cartDB,
-  myLibraryDB
-} = require("./index");
+const { usersDB, cartDB, myLibraryDB } = require("./index");
 // import {describe, expect, test} from '@jest/globals'
 
 //----------------------------------------------------------------
@@ -127,36 +123,55 @@ async function populateInitialData() {
       WITH DELIMITER ',' 
       CSV HEADER;
       `);
+    const resetlibidx = await client.query(`
+    SELECT pg_catalog.setval(pg_get_serial_sequence('idxlib', 'id'), MAX(id)) FROM idxlib;
+      `);
     //----------------------------------------------------------------
-    console.log("Populating Intial Users Carts...")
-    const user1Cart = await cartDB.createUserCart_DB(1)
-    const user2Cart = await cartDB.createUserCart_DB(2)
-    const user3Cart = await cartDB.createUserCart_DB(3)
-    const user4Cart = await cartDB.createUserCart_DB(4)
-    const user5Cart = await cartDB.createUserCart_DB(5)
+    console.log("Populating Intial Users Carts...");
+    const user1Cart = await cartDB.createUserCart_DB(1);
+    const user2Cart = await cartDB.createUserCart_DB(2);
+    const user3Cart = await cartDB.createUserCart_DB(3);
+    const user4Cart = await cartDB.createUserCart_DB(4);
+    const user5Cart = await cartDB.createUserCart_DB(5);
     //----------------------------------------------------------------
-    console.log("Populating Intial Users Cart Items...")
-    const user1CartItem = await cartDB.addToCartItems_DB(1, { 8 : "Shang-Chi and the Legend of the Ten Rings" })
-    const user2CartItem = await cartDB.addToCartItems_DB(2, { 8 : "Shang-Chi and the Legend of the Ten Rings" })
-    const user3CartItem = await cartDB.addToCartItems_DB(3, { 8 : "Shang-Chi and the Legend of the Ten Rings" })
-    const user4CartItem = await cartDB.addToCartItems_DB(4, { 9 : "Banana"})
-    const user5CartItem = await cartDB.addToCartItems_DB(5, { 10 : "Pickles"})
+    console.log("Populating Intial Users Cart Items...");
+    const user1CartItem = await cartDB.addToCartItems_DB(1, {
+      8: "Shang-Chi and the Legend of the Ten Rings",
+    });
+    const user2CartItem = await cartDB.addToCartItems_DB(2, {
+      8: "Shang-Chi and the Legend of the Ten Rings",
+    });
+    const user3CartItem = await cartDB.addToCartItems_DB(3, {
+      8: "Shang-Chi and the Legend of the Ten Rings",
+    });
+    const user4CartItem = await cartDB.addToCartItems_DB(4, { 9: "Banana" });
+    const user5CartItem = await cartDB.addToCartItems_DB(5, { 10: "Pickles" });
     //----------------------------------------------------------------
-    console.log("Populating Intial Users Libraries...")
-    const user1Librarary = await myLibraryDB.createUserLibrary_DB(1)
-    const user2Librarary = await myLibraryDB.createUserLibrary_DB(2)
-    const user3Librarary = await myLibraryDB.createUserLibrary_DB(3)
-    const user4Librarary = await myLibraryDB.createUserLibrary_DB(4)
-    const user5Librarary = await myLibraryDB.createUserLibrary_DB(5)
+    console.log("Populating Intial Users Libraries...");
+    const user1Librarary = await myLibraryDB.createUserLibrary_DB(1);
+    const user2Librarary = await myLibraryDB.createUserLibrary_DB(2);
+    const user3Librarary = await myLibraryDB.createUserLibrary_DB(3);
+    const user4Librarary = await myLibraryDB.createUserLibrary_DB(4);
+    const user5Librarary = await myLibraryDB.createUserLibrary_DB(5);
     //----------------------------------------------------------------
-    console.log("Populating Initial User Libraries...")
-    const user1LibraryItem = await myLibraryDB.addToUserLibrary_DB(1, {1: "test"})
-    const user2LibraryItem = await myLibraryDB.addToUserLibrary_DB(2, {2: "test"})
-    const user3LibraryItem = await myLibraryDB.addToUserLibrary_DB(3, {4: "test"})
-    const user4LibraryItem = await myLibraryDB.addToUserLibrary_DB(4, {5: "test"})
-    const user5LibraryItem = await myLibraryDB.addToUserLibrary_DB(5, {6: "test"})
+    console.log("Populating Initial User Libraries...");
+    const user1LibraryItem = await myLibraryDB.addToUserLibrary_DB(1, {
+      1: "test",
+    });
+    const user2LibraryItem = await myLibraryDB.addToUserLibrary_DB(2, {
+      2: "test",
+    });
+    const user3LibraryItem = await myLibraryDB.addToUserLibrary_DB(3, {
+      4: "test",
+    });
+    const user4LibraryItem = await myLibraryDB.addToUserLibrary_DB(4, {
+      5: "test",
+    });
+    const user5LibraryItem = await myLibraryDB.addToUserLibrary_DB(5, {
+      6: "test",
+    });
     //----------------------------------------------------------------
-    console.log("rebuild completed")
+    console.log("rebuild completed");
     // expect(user1Cart.user_cart).to.equal(user1.id)
     // expect(user5Cart.user_cart).to.equal(user5.id)
     //----------------------------------------------------------------
