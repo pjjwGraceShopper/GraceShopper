@@ -15,9 +15,9 @@ export async function getPY() {
 //----------------------------------------------------------------
 export async function submitPayment() {
   try{ 
-    const response = await axios.get('http://127.0.0.1:5000/v2/payment',)
-    console.log(response)
-    return response
+    const response = await axios.post('http://127.0.0.1:5000/v2/payments',)
+    console.log(response.data.payment)
+    return response.data.payment
   }catch (err) {
     console.error(err, "axios error");
     return err

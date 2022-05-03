@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export async function getLibrary() {
+export async function getLibrary({limit=false, offset=false}) {
   try {
-    const { data } = await axios.get(`/api/library`);
+    const { data } = await axios.put(`/api/library`, {limit:limit, offset: offset});
     return data;
   } catch (err) {
     console.error(err, "axios error");

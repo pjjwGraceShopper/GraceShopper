@@ -6,17 +6,28 @@
 /* MAIN CORE END ^^^^^^^^^^^^^ */
 /* MOVIE LIST START */
 
+.movielist-bottom-container{
+  flex-flow: column wrap;
+  min-height: 60%;
+  overflow-y: scroll;
+}
+.movielist-bottom-container::-webkit-scrollbar {
+  display: none;
+}
 .movie-app{
  flex-flow: column;
 }
 
 .new-form{
-  flex-flow: column nowrap;
+  flex-flow: column;
+}
+.row-scroller{
+min-height:20%;
 }
 
 .movie-img {
-  max-width: 7.5rem;
-  max-height: 10rem;
+  width: 8rem;
+  height: 10rem;
   overflow-y: hidden;
   overflow-x: scroll;
   padding: .3rem;

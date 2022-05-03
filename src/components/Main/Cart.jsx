@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate} from "react-router-dom";
 import { getPY } from "../../axios-services/PY_queries";
 import CartItem from "./CartItem";
 import {
@@ -16,20 +17,9 @@ const Cart = ({ me, cartChange, setCartChange }) => {
   //----------------------------------------------------------------
   const [userCart, setUserCart] = useState([{ name: "Nothing Yet!" }]);
   const [subTotal, setSubTotal] = useState({ value: "" });
+  const Navigate = useNavigate()
   const inCart = { ids: {} };
-
-  //-----------------------------------------------------------------
-  async function updateDev() {
-    if (me.id) {
-      setCartChange(Math.random());
-    }
-  }
   //----------------------------------------------------------------
-  async function handleCheckout() {
-    addToUserLibrary(me.id, inCart.ids);
-    clearCart(me.id);
-    setCartChange(Math.random());
-  }
   //-----------------------------------------------------------------
   useEffect(() => {
     if (me.id) {
@@ -38,10 +28,11 @@ const Cart = ({ me, cartChange, setCartChange }) => {
         setUserCart(response);
         const fetchSubtotal = await getUserCartSubTotal(me.id);
         setSubTotal({ value: `${fetchSubtotal}` });
-        console.log(fetchSubtotal);
+        
       }
       // update();
       update();
+      
     }
   }, [cartChange]);
   //----------------------------------------------------------------
@@ -49,7 +40,7 @@ const Cart = ({ me, cartChange, setCartChange }) => {
     <div className="cart-container">
       {/* HEADER */}
       <div className="header">
-        <h3 className="heading">Shopping Cart</h3>
+        <h3 className="heading">BlueBox</h3>
         <h5 className="action">Remove all</h5>
       </div>
       {/* HEADER END ^^ */}
@@ -72,23 +63,26 @@ const Cart = ({ me, cartChange, setCartChange }) => {
         </div>
         {/* LEFT END ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
         {/* RIGHT HALF **************************** */}
-        <div className="cart-right-container"></div>
+        <div className="cart-right-container card">
+           <h5>Subtotal: {subTotal.value}</h5>
+           <h5>Tax: 0% </h5>
+           <h5>Discount: 100% </h5>
+           <h5>Total: $0 </h5>
+        </div>
         {/* RIGHT END ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
+        </div>
         {/* BOTTOM ****************************** */}
         <div className="cart-bottom-container">
-          <button className="btn btn-secondary" onClick={() => updateDev()}>
-            update cart
-          </button>
           <button
             className="btn btn-secondary"
-            onClick={() => handleCheckout()}
+            onClick={() => Navigate('/Checkout')}
           >
-            Checkout
+           Go to Checkout
           </button>
-          <div>Subtotal: {subTotal.value}</div>
+         
         </div>
         {/* BOTTOM END ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
-      </div>
+       
     </div>
   );
 };
