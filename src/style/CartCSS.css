@@ -50,8 +50,13 @@
     height: 60%;
     width: 40%;
     position: relative;
+    padding: 1rem;
     margin: 2%;
     overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  .cart-left-container::-webkit-scrollbar {
+    display: none;
   }
   .cart-left-container button {
     height: 25%;

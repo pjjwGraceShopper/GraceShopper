@@ -1,14 +1,14 @@
 import react, { useEffect, useState } from "react";
 import { getUsers } from "../../axios-services/users_ajax";
 import AddMovie from "./AddMovie";
-
+//----------------------------------------------------------------
 const Admin = ({ movies, setMovies }) => {
   const [users, setUsers] = useState([]);
   let admin = false;
   if (localStorage.getItem("isAdmin")) {
     admin = true;
   }
-
+//----------------------------------------------------------------
   useEffect(() => {
     const fetchUsers = async () => {
       const data = await getUsers();
@@ -16,22 +16,7 @@ const Admin = ({ movies, setMovies }) => {
     };
     fetchUsers();
   }, [setUsers]);
-
-  /*function toggleAddMovie(){
-    let addMovie = AddMovie 
-    let displaySetting = addMovie.style.display;
-    let add = document.getElementById('clockButton');
-if (displaySetting == 'block') {
-      myClock.style.display = 'none';
-      clockButton.innerHTML = 'Show clock';
-    }
-    else {
-      addMovie.style.display = 'block';
-      clockButton.innerHTML = 'Hide clock';
-    }
-  }
-  }*/
-
+//----------------------------------------------------------------
   return (
     <div className="admin-container">
       {admin === true ? (
@@ -66,7 +51,6 @@ if (displaySetting == 'block') {
           </table>
         </>
       ) : null}
-      <button onClick={toggleAddMovie} id="add-btn">Add New Movie</button>
       <AddMovie movies={movies} setMovies={setMovies} />
     </div>
   );
