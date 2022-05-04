@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+//SET BETTER LOGIC LATER !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 const mode = true
 let pyURL 
 if(mode){
