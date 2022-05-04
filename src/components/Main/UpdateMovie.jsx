@@ -10,7 +10,12 @@ const UpdateMovie = ({ me, movieId, movies, setMovies }) => {
   const [price, setPrice] = useState("");
   const [img, setImg] = useState("");
 
-  const authenticated = me.admin
+  let authenticated
+  if(me.admin || localStorage.getItem("admin")){
+  authenticated = true
+  }
+
+
 
   const onUpdate = async (e, movieId) => {
     e.preventDefault();
@@ -51,10 +56,10 @@ const UpdateMovie = ({ me, movieId, movies, setMovies }) => {
 
   return (
     <div className="new-movie-container">
-      <div>
+      <div className="new-movie-sub-container">
         {authenticated === true ? (
           <>
-            <h3> Edit Movie</h3>
+            <h3 className="new-movie-header"> Edit Movie</h3>
             <form
               className="new-form"
               onSubmit={(e) => {
@@ -103,12 +108,14 @@ const UpdateMovie = ({ me, movieId, movies, setMovies }) => {
                 onChange={(e) => setImg(e.target.value)}
                 placeholder="Image Link"
               />
-              <button type="submit">Edit Movie</button>
+              <button className="btn btn-secondary adminButton" type="submit">Edit Movie</button>
+              <button className="btn btn-secondary adminButton" onClick={() => onDelete(movieId)}>Delete Movie</button>
             </form>
+            
           </>
         ) : null}
       </div>
-      <button onClick={() => onDelete(movieId)}>Delete Movie</button>
+     
     </div>
   );
 };

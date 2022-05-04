@@ -30,19 +30,16 @@ const Lists = ({ currentMovie, me, setCartChange }) => {
           <h4></h4>
         </div>
       </div>
-        <div>
-          <UpdateMovie setMovies={setMovies} movieId={currentMovie.id}/>
-        </div>
       {/* END ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
       <div className="seg1-container">
       {/* DETAILS START **************************** */}
       <div className="detail-container">
         <ul className="detail-list">
-          <li>{currentMovie.year} </li>
-          <li>{currentMovie.type} </li>
-          <li> {currentMovie.length} </li>
-          <li> {currentMovie.price} </li>
-          <li> {currentMovie.genre} </li>
+          <li>Release Year: {currentMovie.year} </li>
+          <li>Content Type: {currentMovie.type} </li>
+          <li> Length: {currentMovie.length} mins</li>
+          <li> Genre: {currentMovie.genre} </li>
+          <li> Price: {currentMovie.price} </li>
         </ul>
       </div>
       {/* DETAILS END ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
@@ -54,15 +51,14 @@ const Lists = ({ currentMovie, me, setCartChange }) => {
             src={currentMovie.img}
             style={{ width: 300, height: 400 }}
           ></img>
-          {/* <img key={currentMovie.id} className="movie-img" scr={currentMovie.img} alt="movie"></img>  */}
         </div>
       </div>
       {/* ^^^^^^^^^^^^^  END  ^^^^^^^^^ */}
+      <UpdateMovie setMovies={setMovies} movieId={currentMovie.id} me={me}/>
       </div>
       {/* DESCRIPTIONS START **************** */}
       <div className="description">
         <p>
-          {" "}
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -72,6 +68,7 @@ const Lists = ({ currentMovie, me, setCartChange }) => {
       {/* END ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
       {/* WISHLIST START ******************** */}
       <div className="wishlist-bottom-container">
+        
         <button
           className="wishlist-bottom"
           onClick={() => {
