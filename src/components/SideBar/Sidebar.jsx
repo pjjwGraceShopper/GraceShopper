@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 //<i class="bi bi-person-video"></i> -- person icon for my profile later
 // data-bs-toggle="tooltip" data-bs-placement="right" title="Tooltip on right"
 
-const Sidebar = ({ loginStatus, setCartChange }) => {
+const Sidebar = ({ loginStatus, setCartChange, me}) => {
   useEffect;
 
   return (
@@ -13,8 +13,8 @@ const Sidebar = ({ loginStatus, setCartChange }) => {
        
         <Link to="./cart"><i className="bi bi-minecart-loaded sideIcon"></i></Link>
         <Link to="/"><i className="bi bi-house-door sideIcon"></i> </Link>
-        <Link to="/my-library"><i className="bi bi-door-open-fill sideIcon"></i></Link>
-        {!localStorage.getItem("token") ? (
+        {me.length || me.token ? <Link to="/my-library"><i className="bi bi-door-open-fill sideIcon"></i></Link>: null}
+        {me.length && me.token ? (
           <>
             <Link to="./login"><i className="bi bi-key sideIcon"></i></Link>
             <Link to="./sign-up"><i className="bi bi-pencil-square sideIcon"></i></Link>
@@ -22,7 +22,7 @@ const Sidebar = ({ loginStatus, setCartChange }) => {
         ) : (
           <Link to="./login"><i className="bi bi-person-x-fill sideIcon"></i></Link>
         )}
-        {localStorage.getItem("isAdmin") ? (
+        {me.length || me.admin ? (
           <Link to="./admin"><i className="bi bi-person-heart sideIcon"></i></Link>
         ) : null}
       </div>

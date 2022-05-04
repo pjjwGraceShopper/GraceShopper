@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { deleteMovie, updateMovie } from "../../axios-services/lib_ajax";
 
-const UpdateMovie = ({ movieId, movies, setMovies }) => {
+const UpdateMovie = ({ me, movieId, movies, setMovies }) => {
   const [name, setName] = useState("");
   const [type, setType] = useState("");
   const [year, setYear] = useState("");
@@ -10,7 +10,7 @@ const UpdateMovie = ({ movieId, movies, setMovies }) => {
   const [price, setPrice] = useState("");
   const [img, setImg] = useState("");
 
-  const authenticated = localStorage.getItem("isAdmin") ? true : false;
+  const authenticated = me.admin
 
   const onUpdate = async (e, movieId) => {
     e.preventDefault();

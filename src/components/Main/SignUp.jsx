@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { registerUser, createUserCart, createUserLibrary } from "../../axios-services";
 
-const SignUp = ({ setMe, loginStatus, setLoginStatus }) => {
+const SignUp = ({ me, setMe, loginStatus, setLoginStatus }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -37,15 +37,15 @@ const SignUp = ({ setMe, loginStatus, setLoginStatus }) => {
         localStorage.setItem("username", result.user.username);
         localStorage.setItem("id", result.user.id);
         if (result.user.admin) {
-          localStorage.setItem("isAdmin", result.user.admin);
+          localStorage.setItem("admin", result.user.admin);
         }
         navigate("/");
-      }, 300);
+      }, 500);
     }
   };
 
   useEffect(() => {
-    if (localStorage.getItem("token")) {
+    if (me.token) {
       setLoginStatus(true);
     }
   }, [loginStatus]);

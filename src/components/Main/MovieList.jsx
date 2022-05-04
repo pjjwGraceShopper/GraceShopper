@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { getLibrary } from "../../axios-services";
 
 
-const MovieList = ({currentMovie, setCurrentMovie}) => {
+const MovieList = ({me, currentMovie, setCurrentMovie}) => {
   const navigate = useNavigate();
   const [movies, setMovies] = useState([]);
 

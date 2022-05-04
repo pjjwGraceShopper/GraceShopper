@@ -1,7 +1,7 @@
 import react, { useEffect, useState } from "react";
 import { myData } from "../../axios-services/users_ajax";
 
-const Profile = () => {
+const Profile = ({me}) => {
   const [user, setUser] = useState([]);
   useEffect(() => {
     const fetchUser = async () => {

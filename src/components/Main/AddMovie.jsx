@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { addMovie } from "../../axios-services/lib_ajax";
 
-const AddMovie = ({movies, setMovies }) => {
+const AddMovie = ({me, movies, setMovies }) => {
   const [name, setName] = useState("");
   const [type, setType] = useState("");
   const [year, setYear] = useState("");
@@ -12,10 +12,11 @@ const AddMovie = ({movies, setMovies }) => {
   const [addMovieMessage, setAddMovieMessage] = useState("");
 
   let authenticated = false;
-  if (localStorage.getItem("isAdmin")) {
+  let admin = false;
+  if (me.admin || localStorage.getItem("admin")) {
     authenticated = true;
+    admin=true;
   }
-  const admin = localStorage.getItem("isAdmin");
 
   const onCreate = async (e) => {
     e.preventDefault();
