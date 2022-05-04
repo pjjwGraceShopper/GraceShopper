@@ -25,19 +25,22 @@ const SignUp = ({ setMe, loginStatus, setLoginStatus }) => {
       setSignUpMessage(result);
     } else {
       // REMOVE LATER
-      console.log("RESULT FROM SIGNUP", result.user);
-      localStorage.setItem("token", result.token);
-      localStorage.setItem("username", username);
-      localStorage.setItem("id", result.user.id);
-      // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      setMe({
-        token: result.token,
-        id: result.user.id,
-      });
-      await createUserCart(result.user.id);
-      await createUserLibrary(result.user.id)
-      console.log(result);
-      navigate("/");
+      setTimeout(() => {
+        await createUserCart(result.user.id);
+        await createUserLibrary(result.user.id)
+        setMe({
+          token: result.token,
+          id: result.user.id,
+        });
+        // REMOVE LATER
+        localStorage.setItem("token", result.token);
+        localStorage.setItem("username", result.user.username);
+        localStorage.setItem("id", result.user.id);
+        if (result.user.admin) {
+          localStorage.setItem("isAdmin", result.user.admin);
+        }
+        navigate("/");
+      }, 300);
     }
   };
 

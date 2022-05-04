@@ -16,19 +16,21 @@ const Login = ({ me, setMe, loginStatus, setLoginStatus }) => {
       setLoginMessage(result);
     } else {
       setLoginStatus(true);
-      setMe({
-        token: result.token,
-        id: result.user.id,
-      });
-      // REMOVE LATER
-      localStorage.setItem("token", result.token);
-      localStorage.setItem("username", result.user.username);
-      localStorage.setItem("id", result.user.id);
-      if (result.user.admin) {
-        localStorage.setItem("isAdmin", result.user.admin);
-      }
+      setTimeout(() => {
+        setMe({
+          token: result.token,
+          id: result.user.id,
+        });
+        // REMOVE LATER
+        localStorage.setItem("token", result.token);
+        localStorage.setItem("username", result.user.username);
+        localStorage.setItem("id", result.user.id);
+        if (result.user.admin) {
+          localStorage.setItem("isAdmin", result.user.admin);
+        }
+        navigate("/");
+      }, 300);
       // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      navigate("/");
     }
   };
 

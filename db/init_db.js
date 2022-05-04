@@ -119,7 +119,7 @@ async function populateInitialData() {
     });
     //----------------------------------------------------------------
     const popIdx = await client.query(`
-      COPY IDXlib FROM '${pathToCSV}' 
+      COPY idxlib FROM '${pathToCSV}' 
       WITH DELIMITER ',' 
       CSV HEADER;
       `);
