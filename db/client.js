@@ -14,7 +14,7 @@ if (!LOGIN){
 let client
 
 const DB_URL = {connectionString: process.env.DATABASE_URL || `${DB_LINK}`,
-ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : undefined};
+ssl: process.env.NODE_ENV === 'production' ?  { rejectUnauthorized: false }: undefined};
 
 // github actions client config
 if (process.env.CI) {
