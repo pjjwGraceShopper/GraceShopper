@@ -25,7 +25,7 @@ const SignUp = ({ setMe, loginStatus, setLoginStatus }) => {
       setSignUpMessage(result);
     } else {
       // REMOVE LATER
-      setTimeout(() => {
+      setTimeout(async () => {
         await createUserCart(result.user.id);
         await createUserLibrary(result.user.id)
         setMe({
