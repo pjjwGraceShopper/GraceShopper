@@ -55,7 +55,8 @@ const Cart = ({ me, cartChange, setCartChange }) => {
                   inCart={inCart}
                   userCart={userCart}
                   elem={e}
-                  cartChange={setCartChange}
+                  setCartChange={setCartChange}
+                  cartChange={cartChange}
                   me={me}
                   idx={i}
                 />

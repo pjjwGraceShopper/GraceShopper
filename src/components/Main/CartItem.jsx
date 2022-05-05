@@ -7,16 +7,16 @@ const CartItem = ({ userCart, elem, idx, setCartChange, cartChange, me, inCart})
   //--------------------------------------------------------
   useEffect(() => {
     console.log(userCart, "cart item");
-  }, [userCart]);
+  }, [userCart, cartChange]);
   //-------------------------------------------
   return (
     <div className="cart-item-container card --bs-dark">
        <img className="movie-img" src={elem.img} key={elem + idx} alt="movie"></img>
-       <div className="cart-item-text-container" key={elem.id--}>
-      <div className="cart-item-text" key={elem.id}>
+       <div className="cart-item-text-container">
+      <div className="cart-item-text">
         {elem.name}
       </div>
-      <div className="cart-item-text" key={elem.id++}>
+      <div className="cart-item-text">
       {elem.price}
       </div>
       </div>

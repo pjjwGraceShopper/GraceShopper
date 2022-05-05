@@ -63,12 +63,16 @@
     width: 30%;
   }
   .cart-item-container{
-    padding:1%;
+    padding:1rem;
     margin: 1%;
     flex-flow: row;
+    justify-content:flex-end;
+    align-items:center;
     background-color: rgba(123, 146, 168, 0.6);
   }
   .cart-item-text-container{
+    width: 35%;
+    margin: 10% 5% 5% 3%;
     flex-flow:column;
   }
   .cart-item-text{
