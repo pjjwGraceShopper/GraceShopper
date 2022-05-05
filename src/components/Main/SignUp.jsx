@@ -51,10 +51,9 @@ const SignUp = ({ me, setMe, loginStatus, setLoginStatus }) => {
   }, [loginStatus]);
 
   return (
-    <div>
+
       <div className="container py-3 h-100">
-        <div className="row d-flex justify-content-center align-items-center h-100">
-          <div className="col-12 col-md-0 col-lg-0 col-xl-0">
+
             <div
               className="card bg-dark text-white"
               style={{ borderRadius: "1rem" }}
@@ -128,7 +127,7 @@ const SignUp = ({ me, setMe, loginStatus, setLoginStatus }) => {
                         }}
                       />
                     </div>
-                    <div className="login-block">
+                    <div className="login-block-signup">
                     <button
                           className="btn btn-outline-light btn-lg px-5"
                           type="submit"
@@ -147,9 +146,6 @@ const SignUp = ({ me, setMe, loginStatus, setLoginStatus }) => {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
   );
 };
 

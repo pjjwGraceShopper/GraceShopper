@@ -13,7 +13,7 @@ const Sidebar = ({ loginStatus, setCartChange, me}) => {
         <Link to="./cart"><i className="bi bi-minecart-loaded sideIcon" data-bs-toggle="tooltip" data-bs-placement="right" title="My Cart"></i></Link>
         <Link to="/"><i className="bi bi-house-door sideIcon" data-bs-toggle="tooltip" data-bs-placement="right" title="Home"></i> </Link>
         {me.length || me.token ? <Link to="/my-library"><i className="bi bi-door-open-fill sideIcon" data-bs-toggle="tooltip" data-bs-placement="right" title="My Library"></i></Link>: null}
-        {!me.length && !me.token ? (
+        {!loginStatus && !me.token ? (
           <>
             <Link to="./login"><i className="bi bi-key sideIcon"data-bs-toggle="tooltip" data-bs-placement="right" title="Login"></i></Link>
             <Link to="./sign-up"><i className="bi bi-pencil-square sideIcon"data-bs-toggle="tooltip" data-bs-placement="right" title="Sign Up"></i></Link>

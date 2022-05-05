@@ -1,6 +1,7 @@
 .sign-container { 
   align-items: center;
-  margin-left: 20px;
+  margin-left: 1rem;
+  flex-flow: column;
 }
 
 .fw-boldmb-0mx-0text-uppercase{
@@ -13,26 +14,35 @@
 }
   
 .form-outline-container{
-width: 500px;
-height: 30px;
+width: 25rem;
+height: 2.5rem;
 margin-top: 5px;
 margin-right: 5px;
 }
 
 .sign-container{
-  display: flex;
+  padding: 4rem;
   flex-direction:column;
-  width: 100%;
-  height: 100%;
+}
+.sign-container p {
+  height: 5rem;
+}
+.sign-container h2 {
+  height: 3rem;
 }
 
 .block-sign{
   width: 100%;
   height: auto; 
+  flex-direction: column;
 }
-.login-block{
-  margin-top: 0px;
-  width: 15%;
+.block-sign form {
+  flex-flow: column;
+
+}
+.login-block-signup{
+  margin: 1rem;
+  width: 22%;
 }
 
 

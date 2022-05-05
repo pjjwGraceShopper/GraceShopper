@@ -41,6 +41,7 @@ const Login = ({ me, setMe, loginStatus, setLoginStatus }) => {
     localStorage.removeItem("username");
     localStorage.removeItem("id");
     localStorage.removeItem("admin");
+    setMe({});
     setLoginStatus(false);
     navigate("/");
   };
