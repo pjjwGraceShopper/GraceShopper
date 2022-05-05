@@ -11,6 +11,7 @@
   min-height: 60%;
   overflow-y: scroll;
 }
+
 .movielist-bottom-container::-webkit-scrollbar {
   display: none;
 }
@@ -198,4 +199,30 @@ a {
  flex:1;
  font-size: 14px;
  font-weight: bold;
+}
+.profile-container{
+  align-items: center;
+  flex-flow: column;
+}
+.tbody-profile{
+  flex-flow: column;
+  width: 60%;
+  justify-content: center;
+  align-items: center;
+}
+.profile-table{
+  justify-content: center;
+  align-items: center;
+}
+.profile-header{
+  justify-content: center;
+  align-items: center;
+  height: 30%;
+  width: 50%;
+}
+.profile-title{
+  justify-content: center;
+  align-items: center;
+  height: 30%;
+  width: 50%;
 }

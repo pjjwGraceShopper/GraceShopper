@@ -13,10 +13,10 @@ const Profile = () => {
   }, [setUser]);
   return (
     <div className="profile-container">
-      <h1>{user.username}'s Profile</h1>
-      <h2 className="header header-textAlign">Account Information</h2>
-      <table className="table table-dark">
-        <tbody>
+      <h1 className="profile-title">{user.username}'s Profile</h1>
+      <h2 className="header header-textAlign profile-header">Account Information</h2>
+      <table className="table table-dark profile-table">
+        <tbody className="tbody-profile">
           <tr>
             <th>First Name</th>
             <td>{user.firstname}</td>

@@ -20,8 +20,8 @@ const Sidebar = ({ loginStatus, setCartChange }) => {
             <Link to="./sign-up"><i className="bi bi-pencil-square sideIcon"></i></Link>
           </>
         ) : (
-          <Link to="./login"><i className="bi bi-person-x-fill sideIcon"></i></Link>
-        )}
+          <><Link to="./login"><i className="bi bi-person-x-fill sideIcon"></i></Link><Link to="./profile"><i className="bi bi-person-circle sideIcon"></i></Link></>
+          )}
         {localStorage.getItem("isAdmin") ? (
           <Link to="./admin"><i className="bi bi-person-heart sideIcon"></i></Link>
         ) : null}
