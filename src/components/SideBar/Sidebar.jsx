@@ -14,7 +14,7 @@ const Sidebar = ({ loginStatus, setCartChange, me}) => {
         <Link to="./cart"><i className="bi bi-minecart-loaded sideIcon"></i></Link>
         <Link to="/"><i className="bi bi-house-door sideIcon"></i> </Link>
         {me.length || me.token ? <Link to="/my-library"><i className="bi bi-door-open-fill sideIcon"></i></Link>: null}
-        {me.length && me.token ? (
+        {!me.length && !me.token ? (
           <>
             <Link to="./login"><i className="bi bi-key sideIcon"></i></Link>
             <Link to="./sign-up"><i className="bi bi-pencil-square sideIcon"></i></Link>
