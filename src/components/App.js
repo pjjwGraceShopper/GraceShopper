@@ -34,9 +34,11 @@ const App = () => {
     if (localStorage.getItem("token")) {
       const id = localStorage.getItem("id");
       const token = localStorage.getItem("token");
+      const admin = localStorage.getItem("admin");
       setMe({
         token: token,
         id: id,
+        admin: admin
       });
     }
 
@@ -55,7 +57,7 @@ const App = () => {
 
   return (
     <div className="app-container">
-      <Sidebar loginStatus={loginStatus} />
+      <Sidebar loginStatus={loginStatus} setCartChange={setCartChange} me={me}/>
       <div className="main-container">
         {/* <div className="main_title">Hello, World!</div>
         <p>API Status: {APIHealth}</p> */}
@@ -66,6 +68,7 @@ const App = () => {
               <Home
                 currentMovie={currentMovie}
                 setCurrentMovie={setCurrentMovie}
+                me={me}
                 movies={movies}
                 setMovies={setMovies}
               />
@@ -87,13 +90,14 @@ const App = () => {
             element={
               <SignUp
                 setMe={setMe}
+                me={me}
                 loginStatus={loginStatus}
                 setLoginStatus={setLoginStatus}
               />
             }
           />
           {/* sign-up route currently not working */}
-          <Route path="/my-library" element={<MyLibrary me={me} />} />
+           <Route path="/my-library" element={<MyLibrary me={me} />} /> 
           <Route
             path="/Lists/:id"
             element={
@@ -119,9 +123,9 @@ const App = () => {
           />
           <Route
             path="/admin"
-            element={<Admin movies={movies} setMovies={setMovies} />}
+            element={<Admin movies={movies} setMovies={setMovies} me={me} />}
           />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={<Profile me={me} />} />
           <Route
             path="/Checkout"
             element={

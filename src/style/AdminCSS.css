@@ -35,13 +35,33 @@
 
   .new-movie-container{
     flex-flow: column;
-    width: 60%;
-    padding: 5%;
+    width: 15%;
+    padding: 1%;
+   margin: 3rem;
+  }
+  .new-movie-sub-container{
+    height: 90%;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .new-movie-sub-container form {
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .new-movie-sub-container form input {
+    background: rgb(196, 196, 196);
+    margin: 1%;
   }
   .new-movie-header{
     height: 15%;
-    margin: 1%;
-
+    margin: .2rem;
+  }
+  .adminButton{
+    height: 20%;
+    width: 80%;
+    margin: .2rem;
   }
   .new-movie-header * {
     justify-content: center;

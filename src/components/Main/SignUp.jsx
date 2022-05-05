@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { registerUser, createUserCart, createUserLibrary } from "../../axios-services";
 
-const SignUp = ({ setMe, loginStatus, setLoginStatus }) => {
+const SignUp = ({ me, setMe, loginStatus, setLoginStatus }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -25,24 +25,27 @@ const SignUp = ({ setMe, loginStatus, setLoginStatus }) => {
       setSignUpMessage(result);
     } else {
       // REMOVE LATER
-      console.log("RESULT FROM SIGNUP", result.user);
-      localStorage.setItem("token", result.token);
-      localStorage.setItem("username", username);
-      localStorage.setItem("id", result.user.id);
-      // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      setMe({
-        token: result.token,
-        id: result.user.id,
-      });
-      await createUserCart(result.user.id);
-      await createUserLibrary(result.user.id)
-      console.log(result);
-      navigate("/");
+      setTimeout(async () => {
+        await createUserCart(result.user.id);
+        await createUserLibrary(result.user.id)
+        setMe({
+          token: result.token,
+          id: result.user.id,
+        });
+        // REMOVE LATER
+        localStorage.setItem("token", result.token);
+        localStorage.setItem("username", result.user.username);
+        localStorage.setItem("id", result.user.id);
+        if (result.user.admin) {
+          localStorage.setItem("admin", result.user.admin);
+        }
+        navigate("/");
+      }, 500);
     }
   };
 
   useEffect(() => {
-    if (localStorage.getItem("token")) {
+    if (me.token) {
       setLoginStatus(true);
     }
   }, [loginStatus]);

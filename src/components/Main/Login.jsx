@@ -16,19 +16,22 @@ const Login = ({ me, setMe, loginStatus, setLoginStatus }) => {
       setLoginMessage(result);
     } else {
       setLoginStatus(true);
-      setMe({
-        token: result.token,
-        id: result.user.id,
-      });
-      // REMOVE LATER
-      localStorage.setItem("token", result.token);
-      localStorage.setItem("username", result.user.username);
-      localStorage.setItem("id", result.user.id);
-      if (result.user.admin) {
-        localStorage.setItem("isAdmin", result.user.admin);
-      }
+      setTimeout(async () => {
+        setMe({
+          token: result.token,
+          id: result.user.id,
+          admin: result.user.admin
+        });
+        // REMOVE LATER
+        localStorage.setItem("token", result.token);
+        localStorage.setItem("username", result.user.username);
+        localStorage.setItem("id", result.user.id);
+        if (result.user.admin) {
+          localStorage.setItem("admin", result.user.admin);
+        }
+        navigate("/");
+      }, 500);
       // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      navigate("/");
     }
   };
 
@@ -37,13 +40,13 @@ const Login = ({ me, setMe, loginStatus, setLoginStatus }) => {
     localStorage.removeItem("token");
     localStorage.removeItem("username");
     localStorage.removeItem("id");
-    localStorage.removeItem("isAdmin");
+    localStorage.removeItem("admin");
     setLoginStatus(false);
     navigate("/");
   };
 
   useEffect(() => {
-    if (localStorage.getItem("token")) {
+    if (me.token) {
       setLoginStatus(true);
     }
   }, [loginStatus]);

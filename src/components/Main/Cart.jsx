@@ -75,7 +75,7 @@ const Cart = ({ me, cartChange, setCartChange }) => {
         {/* BOTTOM ****************************** */}
         <div className="cart-bottom-container">
           <button
-            className="btn btn-secondary"
+            className="btn btn-secondary checkoutButton"
             onClick={() => Navigate('/Checkout')}
           >
            Go to Checkout

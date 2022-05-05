@@ -12,9 +12,13 @@ const CartItem = ({ userCart, elem, idx, setCartChange, cartChange, me, inCart})
   return (
     <div className="cart-item-container card --bs-dark">
        <img className="movie-img" src={elem.img} key={elem + idx} alt="movie"></img>
-      <div key={elem.id}>
+       <div className="cart-item-text-container" key={elem.id--}>
+      <div className="cart-item-text" key={elem.id}>
         {elem.name}
-        {elem.price}
+      </div>
+      <div className="cart-item-text" key={elem.id++}>
+      {elem.price}
+      </div>
       </div>
       <button className="btn btn-secondary" onClick={() => {
         deleteItemFromCart(me.id, elem.id) 

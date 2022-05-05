@@ -123,13 +123,15 @@ a {
 .Detailed-View-Container{
   flex-flow: column nowrap;
   align-items: center;
-  margin: 10%;
+  justify-content: center;
+  margin: 2rem;
 
 }
 .title-container{
-  width: 80%;
+  width: 60%;
+  height: 10%;
   top: 0;
-  padding: 2%;
+  padding: .2rem;
   align-items: center;
 }
 
@@ -146,10 +148,12 @@ a {
 .seg1-container{
   flex-flow:row nowrap;
   justify-content: center;
+  align-items: center;
 }
 .detail-container{
   width: 20%;
-  height: 30%;
+  height: 60%;
+  padding: 1rem;
   left : 40;
   background-color: #282828;
   flex-flow: column nowrap;
@@ -159,10 +163,10 @@ a {
 }
 .flex-container {
   flex-flow: column nowrap;
-  padding: 2%;
+  padding: 1rem;
   width: 25%;
   align-items: center;
-
+  justify-content: center;
 }
 
 .flex-child {
