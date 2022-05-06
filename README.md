@@ -2,7 +2,7 @@ Live Link : https://bluebox-atnight.herokuapp.com/
 
 
 contributors:
-Wyatt Wilson
+\n Wyatt Wilson
 Jacob Murray
 Pam Surapattanakhun 
 Josh Wilkinson 
